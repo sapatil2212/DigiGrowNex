@@ -1,10 +1,10 @@
 import React from 'react';
 import { Metadata } from 'next';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, Phone, Send } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Contact Us | SAP Tech',
-  description: 'Get in touch with SAP Tech. Schedule a consultation for digital marketing, web development, and digital scaling solutions.',
+  title: 'Contact Us | digigrownex',
+  description: 'Get in touch with digigrownex. Schedule a consultation for digital marketing, web development, and digital scaling solutions.',
 };
 
 export default function ContactPage() {
@@ -41,20 +41,7 @@ export default function ContactPage() {
               <div>
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">Email Our Team</h3>
                 <p className="text-slate-600 dark:text-slate-400 mb-2">We'll respond within 24 hours</p>
-                <a href="mailto:hello@sap-tech.com" className="font-semibold text-slate-800 dark:text-white">hello@sap-tech.com</a>
-              </div>
-            </div>
-
-            <div className="flex gap-4">
-              <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">
-                <MapPin className="w-6 h-6 text-accent" />
-              </div>
-              <div>
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">Visit Our Office</h3>
-                <p className="text-slate-600 dark:text-slate-400">
-                  Tech Park Hub, Floor 4<br />
-                  Digital Avenue, Innovation City
-                </p>
+                <a href="mailto:digigrownex@gmail.com" className="font-semibold text-slate-800 dark:text-white">digigrownex@gmail.com</a>
               </div>
             </div>
           </div>

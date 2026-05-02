@@ -176,7 +176,7 @@ function StepCard({ step, index }: { step: (typeof steps)[0]; index: number }) {
           className="w-14 h-14 rounded-2xl flex items-center justify-center text-xl z-10 relative"
           style={{
             background: 'linear-gradient(135deg, var(--accent), var(--accent-dark))',
-            boxShadow: '0 0 20px rgba(249,115,22,0.35)',
+            boxShadow: '0 0 20px rgba(52,204,50,0.35)',
           }}
         >
           {step.icon}
@@ -186,7 +186,7 @@ function StepCard({ step, index }: { step: (typeof steps)[0]; index: number }) {
             className="w-px mt-2 flex-1"
             style={{
               minHeight: 32,
-              background: 'linear-gradient(to bottom, rgba(249,115,22,0.5), rgba(249,115,22,0.05))',
+              background: 'linear-gradient(to bottom, rgba(52,204,50,0.5), rgba(52,204,50,0.05))',
             }}
           />
         )}
@@ -203,8 +203,8 @@ function StepCard({ step, index }: { step: (typeof steps)[0]; index: number }) {
         }}
         onMouseEnter={(e) => {
           const el = e.currentTarget as HTMLDivElement;
-          el.style.borderColor = 'rgba(249,115,22,0.35)';
-          el.style.boxShadow = '0 0 30px rgba(249,115,22,0.08)';
+          el.style.borderColor = 'rgba(52,204,50,0.35)';
+          el.style.boxShadow = '0 0 30px rgba(52,204,50,0.08)';
         }}
         onMouseLeave={(e) => {
           const el = e.currentTarget as HTMLDivElement;
@@ -215,7 +215,7 @@ function StepCard({ step, index }: { step: (typeof steps)[0]; index: number }) {
         {/* Top accent line */}
         <div
           className="absolute top-0 left-0 right-0 h-px"
-          style={{ background: 'linear-gradient(90deg, transparent, rgba(249,115,22,0.4), transparent)' }}
+          style={{ background: 'linear-gradient(90deg, transparent, rgba(52,204,50,0.4), transparent)' }}
         />
 
         {/* Header */}
@@ -223,9 +223,9 @@ function StepCard({ step, index }: { step: (typeof steps)[0]; index: number }) {
           <span
             className="text-xs font-bold px-2.5 py-1 rounded-full"
             style={{
-              background: 'rgba(249,115,22,0.12)',
+              background: 'rgba(52,204,50,0.12)',
               color: 'var(--accent)',
-              border: '1px solid rgba(249,115,22,0.25)',
+              border: '1px solid rgba(52,204,50,0.25)',
             }}
           >
             Step-{step.num}
@@ -258,7 +258,7 @@ function StepCard({ step, index }: { step: (typeof steps)[0]; index: number }) {
         {/* Hover glow overlay */}
         <div
           className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(249,115,22,0.06), transparent 60%)' }}
+          style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(52,204,50,0.06), transparent 60%)' }}
         />
       </div>
     </div>
@@ -309,7 +309,7 @@ export default function AboutClient() {
           style={{
             top: '5%',
             left: '-8%',
-            background: 'radial-gradient(circle, rgba(249,115,22,0.07), transparent 70%)',
+            background: 'radial-gradient(circle, rgba(52,204,50,0.07), transparent 70%)',
             animation: 'float 9s ease-in-out infinite',
           }}
         />
@@ -331,9 +331,9 @@ export default function AboutClient() {
                 <span
                   className="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-full mb-6"
                   style={{
-                    background: 'rgba(249,115,22,0.12)',
+                    background: 'rgba(52,204,50,0.12)',
                     color: 'var(--accent)',
-                    border: '1px solid rgba(249,115,22,0.25)',
+                    border: '1px solid rgba(52,204,50,0.25)',
                   }}
                 >
                   <span className="w-2 h-2 rounded-full bg-[#34CC32] animate-pulse inline-block" />
@@ -396,16 +396,16 @@ export default function AboutClient() {
                 {/* Ambient blob */}
                 <div
                   className="absolute -inset-6 rounded-3xl pointer-events-none -z-10"
-                  style={{ background: 'radial-gradient(ellipse, rgba(249,115,22,0.13), transparent 65%)' }}
+                  style={{ background: 'radial-gradient(ellipse, rgba(52,204,50,0.13), transparent 65%)' }}
                 />
 
                 <div
                   className="relative rounded-3xl overflow-hidden"
-                  style={{ boxShadow: '0 0 80px rgba(249,115,22,0.15), 0 30px 60px rgba(0,0,0,0.4)' }}
+                  style={{ boxShadow: '0 0 80px rgba(52,204,50,0.15), 0 30px 60px rgba(0,0,0,0.4)' }}
                 >
                   <img
-                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=1000"
-                    alt="Female student with laptop working on digital strategy"
+                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000"
+                    alt="Digital marketing analytics dashboard and strategy"
                     className="w-full h-full object-cover"
                     style={{ aspectRatio: '4/5' }}
                   />
@@ -487,7 +487,7 @@ export default function AboutClient() {
                 <div className="text-sm" style={{ color: 'var(--muted-fg)' }}>{s.label}</div>
                 <div
                   className="absolute bottom-0 left-0 right-0 h-px"
-                  style={{ background: 'linear-gradient(90deg, transparent, rgba(249,115,22,0.5), transparent)' }}
+                  style={{ background: 'linear-gradient(90deg, transparent, rgba(52,204,50,0.5), transparent)' }}
                 />
               </div>
             ))}
@@ -506,7 +506,7 @@ export default function AboutClient() {
           <AnimSection className="text-center mb-16">
             <span
               className="inline-block text-xs font-bold px-4 py-1.5 rounded-full mb-4"
-              style={{ background: 'rgba(249,115,22,0.12)', color: 'var(--accent)', border: '1px solid rgba(249,115,22,0.25)' }}
+              style={{ background: 'rgba(52,204,50,0.12)', color: 'var(--accent)', border: '1px solid rgba(52,204,50,0.25)' }}
             >
               OUR SOLUTION PROCESS
             </span>
@@ -533,7 +533,7 @@ export default function AboutClient() {
       <section className="py-20 relative overflow-hidden">
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse at 40% 50%, rgba(249,115,22,0.05), transparent 65%)' }}
+          style={{ background: 'radial-gradient(ellipse at 40% 50%, rgba(52,204,50,0.05), transparent 65%)' }}
         />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -541,7 +541,7 @@ export default function AboutClient() {
             <AnimSection delay={0} className="relative order-2 lg:order-1">
               <div
                 className="relative rounded-3xl overflow-hidden"
-                style={{ boxShadow: '0 0 60px rgba(249,115,22,0.1), 0 24px 50px rgba(0,0,0,0.35)' }}
+                style={{ boxShadow: '0 0 60px rgba(52,204,50,0.1), 0 24px 50px rgba(0,0,0,0.35)' }}
               >
                 <img
                   src="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?auto=format&fit=crop&q=80&w=900"
@@ -551,17 +551,17 @@ export default function AboutClient() {
                 />
                 <div
                   className="absolute inset-0"
-                  style={{ background: 'linear-gradient(135deg, rgba(249,115,22,0.12), transparent 55%)' }}
+                  style={{ background: 'linear-gradient(135deg, rgba(52,204,50,0.12), transparent 55%)' }}
                 />
               </div>
               {/* Decorative rings */}
               <div
                 className="absolute -top-8 -left-8 w-72 h-72 rounded-full border pointer-events-none -z-10"
-                style={{ borderColor: 'rgba(249,115,22,0.08)' }}
+                style={{ borderColor: 'rgba(52,204,50,0.08)' }}
               />
               <div
                 className="absolute -bottom-6 -right-6 w-48 h-48 rounded-full pointer-events-none -z-10"
-                style={{ background: 'rgba(249,115,22,0.05)' }}
+                style={{ background: 'rgba(52,204,50,0.05)' }}
               />
             </AnimSection>
 
@@ -570,7 +570,7 @@ export default function AboutClient() {
               <AnimSection delay={0}>
                 <span
                   className="inline-block text-xs font-bold px-4 py-1.5 rounded-full mb-4"
-                  style={{ background: 'rgba(249,115,22,0.12)', color: 'var(--accent)', border: '1px solid rgba(249,115,22,0.25)' }}
+                  style={{ background: 'rgba(52,204,50,0.12)', color: 'var(--accent)', border: '1px solid rgba(52,204,50,0.25)' }}
                 >
                   WHY YOU NEED US
                 </span>
@@ -594,8 +594,8 @@ export default function AboutClient() {
                   className="text-lg font-semibold italic px-4 py-3 rounded-xl"
                   style={{
                     color: 'var(--accent)',
-                    background: 'rgba(249,115,22,0.08)',
-                    border: '1px solid rgba(249,115,22,0.2)',
+                    background: 'rgba(52,204,50,0.08)',
+                    border: '1px solid rgba(52,204,50,0.2)',
                   }}
                 >
                   "At digigrownex, we don't just promote your business — we grow it."
@@ -641,7 +641,7 @@ export default function AboutClient() {
           <AnimSection className="text-center mb-16">
             <span
               className="inline-block text-xs font-bold px-4 py-1.5 rounded-full mb-4"
-              style={{ background: 'rgba(249,115,22,0.12)', color: 'var(--accent)', border: '1px solid rgba(249,115,22,0.25)' }}
+              style={{ background: 'rgba(52,204,50,0.12)', color: 'var(--accent)', border: '1px solid rgba(52,204,50,0.25)' }}
             >
               OUR CORE
             </span>
@@ -667,9 +667,9 @@ export default function AboutClient() {
                   }}
                   onMouseEnter={(e) => {
                     const el = e.currentTarget as HTMLDivElement;
-                    el.style.borderColor = 'rgba(249,115,22,0.4)';
+                    el.style.borderColor = 'rgba(52,204,50,0.4)';
                     el.style.transform = 'translateY(-4px)';
-                    el.style.boxShadow = '0 20px 40px rgba(0,0,0,0.2), 0 0 30px rgba(249,115,22,0.08)';
+                    el.style.boxShadow = '0 20px 40px rgba(0,0,0,0.2), 0 0 30px rgba(52,204,50,0.08)';
                   }}
                   onMouseLeave={(e) => {
                     const el = e.currentTarget as HTMLDivElement;
@@ -681,15 +681,15 @@ export default function AboutClient() {
                   {/* Corner accent blob */}
                   <div
                     className="absolute -top-8 -right-8 w-32 h-32 rounded-full pointer-events-none opacity-50"
-                    style={{ background: 'radial-gradient(circle, rgba(249,115,22,0.15), transparent 70%)' }}
+                    style={{ background: 'radial-gradient(circle, rgba(52,204,50,0.15), transparent 70%)' }}
                   />
 
                   <div className="flex items-start gap-4 relative z-10">
                     <div
                       className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
                       style={{
-                        background: 'rgba(249,115,22,0.12)',
-                        border: '1px solid rgba(249,115,22,0.25)',
+                        background: 'rgba(52,204,50,0.12)',
+                        border: '1px solid rgba(52,204,50,0.25)',
                       }}
                     >
                       {item.icon}
@@ -707,7 +707,7 @@ export default function AboutClient() {
                   {/* Bottom highlight */}
                   <div
                     className="absolute bottom-0 left-8 right-8 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{ background: 'linear-gradient(90deg, transparent, rgba(249,115,22,0.6), transparent)' }}
+                    style={{ background: 'linear-gradient(90deg, transparent, rgba(52,204,50,0.6), transparent)' }}
                   />
                 </div>
               </AnimSection>
@@ -723,7 +723,7 @@ export default function AboutClient() {
       <section className="py-24 relative overflow-hidden">
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse at 50% 100%, rgba(249,115,22,0.06), transparent 70%)' }}
+          style={{ background: 'radial-gradient(ellipse at 50% 100%, rgba(52,204,50,0.06), transparent 70%)' }}
         />
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <AnimSection>
@@ -731,9 +731,9 @@ export default function AboutClient() {
               className="relative p-12 md:p-20 rounded-[2rem] overflow-hidden"
               style={{
                 background: 'rgba(15, 15, 15, 0.4)',
-                border: '1px solid rgba(249,115,22,0.2)',
+                border: '1px solid rgba(52,204,50,0.2)',
                 backdropFilter: 'blur(20px)',
-                boxShadow: '0 0 60px rgba(249,115,22,0.05)',
+                boxShadow: '0 0 60px rgba(52,204,50,0.05)',
               }}
             >
               {/* Floating Icons */}
@@ -742,7 +742,7 @@ export default function AboutClient() {
                 className="absolute hidden md:flex items-center justify-center rounded-xl animate-float"
                 style={{
                   top: '25%', left: '10%', width: '48px', height: '48px',
-                  background: 'rgba(249,115,22,0.05)', border: '1px solid rgba(249,115,22,0.3)',
+                  background: 'rgba(52,204,50,0.05)', border: '1px solid rgba(52,204,50,0.3)',
                   animationDelay: '0s'
                 }}
               >
@@ -754,7 +754,7 @@ export default function AboutClient() {
                 className="absolute hidden md:flex items-center justify-center rounded-xl animate-float"
                 style={{
                   bottom: '25%', left: '18%', width: '48px', height: '48px',
-                  background: 'rgba(249,115,22,0.05)', border: '1px solid rgba(249,115,22,0.3)',
+                  background: 'rgba(52,204,50,0.05)', border: '1px solid rgba(52,204,50,0.3)',
                   animationDelay: '1s'
                 }}
               >
@@ -766,7 +766,7 @@ export default function AboutClient() {
                 className="absolute hidden md:flex items-center justify-center rounded-xl animate-float"
                 style={{
                   top: '35%', right: '15%', width: '48px', height: '48px',
-                  background: 'rgba(249,115,22,0.05)', border: '1px solid rgba(249,115,22,0.3)',
+                  background: 'rgba(52,204,50,0.05)', border: '1px solid rgba(52,204,50,0.3)',
                   animationDelay: '2s'
                 }}
               >
@@ -778,7 +778,7 @@ export default function AboutClient() {
                 className="absolute hidden md:flex items-center justify-center rounded-xl animate-float"
                 style={{
                   bottom: '30%', right: '8%', width: '48px', height: '48px',
-                  background: 'rgba(249,115,22,0.05)', border: '1px solid rgba(249,115,22,0.3)',
+                  background: 'rgba(52,204,50,0.05)', border: '1px solid rgba(52,204,50,0.3)',
                   animationDelay: '3s'
                 }}
               >
@@ -786,12 +786,12 @@ export default function AboutClient() {
               </div>
 
               {/* Content */}
-              <div className="max-w-2xl mx-auto relative z-10">
-                <h2 className="text-4xl md:text-5xl font-black font-display mb-6 tracking-tight" style={{ color: 'var(--fg)' }}>
+              <div className="max-w-4xl mx-auto relative z-10">
+                <h2 className="text-3xl md:text-4xl font-black font-display mb-4 tracking-tight" style={{ color: 'var(--fg)' }}>
                   Unlock Your Social Media<br />
                   Success with AI
                 </h2>
-                <p className="text-base md:text-lg mb-10 leading-relaxed" style={{ color: 'var(--muted-fg)' }}>
+                <p className="text-sm md:text-base mb-10 leading-relaxed" style={{ color: 'var(--muted-fg)' }}>
                   Unlock the power of AI-driven content creation and scheduling to
                   elevate your social media game.<br className="hidden md:block" />
                   Experience seamless integration, insightful analytics, and more.

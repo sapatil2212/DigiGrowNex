@@ -50,6 +50,18 @@ export default function RootLayout({
           <main className="min-h-screen">{children}</main>
           <Footer />
         </ThemeProvider>
+        {/* Interactive gradient mouse tracker for light mode */}
+        <script dangerouslySetInnerHTML={{ __html: `
+          (function() {
+            function track(e) {
+              var x = (e.clientX / window.innerWidth * 100).toFixed(1) + '%';
+              var y = (e.clientY / window.innerHeight * 100).toFixed(1) + '%';
+              document.documentElement.style.setProperty('--mouse-x', x);
+              document.documentElement.style.setProperty('--mouse-y', y);
+            }
+            window.addEventListener('mousemove', track, { passive: true });
+          })();
+        `}} />
       </body>
     </html>
   );

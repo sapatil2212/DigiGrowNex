@@ -18,8 +18,8 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const serviceName = formatSlug(params.service);
   return {
-    title: `${serviceName} Services | SAP Tech`,
-    description: `Expert ${serviceName} solutions by SAP Tech designed to streamline your business and maximize your digital footprint.`,
+    title: `${serviceName} Services | digigrownex`,
+    description: `Expert ${serviceName} solutions by digigrownex designed to streamline your business and maximize your digital footprint.`,
   };
 }
 

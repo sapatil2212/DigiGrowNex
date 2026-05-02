@@ -16,14 +16,9 @@ function HeroSection() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [headingIndex, setHeadingIndex] = useState(0);
 
-  const headings = [
-    "Your Vision, Our Innovation - Shaping Digital Reality.",
-    "A Digital-First Agency Transforming Brands & Businesses"
-  ];
-
   useEffect(() => {
     const timer = setInterval(() => {
-      setHeadingIndex((prev) => (prev + 1) % headings.length);
+      setHeadingIndex((prev) => (prev + 1) % 5);
     }, 4000);
     return () => clearInterval(timer);
   }, []);
@@ -156,12 +151,29 @@ function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Badge */}
+        {/* Badge — rotating text with fade */}
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 mb-8 animate-fade-in">
           <span className="inline-block w-8 h-5 rounded text-[10px] font-bold flex items-center justify-center" style={{ background: 'var(--accent)', color: '#fff' }}>
             #1
           </span>
-          <span className="text-xs font-medium text-accent">Top Rated Digital Marketing Agency</span>
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={headingIndex}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.5, ease: 'easeInOut' }}
+              className="text-xs font-medium text-accent"
+            >
+              {[
+                'Top Rated Digital Marketing Agency',
+                'Award-Winning Web Development Studio',
+                'Creative Design & Branding Experts',
+                'Google Ads & SEO Growth Partners',
+                'Full-Stack Development Specialists',
+              ][headingIndex % 5]}
+            </motion.span>
+          </AnimatePresence>
         </div>
 
         {/* Heading */}
@@ -169,26 +181,47 @@ function HeroSection() {
           <AnimatePresence mode="wait">
             <motion.h1
               key={headingIndex}
-              initial={{ filter: 'blur(10px)', opacity: 0, y: 10 }}
-              animate={{ filter: 'blur(0px)', opacity: 1, y: 0 }}
-              exit={{ filter: 'blur(10px)', opacity: 0, y: -10 }}
-              transition={{ duration: 0.8, ease: "easeInOut" }}
+              initial="hidden"
+              animate="visible"
+              exit={{ filter: 'blur(10px)', opacity: 0, y: -10, transition: { duration: 0.5 } }}
+              variants={{
+                hidden: {},
+                visible: { transition: { staggerChildren: 0.18 } },
+              }}
               className="text-4xl sm:text-6xl lg:text-[72px] xl:text-[84px] font-bold tracking-tight leading-[1.2] font-display"
             >
-              {headingIndex === 0 && (
-                <>
-                  <span className="block whitespace-nowrap">Your Vision,</span>
-                  <span className="block whitespace-nowrap">Our Innovation -</span>
-                  <span className="block whitespace-nowrap">Shaping <span className="gradient-text">Digital Reality</span>.</span>
-                </>
-              )}
-              {headingIndex === 1 && (
-                <>
-                  <span className="block whitespace-nowrap">A <span className="gradient-text">Digital-First</span> Agency</span>
-                  <span className="block whitespace-nowrap">Transforming Brands</span>
-                  <span className="block whitespace-nowrap">& Businesses</span>
-                </>
-              )}
+              {(headingIndex % 5 === 0 ? [
+                <span key="0">Your Vision,</span>,
+                <span key="1">Our Innovation —</span>,
+                <span key="2">Shaping <span className="gradient-text">Digital Reality</span>.</span>,
+              ] : headingIndex % 5 === 1 ? [
+                <span key="0">A <span className="gradient-text">Digital-First</span> Agency</span>,
+                <span key="1">Transforming Brands</span>,
+                <span key="2">& Businesses</span>,
+              ] : headingIndex % 5 === 2 ? [
+                <span key="0">We Build <span className="gradient-text">Websites</span></span>,
+                <span key="1">Apps & Software</span>,
+                <span key="2">That Perform.</span>,
+              ] : headingIndex % 5 === 3 ? [
+                <span key="0">Designs That</span>,
+                <span key="1"><span className="gradient-text">Captivate</span>, Brands</span>,
+                <span key="2">That Convert.</span>,
+              ] : [
+                <span key="0">SEO, Ads &</span>,
+                <span key="1"><span className="gradient-text">Social Media</span></span>,
+                <span key="2">That Drive Growth.</span>,
+              ]).map((line, i) => (
+                <motion.span
+                  key={i}
+                  className="block whitespace-nowrap"
+                  variants={{
+                    hidden: { opacity: 0, y: 24, filter: 'blur(8px)' },
+                    visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.6, ease: 'easeOut' } },
+                  }}
+                >
+                  {line}
+                </motion.span>
+              ))}
             </motion.h1>
           </AnimatePresence>
         </div>
@@ -236,9 +269,55 @@ function HeroSection() {
 }
 
 /* ───────────── Trusted By ───────────── */
+// Client logos from /public/images/logo/client-logo/
+const clientLogos = [
+  { file: '1.png', name: 'Client 1' },
+  { file: '2.png', name: 'Client 2' },
+  { file: '3.png', name: 'Client 3' },
+  { file: '4.png', name: 'Client 4' },
+  { file: '5.png', name: 'Client 5' },
+  { file: '6.png', name: 'Client 6' },
+  { file: '7.png', name: 'Client 7' },
+  { file: '8.png', name: 'Client 8' },
+  { file: '9.png', name: 'Client 9' },
+  { file: '10.png', name: 'Client 10' },
+  { file: '11.png', name: 'Client 11' },
+  { file: '12.png', name: 'Client 12' },
+  { file: '13.png', name: 'Client 13' },
+  { file: '14.png', name: 'Client 14' },
+  { file: '15.png', name: 'Client 15' },
+  { file: '16.png', name: 'Client 16' },
+  { file: '17.png', name: 'Client 17' },
+  { file: '18.png', name: 'Client 18' },
+  { file: '19.png', name: 'Client 19' },
+  { file: 'Arya_Foods.png', name: 'Arya Foods' },
+  { file: 'Darshan_Jadhav.png', name: 'Darshan Jadhav' },
+  { file: 'DS Moto.png', name: 'DS Moto' },
+  { file: 'Gaurav Kirana.png', name: 'Gaurav Kirana' },
+  { file: 'Hotel_Omkar_Garden.png', name: 'Hotel Omkar Garden' },
+  { file: 'Hotel_Trident.png', name: 'Hotel Trident' },
+  { file: 'Jain_Bakers _logo.png', name: 'Jain Bakers' },
+  { file: 'Jogeshwari_Super_Shopee.png', name: 'Jogeshwari Super Shopee' },
+  { file: 'Kavyaas_Slimming_Center.png', name: 'Kavyaas Slimming Center' },
+  { file: 'Key_Tech.png', name: 'Key Tech' },
+  { file: 'Laser Dental.png', name: 'Laser Dental' },
+  { file: 'Lily_Events.png', name: 'Lily Events' },
+  { file: 'Logo Final.png', name: 'Client' },
+  { file: 'Logo SM 1.png', name: 'Client' },
+  { file: 'Logo.png', name: 'Client' },
+  { file: 'MA Events.jpg', name: 'MA Events' },
+  { file: 'OK_Kirana.png', name: 'OK Kirana' },
+  { file: 'Pranika_Arts.png', name: 'Pranika Arts' },
+  { file: 'Scenic_Lands.png', name: 'Scenic Lands' },
+  { file: 'TE_LOGO_1_1.png', name: 'TE Logo' },
+  { file: 'The bright logo 1.png', name: 'The Bright' },
+  { file: 'Trade Bharat.png', name: 'Trade Bharat' },
+  { file: 'Utkarsh Wani Samaj_HD_Png.png', name: 'Utkarsh Wani Samaj' },
+  { file: 'UWPL_Logo_HD_Png.png', name: 'UWPL' },
+];
+
 function TrustedBySection() {
-  const brands = ['FUTURA', 'OBSIDIAN', 'KINETIC', 'LUMINA', 'VECTOR', 'NEXUS', 'AURA', 'ECHO', 'PULSE', 'VORTEX'];
-  const trackBrands = [...brands, ...brands, ...brands, ...brands];
+  const track = [...clientLogos, ...clientLogos, ...clientLogos, ...clientLogos];
 
   return (
     <section className="py-12 overflow-hidden relative" style={{ borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
@@ -247,16 +326,33 @@ function TrustedBySection() {
           Trusted by growing businesses and established brands
         </p>
       </div>
+
       <div className="relative flex overflow-hidden group">
-        <div className="animate-marquee flex flex-nowrap items-center w-max">
-          {trackBrands.map((brand, i) => (
-            <span key={i} className="text-lg md:text-xl font-semibold text-white/20 tracking-[0.15em] hover:text-white/40 transition-colors duration-300 px-6 sm:px-12 inline-block">
-              {brand}
-            </span>
+        {/* fade edges */}
+        <div className="absolute inset-y-0 left-0 w-24 sm:w-40 bg-gradient-to-r from-[var(--bg)] to-transparent pointer-events-none z-10" />
+        <div className="absolute inset-y-0 right-0 w-24 sm:w-40 bg-gradient-to-l from-[var(--bg)] to-transparent pointer-events-none z-10" />
+
+        <div className="animate-marquee flex flex-nowrap items-center gap-4 w-max group-hover:[animation-play-state:paused]">
+          {track.map((logo, i) => (
+            <div
+              key={i}
+              className="client-logo-card shrink-0 flex items-center justify-center rounded-xl border"
+              style={{
+                width: 140,
+                height: 72,
+                background: 'var(--card-bg)',
+                borderColor: 'var(--border)',
+              }}
+            >
+              <img
+                src={`/images/logo/client-logo/${logo.file}`}
+                alt={logo.name}
+                style={{ width: 100, height: 44, objectFit: 'contain', objectPosition: 'center' }}
+                loading="lazy"
+              />
+            </div>
           ))}
         </div>
-        <div className="absolute inset-y-0 left-0 w-24 sm:w-48 bg-gradient-to-r from-bg to-transparent pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 w-24 sm:w-48 bg-gradient-to-l from-bg to-transparent pointer-events-none" />
       </div>
     </section>
   );
@@ -284,7 +380,9 @@ function FeaturesGrid() {
 
   return (
     <section className="pt-24 pb-10 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="section-glow section-glow-top" />
+      <div className="section-glow section-glow-left" />
+      <div className="section-glow section-glow-right" />      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {/* Large Feature Card */}
           <div className="lg:col-span-2 glass-card rounded-2xl p-8 lg:p-10 relative overflow-hidden group">
@@ -491,6 +589,9 @@ function ManageSection() {
 
   return (
     <section className="py-24 relative">
+      <div className="section-glow section-glow-top" />
+      <div className="section-glow section-glow-left" />
+      <div className="section-glow section-glow-right" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 font-display">
@@ -562,6 +663,9 @@ function StatsSection() {
 
   return (
     <section className="pt-10 pb-24 relative overflow-hidden">
+      <div className="section-glow section-glow-top" />
+      <div className="section-glow section-glow-left" />
+      <div className="section-glow section-glow-right" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-10">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 font-display tracking-tight">
@@ -862,6 +966,9 @@ function ServiceStackCard({
 function ServicesStackSection() {
   return (
     <section className="py-24 relative">
+      <div className="section-glow section-glow-top" />
+      <div className="section-glow section-glow-left" />
+      <div className="section-glow section-glow-right" />
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-16">
@@ -914,6 +1021,9 @@ function TestimonialsSection() {
 
   return (
     <section className="py-24 relative overflow-hidden">
+      <div className="section-glow section-glow-top" />
+      <div className="section-glow section-glow-left" />
+      <div className="section-glow section-glow-right" />
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-accent/20 rounded-full blur-[120px] pointer-events-none" />
 
@@ -980,6 +1090,9 @@ function TestimonialsSection() {
 function CTASection() {
   return (
     <section className="py-24 relative overflow-hidden">
+      <div className="section-glow section-glow-top" />
+      <div className="section-glow section-glow-left" />
+      <div className="section-glow section-glow-right" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px]" />
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight font-display">

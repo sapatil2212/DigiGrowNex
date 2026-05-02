@@ -33,8 +33,8 @@ module.exports = {
         'fade-in-up': 'fadeInUp 0.6s ease forwards',
         'fade-in': 'fadeIn 0.5s ease forwards',
         'float': 'float 6s ease-in-out infinite',
-        'marquee': 'marquee 40s linear infinite',
-        'marquee-reverse': 'marquee-reverse 40s linear infinite',
+        'marquee': 'marquee 80s linear infinite',
+        'marquee-reverse': 'marquee-reverse 80s linear infinite',
       },
       keyframes: {
         fadeInUp: {

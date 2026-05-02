@@ -42,12 +42,21 @@ export default function Footer() {
         <div className="py-16 grid grid-cols-2 md:grid-cols-6 gap-8">
           <div className="col-span-2">
             <Link href="/" className="flex items-center mb-4">
+              {/* dark logo — hidden in light mode */}
               <Image
                 src="/images/logo/digigrownex-logo.png"
                 alt="digigrownex"
                 width={140}
                 height={40}
-                className="h-10 w-auto object-contain"
+                className="logo-dark h-10 w-auto object-contain"
+              />
+              {/* light logo — hidden in dark mode */}
+              <Image
+                src="/images/logo/digigrownex-logo-light.png"
+                alt="digigrownex"
+                width={140}
+                height={40}
+                className="logo-light h-10 w-auto object-contain"
               />
             </Link>
             <p className="text-sm text-muted leading-relaxed max-w-xs mb-6">

@@ -73,7 +73,15 @@ export default function Header() {
               alt="digigrownex"
               width={140}
               height={40}
-              className="h-10 w-auto object-contain"
+              className="logo-dark h-10 w-auto object-contain"
+              priority
+            />
+            <Image
+              src="/images/logo/digigrownex-logo-light.png"
+              alt="digigrownex"
+              width={140}
+              height={40}
+              className="logo-light h-10 w-auto object-contain"
               priority
             />
           </Link>

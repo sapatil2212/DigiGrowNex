@@ -1,10 +1,11 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { 
     ArrowLeft, CheckCircle2, Zap, Search, Smartphone, Globe, Code, 
-    PenTool, MapPin, MousePointerClick, Share2, TrendingUp, Shield, Layers, Users
+    PenTool, MapPin, MousePointerClick, Share2, TrendingUp, Shield, Layers, Users,
+    ExternalLink, X, Monitor
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -156,8 +157,205 @@ const serviceDetails: Record<string, typeof defaultService> = {
   }
 };
 
+const websitePortfolio = [
+  {
+    category: 'Real Estate Listing Portal',
+    sites: [
+      { name: 'Dream Properties Nashik', url: 'https://www.dreampropertiesnashik.com/', img: '/images/website-previews/dreampropertiesnashik.jpg' },
+    ],
+  },
+  {
+    category: 'Hotel & Resorts',
+    sites: [
+      { name: 'Shree Balaji Lawns & Resorts', url: 'https://shreebalajilawnsandresorts.com/', img: '/images/website-previews/shreebalajilawnsandresorts.jpg' },
+      { name: 'Hotel Skinn', url: 'https://hotelskinn.in/', img: '/images/website-previews/hotelskinn.jpg' },
+      { name: 'Aaditya Inn', url: 'https://aadityainn.com/', img: '/images/website-previews/aadityainn.jpg' },
+      { name: 'Hotel Sai Vijay', url: 'https://www.hotelsaivijay.in/', img: '/images/website-previews/hotelsaivijay.jpg' },
+    ],
+  },
+  {
+    category: 'Education',
+    sites: [
+      { name: 'SSISC', url: 'https://www.ssisc.in/', img: '/images/website-previews/ssisc.jpg' },
+      { name: 'DL Institute', url: 'https://dlinstitute.in/', img: '/images/website-previews/dlinstitute.jpg' },
+    ],
+  },
+  {
+    category: 'Ayurveda Hospital',
+    sites: [
+      { name: 'Dhanvantari Ayurveda', url: 'https://dhanvantari-ayurveda-dynamic-websit.vercel.app/', img: '/images/website-previews/dhanvantari-ayurveda.jpg' },
+    ],
+  },
+  {
+    category: 'Hospital',
+    sites: [
+      { name: 'Gondhale Hospital', url: 'https://gondhalehospital.com/', img: '/images/website-previews/gondhalehospital.jpg' },
+    ],
+  },
+  {
+    category: 'Skin Care Clinic',
+    sites: [
+      { name: 'Aries Skin & Health', url: 'https://www.ariesskinandhealth.com/', img: '/images/website-previews/ariesskinandhealth.jpg' },
+    ],
+  },
+  {
+    category: 'Jungle Safari',
+    sites: [
+      { name: 'My Jungle Trip', url: 'https://myjungletrip.in/', img: '/images/website-previews/myjungletrip.jpg' },
+    ],
+  },
+  {
+    category: 'Hardware Technology',
+    sites: [
+      { name: 'Vantara Net', url: 'https://vantaranet.com/', img: '/images/website-previews/vantaranet.jpg' },
+    ],
+  },
+  {
+    category: 'Manufacturing CMS',
+    sites: [
+      { name: 'Alkalyne', url: 'http://alkalyne.in/', img: '/images/website-previews/alkalyne.jpg' },
+    ],
+  },
+  {
+    category: 'Import Export CMS',
+    sites: [
+      { name: 'Pyramid Agro Exports', url: 'https://www.pyramidagroexports.com', img: '/images/website-previews/pyramidagroexports.jpg' },
+    ],
+  },
+  {
+    category: 'Corporate Service Apartments',
+    sites: [
+      { name: 'Zenith Hospitality Services', url: 'https://zenithhospitalityservices.com/', img: '/images/website-previews/zenithhospitalityservices.jpg' },
+    ],
+  },
+  {
+    category: 'Ongoing Project',
+    sites: [
+      { name: 'Celeb Aesthetica', url: 'https://www.celebaesthecia.in/', img: '/images/website-previews/celebaesthecia.jpg' },
+    ],
+  },
+];
+
+function WebsiteModal({ site, onClose }: { site: { name: string; url: string } | null; onClose: () => void }) {
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => e.key === 'Escape' && onClose();
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, [onClose]);
+
+  if (!site) return null;
+
+  return (
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+        style={{ background: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(8px)' }}
+        onClick={onClose}
+      >
+        <motion.div
+          initial={{ opacity: 0, scale: 0.92, y: 24 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.92, y: 24 }}
+          transition={{ duration: 0.3, ease: 'easeOut' }}
+          className="w-full max-w-5xl rounded-2xl overflow-hidden shadow-2xl"
+          style={{ background: 'var(--surface-1)', border: '1px solid var(--border)' }}
+          onClick={e => e.stopPropagation()}
+        >
+          {/* Modal header */}
+          <div className="flex items-center justify-between px-5 py-3.5" style={{ borderBottom: '1px solid var(--border)' }}>
+            <div className="flex items-center gap-2">
+              <Monitor className="w-4 h-4 text-accent" />
+              <span className="text-sm font-semibold" style={{ color: 'var(--fg)' }}>{site.name}</span>
+              <span className="text-xs text-muted truncate max-w-[260px] hidden sm:block">{site.url}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <a
+                href={site.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glow-button flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold"
+                style={{ color: '#fff' }}
+              >
+                <ExternalLink className="w-3.5 h-3.5" />
+                Open Site
+              </a>
+              <button
+                onClick={onClose}
+                className="p-1.5 rounded-lg transition-colors hover:bg-white/10"
+                style={{ color: 'var(--muted-fg)' }}
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+          {/* iframe preview */}
+          <div className="relative w-full" style={{ height: '70vh' }}>
+            <iframe
+              src={site.url}
+              title={site.name}
+              className="w-full h-full border-0"
+              sandbox="allow-scripts allow-same-origin allow-forms"
+              loading="lazy"
+            />
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
+function WebsiteCard({ site, onClick }: { site: { name: string; url: string; img: string }; onClick: () => void }) {
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      whileHover={{ y: -4 }}
+      transition={{ duration: 0.3 }}
+      className="group rounded-2xl overflow-hidden cursor-pointer"
+      style={{ border: '1px solid var(--border)', background: 'var(--card-bg)' }}
+      onClick={onClick}
+    >
+      {/* Thumbnail */}
+      <div className="relative overflow-hidden" style={{ aspectRatio: '16/9', background: 'var(--surface-2)' }}>
+        <img
+          src={site.img}
+          alt={site.name}
+          className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+          loading="lazy"
+        />
+        {/* hover overlay */}
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
+          <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-accent text-white text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5">
+            <Monitor className="w-3.5 h-3.5" /> Preview
+          </span>
+        </div>
+      </div>
+      {/* Card footer */}
+      <div className="px-4 py-3 flex items-center justify-between">
+        <span className="text-sm font-semibold truncate" style={{ color: 'var(--fg)' }}>{site.name}</span>
+        <a
+          href={site.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={e => e.stopPropagation()}
+          className="shrink-0 ml-2 p-1.5 rounded-lg hover:bg-accent/10 text-muted hover:text-accent transition-colors"
+          title="Open in new tab"
+        >
+          <ExternalLink className="w-3.5 h-3.5" />
+        </a>
+      </div>
+    </motion.div>
+  );
+}
+
 export default function ServiceClient({ serviceSlug }: { serviceSlug: string }) {
   const data = serviceDetails[serviceSlug] || defaultService;
+  const [activePreview, setActivePreview] = useState<{ name: string; url: string } | null>(null);
   
   // Parallax effect for header
   const { scrollY } = useScroll();
@@ -327,6 +525,40 @@ export default function ServiceClient({ serviceSlug }: { serviceSlug: string }) 
             </div>
         </div>
 
+        {/* Website Portfolio — only on /services/websites */}
+        {serviceSlug === 'websites' && (
+          <div className="mb-24">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center max-w-3xl mx-auto mb-14"
+            >
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-bold tracking-widest uppercase mb-4 bg-accent/10 border border-accent/20 text-accent">
+                Our Work
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">Websites We've Built</h2>
+              <p className="text-slate-500 dark:text-slate-400">Click any card to preview the site, or open it directly in a new tab.</p>
+            </motion.div>
+
+            <div className="space-y-12">
+              {websitePortfolio.map((group, gi) => (
+                <div key={gi}>
+                  <div className="flex items-center gap-3 mb-5">
+                    <span className="text-xs font-bold uppercase tracking-widest text-accent">{group.category}</span>
+                    <div className="flex-1 h-px" style={{ background: 'var(--border)' }} />
+                  </div>
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+                    {group.sites.map((site, si) => (
+                      <WebsiteCard key={si} site={site} onClick={() => setActivePreview(site)} />
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* CTA */}
         <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
@@ -342,6 +574,10 @@ export default function ServiceClient({ serviceSlug }: { serviceSlug: string }) 
         </motion.div>
 
       </div>
+
+      {/* Website preview modal */}
+      {activePreview && <WebsiteModal site={activePreview} onClose={() => setActivePreview(null)} />}
+
     </div>
   );
 }

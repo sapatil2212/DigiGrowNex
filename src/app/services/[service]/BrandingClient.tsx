@@ -120,7 +120,7 @@ export default function BrandingClient() {
         <div className="mb-32">
             <div className="text-center max-w-3xl mx-auto mb-16">
                 <h2 className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">Creative Branding Strategy</h2>
-                <p className="text-slate-600 dark:text-slate-400 text-lg">At SAP Tech, we turn ideas into impact through a structured, creative, and professional branding process.</p>
+                <p className="text-slate-600 dark:text-slate-400 text-lg">At digigrownex, we turn ideas into impact through a structured, creative, and professional branding process.</p>
             </div>
             <div className="grid md:grid-cols-4 gap-8 relative">
                 {/* Connecting Line */}
@@ -214,7 +214,7 @@ export default function BrandingClient() {
         {/* Why Choose Us */}
         <div className="mb-32">
             <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">Why Choose SAP Tech for Graphic Designing?</h2>
+                <h2 className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">Why Choose digigrownex for Graphic Designing?</h2>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {whyUs.map((item, i) => (

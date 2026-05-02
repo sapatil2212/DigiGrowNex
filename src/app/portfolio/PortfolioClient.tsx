@@ -16,25 +16,28 @@ type Project = {
 
 const allProjects: Project[] = [
   // Websites
-  { id: 'h1', title: 'Shree Balaji Lawns and Resorts', category: 'Websites', subCategory: 'Hotel & Resorts', img: 'https://image.thum.io/get/width/800/crop/600/https://shreebalajilawnsandresorts.com/', url: 'https://shreebalajilawnsandresorts.com/' },
-  { id: 'h2', title: 'Hotel Skinn', category: 'Websites', subCategory: 'Hotel & Resorts', img: 'https://image.thum.io/get/width/800/crop/600/https://hotelskinn.in/', url: 'https://hotelskinn.in/' },
-  { id: 'h3', title: 'Aaditya Inn', category: 'Websites', subCategory: 'Hotel & Resorts', img: 'https://image.thum.io/get/width/800/crop/600/https://aadityainn.com/', url: 'https://aadityainn.com/' },
-  { id: 'h4', title: 'Hotel Sai Vijay', category: 'Websites', subCategory: 'Hotel & Resorts', img: 'https://image.thum.io/get/width/800/crop/600/https://www.hotelsaivijay.in/', url: 'https://www.hotelsaivijay.in/' },
-  
-  { id: 'e1', title: 'SSISC', category: 'Websites', subCategory: 'Education', img: 'https://image.thum.io/get/width/800/crop/600/https://www.ssisc.in/', url: 'https://www.ssisc.in/' },
-  { id: 'e2', title: 'DL Institute', category: 'Websites', subCategory: 'Education', img: 'https://image.thum.io/get/width/800/crop/600/https://dlinstitute.in/', url: 'https://dlinstitute.in/' },
-  
-  { id: 'med1', title: 'Dhanvantari Ayurveda', category: 'Websites', subCategory: 'Ayurveda Hospital', img: 'https://image.thum.io/get/width/800/crop/600/https://dhanvantari-ayurveda-dynamic-websit.vercel.app/', url: 'https://dhanvantari-ayurveda-dynamic-websit.vercel.app/' },
-  { id: 'med2', title: 'Gondhale Hospital', category: 'Websites', subCategory: 'Hospital', img: 'https://image.thum.io/get/width/800/crop/600/https://gondhalehospital.com/', url: 'https://gondhalehospital.com/' },
-  { id: 'med3', title: 'Aries Skin and Health', category: 'Websites', subCategory: 'Skin Care Clinic', img: 'https://image.thum.io/get/width/800/crop/600/https://www.ariesskinandhealth.com/', url: 'https://www.ariesskinandhealth.com/' },
-  
-  { id: 't1', title: 'My Jungle Trip', category: 'Websites', subCategory: 'Jungle Safari', img: 'https://image.thum.io/get/width/800/crop/600/https://myjungletrip.in/', url: 'https://myjungletrip.in/' },
-  { id: 'tech1', title: 'Vantara Net', category: 'Websites', subCategory: 'Hardware Technology', img: 'https://image.thum.io/get/width/800/crop/600/https://vantaranet.com/', url: 'https://vantaranet.com/' },
-  
-  { id: 'cms1', title: 'Alkalyne', category: 'Websites', subCategory: 'Manufacturing CMS', img: 'https://image.thum.io/get/width/800/crop/600/http://alkalyne.in/', url: 'http://alkalyne.in/' },
-  { id: 'cms2', title: 'Pyramid Agro Exports', category: 'Websites', subCategory: 'Import/Export CMS', img: 'https://image.thum.io/get/width/800/crop/600/https://www.pyramidagroexports.com/', url: 'https://www.pyramidagroexports.com' },
-  
-  { id: 'corp1', title: 'Zenith Hospitality Services', category: 'Websites', subCategory: 'Service Apartments', img: 'https://image.thum.io/get/width/800/crop/600/https://zenithhospitalityservices.com/', url: 'https://zenithhospitalityservices.com/' },
+  { id: 'r1', title: 'Dream Properties Nashik', category: 'Websites', subCategory: 'Real Estate', img: '/images/website-previews/dreampropertiesnashik.jpg', url: 'https://www.dreampropertiesnashik.com/' },
+
+  { id: 'h1', title: 'Shree Balaji Lawns and Resorts', category: 'Websites', subCategory: 'Hotel & Resorts', img: '/images/website-previews/shreebalajilawnsandresorts.jpg', url: 'https://shreebalajilawnsandresorts.com/' },
+  { id: 'h2', title: 'Hotel Skinn', category: 'Websites', subCategory: 'Hotel & Resorts', img: '/images/website-previews/hotelskinn.jpg', url: 'https://hotelskinn.in/' },
+  { id: 'h3', title: 'Aaditya Inn', category: 'Websites', subCategory: 'Hotel & Resorts', img: '/images/website-previews/aadityainn.jpg', url: 'https://aadityainn.com/' },
+  { id: 'h4', title: 'Hotel Sai Vijay', category: 'Websites', subCategory: 'Hotel & Resorts', img: '/images/website-previews/hotelsaivijay.jpg', url: 'https://www.hotelsaivijay.in/' },
+
+  { id: 'e1', title: 'SSISC', category: 'Websites', subCategory: 'Education', img: '/images/website-previews/ssisc.jpg', url: 'https://www.ssisc.in/' },
+  { id: 'e2', title: 'DL Institute', category: 'Websites', subCategory: 'Education', img: '/images/website-previews/dlinstitute.jpg', url: 'https://dlinstitute.in/' },
+
+  { id: 'med1', title: 'Dhanvantari Ayurveda', category: 'Websites', subCategory: 'Ayurveda Hospital', img: '/images/website-previews/dhanvantari-ayurveda.jpg', url: 'https://dhanvantari-ayurveda-dynamic-websit.vercel.app/' },
+  { id: 'med2', title: 'Gondhale Hospital', category: 'Websites', subCategory: 'Hospital', img: '/images/website-previews/gondhalehospital.jpg', url: 'https://gondhalehospital.com/' },
+  { id: 'med3', title: 'Aries Skin and Health', category: 'Websites', subCategory: 'Skin Care Clinic', img: '/images/website-previews/ariesskinandhealth.jpg', url: 'https://www.ariesskinandhealth.com/' },
+
+  { id: 't1', title: 'My Jungle Trip', category: 'Websites', subCategory: 'Jungle Safari', img: '/images/website-previews/myjungletrip.jpg', url: 'https://myjungletrip.in/' },
+  { id: 'tech1', title: 'Vantara Net', category: 'Websites', subCategory: 'Hardware Technology', img: '/images/website-previews/vantaranet.jpg', url: 'https://vantaranet.com/' },
+
+  { id: 'cms1', title: 'Alkalyne', category: 'Websites', subCategory: 'Manufacturing CMS', img: '/images/website-previews/alkalyne.jpg', url: 'http://alkalyne.in/' },
+  { id: 'cms2', title: 'Pyramid Agro Exports', category: 'Websites', subCategory: 'Import/Export CMS', img: '/images/website-previews/pyramidagroexports.jpg', url: 'https://www.pyramidagroexports.com' },
+
+  { id: 'corp1', title: 'Zenith Hospitality Services', category: 'Websites', subCategory: 'Service Apartments', img: '/images/website-previews/zenithhospitalityservices.jpg', url: 'https://zenithhospitalityservices.com/' },
+  { id: 'ongoing1', title: 'Celeb Aesthetica', category: 'Websites', subCategory: 'Ongoing Project', img: '/images/website-previews/celebaesthecia.jpg', url: 'https://www.celebaesthecia.in/' },
 
   // Graphics & Other
   { id: 'g1', title: 'Premium Campaign', category: 'Pamphlets', img: 'https://images.unsplash.com/photo-1586192131972-e1d515a6b07c?auto=format&fit=crop&q=80&w=800' },
@@ -42,7 +45,7 @@ const allProjects: Project[] = [
   { id: 'g3', title: 'Minimalist Networking', category: 'Business Cards', img: 'https://images.unsplash.com/photo-1589030343991-69ea1433b941?auto=format&fit=crop&q=80&w=800' },
   { id: 'g4', title: 'Official Documents', category: 'Letter Heads', img: 'https://images.unsplash.com/photo-1628155930542-3c7a64e2c833?auto=format&fit=crop&q=80&w=800' },
   { id: 'g5', title: 'Modern Identities', category: 'Logos', img: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=800' },
-  
+
   // Social Media
   { id: 's1', title: 'Brand Awareness Posts', category: 'Social Media Posts', img: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=800' },
   { id: 's2', title: 'Lead Gen Carousels', category: 'Social Media Posts', img: 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&q=80&w=800' },
@@ -106,7 +109,7 @@ export default function PortfolioClient() {
                 className="group cursor-pointer flex flex-col"
                 onClick={() => setSelectedProject(project)}
               >
-                <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden mb-5 bg-slate-100 dark:bg-[#111] shadow-xl border border-slate-200 dark:border-white/10 group-hover:border-accent/30 transition-all duration-300">
+                <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-5 bg-slate-100 dark:bg-[#111] border border-slate-200 dark:border-white/10 group-hover:border-accent/30 transition-all duration-300">
                   <img src={project.img} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
                     <div className="bg-accent text-white w-12 h-12 rounded-full flex items-center justify-center transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-lg mb-4">
@@ -145,7 +148,7 @@ export default function PortfolioClient() {
                         initial={{ scale: 0.95, opacity: 0, y: 20 }}
                         animate={{ scale: 1, opacity: 1, y: 0 }}
                         exit={{ scale: 0.95, opacity: 0, y: 20 }}
-                        className="relative w-full max-w-6xl h-[85vh] bg-white dark:bg-[#0a0a0a] rounded-[2rem] shadow-2xl border border-slate-200 dark:border-white/10 overflow-hidden flex flex-col"
+                        className="relative w-full max-w-6xl h-[85vh] bg-white dark:bg-[#0a0a0a] rounded-2xl shadow-2xl border border-slate-200 dark:border-white/10 overflow-hidden flex flex-col"
                     >
                         {/* Modal Header */}
                         <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 dark:border-white/10 bg-slate-50 dark:bg-[#111]">
