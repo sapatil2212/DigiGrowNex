@@ -17,16 +17,21 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: {
-    default: "SAP Tech - Digital Marketing & Branding",
-    template: "%s | SAP Tech",
+    default: "digigrownex - Digital Marketing & Branding",
+    template: "%s | digigrownex",
   },
   description:
-    "End-to-end digital marketing, web consulting, and SAP Tech services designed to maximize your digital presence.",
+    "End-to-end digital marketing, web consulting, and digigrownex services designed to maximize your digital presence.",
   keywords: [
-    "digital marketing", "SEO", "branding", "Google Cloud", "Tata Tele", "SAP Tech",
+    "digital marketing", "SEO", "branding", "Google Cloud", "Tata Tele", "digigrownex",
   ],
+  icons: {
+    icon: "/images/logo/favicon.png",
+    shortcut: "/images/logo/favicon.png",
+    apple: "/images/logo/favicon.png",
+  },
   openGraph: {
-    title: "SAP Tech - Elevate Your Digital Presence",
+    title: "digigrownex - Elevate Your Digital Presence",
     description: "Digital marketing and corporate branding for growing businesses.",
     type: "website",
   },

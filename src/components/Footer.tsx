@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Github, Twitter, Linkedin, Instagram } from 'lucide-react';
 
 const footerLinks = {
@@ -40,11 +41,14 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-16 grid grid-cols-2 md:grid-cols-6 gap-8">
           <div className="col-span-2">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-accent-dark flex items-center justify-center">
-                <span className="font-bold text-sm font-display" style={{ color: '#fff' }}>S</span>
-              </div>
-              <span className="text-lg font-bold text-white font-display">SAP Tech</span>
+            <Link href="/" className="flex items-center mb-4">
+              <Image
+                src="/images/logo/digigrownex-logo.png"
+                alt="digigrownex"
+                width={140}
+                height={40}
+                className="h-10 w-auto object-contain"
+              />
             </Link>
             <p className="text-sm text-muted leading-relaxed max-w-xs mb-6">
               Elevating digital performance. Strategy, design, cloud infrastructure, and execution for the modern enterprise.
@@ -75,7 +79,7 @@ export default function Footer() {
           ))}
         </div>
         <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-4" style={{ borderTop: '1px solid var(--border)' }}>
-          <p className="text-xs text-muted">© {new Date().getFullYear()} SAP Tech. All rights reserved.</p>
+          <p className="text-xs text-muted">© {new Date().getFullYear()} digigrownex. All rights reserved.</p>
           <div className="flex gap-6">
             <Link href="#" className="text-xs text-muted hover:text-accent transition-colors">Privacy Policy</Link>
             <Link href="#" className="text-xs text-muted hover:text-accent transition-colors">Terms of Service</Link>

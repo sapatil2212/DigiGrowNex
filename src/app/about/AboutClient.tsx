@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import { 
-  Search, Map as MapIcon, Zap, ShieldCheck, Wrench, Rocket, BarChart, Lightbulb, Handshake, 
+import {
+  Search, Map as MapIcon, Zap, ShieldCheck, Wrench, Rocket, BarChart, Lightbulb, Handshake,
   Telescope, Target, Brain, Sparkles, TrendingUp, Palette, Lock, Globe,
   Facebook, Instagram, Linkedin
 } from 'lucide-react';
@@ -105,22 +105,22 @@ const steps = [
 const coreItems = [
   {
     label: 'Our Vision',
-    icon: <Telescope className="w-6 h-6 text-orange-500" />,
+    icon: <Telescope className="w-6 h-6 text-[#34CC32]" />,
     text: 'To be the most trusted digital transformation partner for businesses worldwide, driving innovation through cutting-edge technology and creative solutions.',
   },
   {
     label: 'Our Mission',
-    icon: <Target className="w-6 h-6 text-orange-500" />,
+    icon: <Target className="w-6 h-6 text-[#34CC32]" />,
     text: 'Empower businesses with digital excellence by delivering measurable results through data-driven strategies, exceptional user experiences, and future-proof technology.',
   },
   {
     label: 'Our Approach',
-    icon: <Brain className="w-6 h-6 text-orange-500" />,
+    icon: <Brain className="w-6 h-6 text-[#34CC32]" />,
     text: 'We combine strategic thinking with agile execution, focusing on ROI-driven solutions that align with your business objectives and market demands.',
   },
   {
     label: 'Our Promise',
-    icon: <Sparkles className="w-6 h-6 text-orange-500" />,
+    icon: <Sparkles className="w-6 h-6 text-[#34CC32]" />,
     text: 'Transparency, accountability, and continuous improvement in every project. We measure success by your success.',
   },
 ];
@@ -336,8 +336,8 @@ export default function AboutClient() {
                     border: '1px solid rgba(249,115,22,0.25)',
                   }}
                 >
-                  <span className="w-2 h-2 rounded-full bg-orange-400 animate-pulse inline-block" />
-                  About SAP Technologies
+                  <span className="w-2 h-2 rounded-full bg-[#34CC32] animate-pulse inline-block" />
+                  About digigrownex
                 </span>
               </AnimSection>
 
@@ -356,7 +356,7 @@ export default function AboutClient() {
               <AnimSection delay={200}>
                 <p className="text-base md:text-lg leading-relaxed mb-4" style={{ color: 'var(--muted-fg)', maxWidth: 560 }}>
                   At{' '}
-                  <strong style={{ color: 'var(--accent)' }}>SAP Technologies</strong>, we believe digital
+                  <strong style={{ color: 'var(--accent)' }}>digigrownex</strong>, we believe digital
                   transformation isn't just about being online—it's about standing out, staying ahead, and
                   sparking real growth. We are a full-service digital marketing agency driven by creativity,
                   powered by data, and committed to delivering measurable results.
@@ -598,17 +598,17 @@ export default function AboutClient() {
                     border: '1px solid rgba(249,115,22,0.2)',
                   }}
                 >
-                  "At SAP Technologies, we don't just promote your business — we grow it."
+                  "At digigrownex, we don't just promote your business — we grow it."
                 </p>
               </AnimSection>
 
               <AnimSection delay={200}>
                 <div className="grid grid-cols-2 gap-4 mt-8">
                   {[
-                    { icon: <TrendingUp className="w-5 h-5 text-orange-500" />, label: 'Data-Driven Growth' },
-                    { icon: <Palette className="w-5 h-5 text-orange-500" />, label: 'Creative Excellence' },
-                    { icon: <Lock className="w-5 h-5 text-orange-500" />, label: 'Ethical Marketing' },
-                    { icon: <Globe className="w-5 h-5 text-orange-500" />, label: 'Full-Service Agency' },
+                    { icon: <TrendingUp className="w-5 h-5 text-[#34CC32]" />, label: 'Data-Driven Growth' },
+                    { icon: <Palette className="w-5 h-5 text-[#34CC32]" />, label: 'Creative Excellence' },
+                    { icon: <Lock className="w-5 h-5 text-[#34CC32]" />, label: 'Ethical Marketing' },
+                    { icon: <Globe className="w-5 h-5 text-[#34CC32]" />, label: 'Full-Service Agency' },
                   ].map((item) => (
                     <div
                       key={item.label}
@@ -650,7 +650,7 @@ export default function AboutClient() {
               <span className="gradient-text">Everything We Do</span>
             </h2>
             <p className="text-base max-w-xl mx-auto" style={{ color: 'var(--muted-fg)' }}>
-              At SAP Technologies
+              At digigrownex
             </p>
           </AnimSection>
 
@@ -738,51 +738,51 @@ export default function AboutClient() {
             >
               {/* Floating Icons */}
               {/* Facebook - Top Left */}
-              <div 
+              <div
                 className="absolute hidden md:flex items-center justify-center rounded-xl animate-float"
-                style={{ 
+                style={{
                   top: '25%', left: '10%', width: '48px', height: '48px',
                   background: 'rgba(249,115,22,0.05)', border: '1px solid rgba(249,115,22,0.3)',
                   animationDelay: '0s'
                 }}
               >
-                <Facebook className="w-6 h-6 text-orange-500" />
+                <Facebook className="w-6 h-6 text-[#34CC32]" />
               </div>
-              
+
               {/* Instagram - Bottom Left */}
-              <div 
+              <div
                 className="absolute hidden md:flex items-center justify-center rounded-xl animate-float"
-                style={{ 
+                style={{
                   bottom: '25%', left: '18%', width: '48px', height: '48px',
                   background: 'rgba(249,115,22,0.05)', border: '1px solid rgba(249,115,22,0.3)',
                   animationDelay: '1s'
                 }}
               >
-                <Instagram className="w-6 h-6 text-orange-500" />
+                <Instagram className="w-6 h-6 text-[#34CC32]" />
               </div>
 
               {/* X / Twitter - Mid Right */}
-              <div 
+              <div
                 className="absolute hidden md:flex items-center justify-center rounded-xl animate-float"
-                style={{ 
+                style={{
                   top: '35%', right: '15%', width: '48px', height: '48px',
                   background: 'rgba(249,115,22,0.05)', border: '1px solid rgba(249,115,22,0.3)',
                   animationDelay: '2s'
                 }}
               >
-                <div className="text-orange-500 font-bold text-xl leading-none font-display mb-0.5">X</div>
+                <div className="text-[#34CC32] font-bold text-xl leading-none font-display mb-0.5">X</div>
               </div>
 
               {/* LinkedIn - Bottom Right */}
-              <div 
+              <div
                 className="absolute hidden md:flex items-center justify-center rounded-xl animate-float"
-                style={{ 
+                style={{
                   bottom: '30%', right: '8%', width: '48px', height: '48px',
                   background: 'rgba(249,115,22,0.05)', border: '1px solid rgba(249,115,22,0.3)',
                   animationDelay: '3s'
                 }}
               >
-                <Linkedin className="w-6 h-6 text-orange-500" />
+                <Linkedin className="w-6 h-6 text-[#34CC32]" />
               </div>
 
               {/* Content */}

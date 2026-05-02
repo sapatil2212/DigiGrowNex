@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown, Sun, Moon, Globe, Code, Smartphone, PenTool, MapPin, MousePointerClick, Share2, Search, Phone } from 'lucide-react';
+import { Menu, X, ChevronDown, Sun, Moon, Globe, Code, Smartphone, PenTool, MapPin, MousePointerClick, Share2, Search, Phone, Activity, Hotel, Layout, MessageSquare } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 
 const navLinks = [
@@ -11,6 +12,13 @@ const navLinks = [
   { label: 'PORTFOLIO', href: '/portfolio' },
   { label: 'CONTACT', href: '/contact' },
   { label: 'BLOGS', href: '/blog' },
+];
+
+const productsMenu = [
+  { label: 'Health Care Solution', href: '/products/health-care', icon: Activity },
+  { label: 'Hotel Management', href: '/products/hotel-management', icon: Hotel },
+  { label: 'CMS System', href: '/products/cms-system', icon: Layout },
+  { label: 'WhatsApp Automation', href: '/products/whatsapp-automation', icon: MessageSquare },
 ];
 
 const servicesMenu = {
@@ -38,6 +46,7 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
@@ -58,13 +67,15 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-18">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-accent-dark flex items-center justify-center">
-              <span className="text-white font-bold text-sm font-display" style={{ color: '#fff' }}>S</span>
-            </div>
-            <span className="text-lg font-bold text-white group-hover:text-accent transition-colors font-display">
-              SAP Tech
-            </span>
+          <Link href="/" className="flex items-center group">
+            <Image
+              src="/images/logo/digigrownex-logo.png"
+              alt="digigrownex"
+              width={140}
+              height={40}
+              className="h-10 w-auto object-contain"
+              priority
+            />
           </Link>
 
           {/* Desktop Nav */}
@@ -135,6 +146,37 @@ export default function Header() {
                        <p className="text-white/80 text-xs leading-relaxed">Transform your business with our data-driven growth strategies.</p>
                      </div>
                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Products Dropdown */}
+            <div
+              className="relative group h-full flex items-center"
+              onMouseEnter={() => setProductsOpen(true)}
+              onMouseLeave={() => setProductsOpen(false)}
+            >
+              <button className="flex items-center gap-1 px-4 py-2 text-sm text-muted-foreground hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 uppercase tracking-wide font-medium">
+                PRODUCTS
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${productsOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {productsOpen && (
+                <div className="absolute top-full left-0 mt-0 pt-2 w-[280px] z-50 animate-fade-in group-hover:block">
+                  <div className="bg-white dark:bg-[#0a0a0a] border border-slate-200 dark:border-white/10 rounded-2xl p-4 shadow-2xl">
+                    <ul className="space-y-2">
+                      {productsMenu.map(({ label, href, icon: Icon }) => (
+                        <li key={label}>
+                          <Link href={href} className="flex items-center gap-3 p-2 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-accent dark:hover:text-accent hover:bg-slate-50 dark:hover:bg-white/5 rounded-xl transition-all">
+                            <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-white/5 flex items-center justify-center text-accent">
+                              <Icon className="w-4 h-4" />
+                            </div>
+                            {label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               )}
@@ -236,6 +278,30 @@ export default function Header() {
                   ))}
                 </div>
               )}
+
+              {/* Products Mobile */}
+              <button
+                className="flex items-center justify-between w-full px-4 py-3 text-sm text-muted-foreground hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors font-medium"
+                onClick={() => setProductsOpen(!productsOpen)}
+              >
+                PRODUCTS
+                <ChevronDown className={`w-4 h-4 transition-transform ${productsOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {productsOpen && (
+                <div className="pl-6 space-y-1 mt-1">
+                  {productsMenu.map(({ label, href }) => (
+                    <Link
+                      key={label}
+                      href={href}
+                      className="block px-4 py-2.5 text-[13px] text-muted-foreground hover:text-accent transition-colors"
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      {label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+
               <Link href="/portfolio" className="block px-4 py-3 text-sm text-muted-foreground hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors font-medium" onClick={() => setMobileOpen(false)}>PORTFOLIO</Link>
               <Link href="/contact" className="block px-4 py-3 text-sm text-muted-foreground hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors font-medium" onClick={() => setMobileOpen(false)}>CONTACT</Link>
               <Link href="/blog" className="block px-4 py-3 text-sm text-muted-foreground hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors font-medium" onClick={() => setMobileOpen(false)}>BLOGS</Link>

@@ -92,13 +92,13 @@ function HeroSection() {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(249, 115, 22, ${p.opacity * 0.4})`;
+        ctx.fillStyle = `rgba(52, 204, 50, ${p.opacity * 0.4})`;
         ctx.fill();
 
         // Soft glow around particle
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(249, 115, 22, ${p.opacity * 0.08})`;
+        ctx.fillStyle = `rgba(52, 204, 50, ${p.opacity * 0.08})`;
         ctx.fill();
       });
 
@@ -121,7 +121,7 @@ function HeroSection() {
     { icon: <FaPinterestP className="w-4 h-4" color="#E60023" />, name: 'Pinterest', position: 'left-[22%] top-[15%]', delay: '0.8s' },
     { icon: <FaYoutube className="w-4 h-4" color="#FF0000" />, name: 'YouTube', position: 'right-[25%] top-[12%]', delay: '1.2s' },
     { icon: <FaGlobe className="w-4 h-4" color="#10B981" />, name: 'Website', position: 'left-[5%] bottom-[45%]', delay: '0.3s' },
-    { icon: <FaBullhorn className="w-4 h-4" color="#F97316" />, name: 'Marketing', position: 'right-[5%] bottom-[45%]', delay: '1.8s' },
+    { icon: <FaBullhorn className="w-4 h-4" color="#34CC32" />, name: 'Marketing', position: 'right-[5%] bottom-[45%]', delay: '1.8s' },
   ];
 
   return (
@@ -578,7 +578,7 @@ function StatsSection() {
               <div key={i} className="flex flex-col items-center text-center">
                 <div className="relative w-32 h-32 mb-8">
                   {/* SVG Progress Circle */}
-                  <svg className="w-full h-full -rotate-90 drop-shadow-[0_0_15px_rgba(249,115,22,0.15)]" viewBox="0 0 100 100">
+                  <svg className="w-full h-full -rotate-90 drop-shadow-[0_0_15px_rgba(52,204,50,0.15)]" viewBox="0 0 100 100">
                     <circle cx="50" cy="50" r="46" fill="none" stroke="var(--surface-2)" strokeWidth="4" />
                     <motion.circle 
                       cx="50" cy="50" r="46" fill="none" stroke="var(--accent)" strokeWidth="4" strokeLinecap="round"
@@ -605,14 +605,14 @@ function StatsSection() {
             ))}
 
             {/* Highlight Colored Box */}
-            <div className="rounded-[1.5rem] p-8 text-center flex flex-col items-center justify-center h-full relative overflow-hidden border transition-all duration-300 hover:shadow-[0_0_30px_rgba(249,115,22,0.15)]" style={{ background: 'var(--surface-1)', borderColor: 'var(--accent)' }}>
+            <div className="rounded-[1.5rem] p-8 text-center flex flex-col items-center justify-center h-full relative overflow-hidden border transition-all duration-300 hover:shadow-[0_0_30px_rgba(52,204,50,0.15)]" style={{ background: 'var(--surface-1)', borderColor: 'var(--accent)' }}>
               <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-transparent pointer-events-none" />
               <div className="relative z-10 w-full flex flex-col items-center gap-2">
                 <h3 className="text-4xl font-extrabold text-white mb-2 tracking-tight">
                   <Counter to={350000} format={true} suffix="+" duration={3} />
                 </h3>
                 <p className="text-[13px] text-muted mb-8 max-w-[180px] mx-auto leading-relaxed">Leads generated for our clients</p>
-                <Link href="/contact" className="glow-button px-6 py-3 rounded-full text-[13px] font-bold text-white w-full flex items-center justify-center gap-2 transition-transform hover:scale-105 active:scale-95 shadow-[0_0_15px_rgba(249,115,22,0.3)] border border-accent/50">
+                <Link href="/contact" className="glow-button px-6 py-3 rounded-full text-[13px] font-bold text-white w-full flex items-center justify-center gap-2 transition-transform hover:scale-105 active:scale-95 shadow-[0_0_15px_rgba(52,204,50,0.3)] border border-accent/50">
                   Get Started <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
@@ -719,22 +719,22 @@ const stackServices = [
     description:
       'Data-driven social media marketing designed to increase reach, engagement, and revenue. We combine strategy, content creation, and analytics to build sustainable digital growth systems.',
     cta: 'Marketing services',
-    accentColor: '#f97316',
-    glowColor: 'rgba(249,115,22,0.15)',
+    accentColor: '#34CC32',
+    glowColor: 'rgba(52,204,50,0.15)',
     bgFrom: '#111',
     bgTo: '#0a0a0a',
     icon: (
       <svg viewBox="0 0 100 100" fill="none" className="w-full h-full">
-        <motion.circle cx="50" cy="50" r="10" fill="#f97316" animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }} style={{ transformOrigin: '50% 50%' }} />
-        <motion.circle cx="50" cy="50" r="22" stroke="#f97316" strokeWidth="4" fill="none" opacity="0.6" 
+        <motion.circle cx="50" cy="50" r="10" fill="#34CC32" animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }} style={{ transformOrigin: '50% 50%' }} />
+        <motion.circle cx="50" cy="50" r="22" stroke="#34CC32" strokeWidth="4" fill="none" opacity="0.6" 
           animate={{ scale: [1, 1.05, 1] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }} style={{ transformOrigin: '50% 50%' }}
         />
-        <circle cx="50" cy="50" r="35" stroke="#f97316" strokeWidth="4" fill="none" opacity="0.2" />
+        <circle cx="50" cy="50" r="35" stroke="#34CC32" strokeWidth="4" fill="none" opacity="0.2" />
         
         <motion.g animate={{ rotate: 360 }} transition={{ duration: 15, repeat: Infinity, ease: 'linear' }} style={{ transformOrigin: '50% 50%' }}>
-          <circle cx="50" cy="15" r="5" fill="#f97316" />
-          <circle cx="19.69" cy="67.5" r="5" fill="#f97316" />
-          <circle cx="80.31" cy="67.5" r="5" fill="#f97316" />
+          <circle cx="50" cy="15" r="5" fill="#34CC32" />
+          <circle cx="19.69" cy="67.5" r="5" fill="#34CC32" />
+          <circle cx="80.31" cy="67.5" r="5" fill="#34CC32" />
         </motion.g>
       </svg>
     ),
@@ -868,8 +868,8 @@ function ServicesStackSection() {
           <div
             className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6 text-[11px] font-bold tracking-widest uppercase"
             style={{
-              background: 'rgba(249,115,22,0.08)',
-              border: '1px solid rgba(249,115,22,0.2)',
+              background: 'rgba(52,204,50,0.08)',
+              border: '1px solid rgba(52,204,50,0.2)',
               color: 'var(--accent)',
             }}
           >
@@ -902,12 +902,12 @@ function ServicesStackSection() {
 /* ───────────── Testimonials ───────────── */
 function TestimonialsSection() {
   const testimonials = [
-    { name: 'Michael Wilson', handle: '@michael_wilson', text: 'Effortlessly schedule posts across multiple platforms with SAP Tech.' },
-    { name: 'Jessica Garcia', handle: '@jessica_garcia', text: 'The analytics insights provided by SAP Tech have been invaluable.' },
-    { name: 'David Martinez', handle: '@david_martinez', text: 'SAP Tech has saved us so much time with its automated features.' },
-    { name: 'Sophia Rodriguez', handle: '@sophia_rodriguez', text: 'Love the user-friendly interface, powerful capabilities of SAP Tech.' },
+    { name: 'Michael Wilson', handle: '@michael_wilson', text: 'Effortlessly schedule posts across multiple platforms with digigrownex.' },
+    { name: 'Jessica Garcia', handle: '@jessica_garcia', text: 'The analytics insights provided by digigrownex have been invaluable.' },
+    { name: 'David Martinez', handle: '@david_martinez', text: 'digigrownex has saved us so much time with its automated features.' },
+    { name: 'Sophia Rodriguez', handle: '@sophia_rodriguez', text: 'Love the user-friendly interface, powerful capabilities of digigrownex.' },
     { name: 'John Doe', handle: '@john_doe', text: 'Their corporate branding strategies skyrocketed our engagement metrics overnight.' },
-    { name: 'Emily Brown', handle: '@emily_brown', text: 'Highly recommend SAP Tech\'s custom web development team. Flawless execution.' },
+    { name: 'Emily Brown', handle: '@emily_brown', text: 'Highly recommend digigrownex\'s custom web development team. Flawless execution.' },
   ];
 
   const track1 = [...testimonials, ...testimonials, ...testimonials, ...testimonials];

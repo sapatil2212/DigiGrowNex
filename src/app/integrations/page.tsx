@@ -19,9 +19,9 @@ const integrations = [
   { name: 'TikTok', desc: 'Schedule short-form video content with trending sound and hashtag suggestions.', category: 'Social Media', color: 'from-slate-500/20 to-slate-600/20', initial: 'TK' },
   { name: 'Slack', desc: 'Get notifications and approve posts directly from Slack channels.', category: 'Communication', color: 'from-purple-500/20 to-purple-600/20', initial: 'SL' },
   { name: 'Notion', desc: 'Sync your content calendar with Notion databases for seamless planning.', category: 'Productivity', color: 'from-neutral-400/20 to-neutral-500/20', initial: 'NO' },
-  { name: 'Google Analytics', desc: 'Pull website traffic data to correlate social media efforts with conversions.', category: 'Analytics', color: 'from-yellow-500/20 to-orange-500/20', initial: 'GA' },
-  { name: 'Zapier', desc: 'Connect Caps AI with 5000+ apps through Zapier automations.', category: 'Productivity', color: 'from-orange-400/20 to-orange-500/20', initial: 'ZP' },
-  { name: 'HubSpot', desc: 'Sync leads and social engagement data with your CRM pipeline.', category: 'Analytics', color: 'from-orange-500/20 to-orange-600/20', initial: 'HS' },
+  { name: 'Google Analytics', desc: 'Pull website traffic data to correlate social media efforts with conversions.', category: 'Analytics', color: 'from-yellow-500/20 to-green-500/20', initial: 'GA' },
+  { name: 'Zapier', desc: 'Connect Caps AI with 5000+ apps through Zapier automations.', category: 'Productivity', color: 'from-green-400/20 to-green-500/20', initial: 'ZP' },
+  { name: 'HubSpot', desc: 'Sync leads and social engagement data with your CRM pipeline.', category: 'Analytics', color: 'from-green-500/20 to-green-600/20', initial: 'HS' },
 ];
 
 export default function IntegrationsPage() {

@@ -3,15 +3,15 @@ import Link from 'next/link';
 import { ArrowRight, Calendar, User, Tag } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Blog | SAP Tech',
-  description: 'Insights on digital marketing, SEO trends, web development, and exponential brand growth from the SAP Tech experts.',
+  title: 'Blog | digigrownex',
+  description: 'Insights on digital marketing, SEO trends, web development, and exponential brand growth from the digigrownex experts.',
 };
 
 const featured = {
   tag: 'GROWTH STRATEGY',
   date: 'October 12, 2024',
   title: 'Beyond Basic SEO: The Rise of Comprehensive Digital Dominance.',
-  excerpt: 'Explore how SAP Tech is redefining typical marketing funnels by integrating hyper-localized SEO with data-driven social advertising to create explosive ROI.',
+  excerpt: 'Explore how digigrownex is redefining typical marketing funnels by integrating hyper-localized SEO with data-driven social advertising to create explosive ROI.',
   author: 'Marketing Team',
 };
 
@@ -51,10 +51,10 @@ const posts = [
   {
     tag: 'UPDATES',
     date: 'September 02, 2024',
-    title: 'Introducing SAP Tech Analytics 2.0.',
+    title: 'Introducing digigrownex Analytics 2.0.',
     excerpt: 'A look at the seismic shifts we\'re making in our reporting dashboard, giving our clients real-time collaborative insights on their ad spend.',
     author: 'Tech Admin',
-    color: 'from-orange-900 to-orange-800',
+    color: 'from-green-900 to-green-800',
   },
   {
     tag: 'COMPANY',
@@ -75,7 +75,7 @@ export default function BlogPage() {
         <div className="absolute top-40 left-1/4 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px]" />
 
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-[10px] uppercase tracking-[0.25em] text-accent mb-4">THE SAP EXPERTISE</p>
+          <p className="text-[10px] uppercase tracking-[0.25em] text-accent mb-4">THE DIGIGROWNEX EXPERTISE</p>
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold font-display tracking-tight text-slate-900 dark:text-white leading-[1.1]">
             Insights on the<br />
             <span className="text-accent italic">Future of Digital.</span>
