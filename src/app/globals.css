@@ -194,35 +194,29 @@ h1, h2, h3, h4, h5, h6, .font-display {
    GLOBAL BUTTON SHAPE — rectangular with soft corners
    ═══════════════════════════════════════════════════ */
 
-/* Override any rounded-full / rounded-* on buttons and links acting as buttons */
+/* Override any rounded-full on buttons and links acting as buttons */
 a.glow-button,
-button.glow-button,
-a[class*="rounded-full"],
-button[class*="rounded-full"] {
+button.glow-button {
   border-radius: 10px !important;
 }
 
-/* Secondary / outline buttons */
-a[class*="rounded-full"]:not(.glow-button),
-button[class*="rounded-full"]:not(.glow-button) {
+/* Secondary / outline buttons — target common patterns */
+a.rounded-full,
+button.rounded-full,
+a.rounded-xl,
+button.rounded-xl,
+a.rounded-md,
+button.rounded-md {
   border-radius: 10px !important;
+}
+
+a.rounded-full:not(.glow-button),
+button.rounded-full:not(.glow-button) {
   padding-top: 0.625rem;
   padding-bottom: 0.625rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   font-size: 0.875rem;
-}
-
-/* rounded-md buttons (hero CTAs) */
-a[class*="rounded-md"],
-button[class*="rounded-md"] {
-  border-radius: 10px !important;
-}
-
-/* rounded-xl buttons */
-button[class*="rounded-xl"],
-a[class*="rounded-xl"] {
-  border-radius: 10px !important;
 }
 
 /* ═══════════════════════════════════════════════════
@@ -540,8 +534,7 @@ input:focus, textarea:focus, select:focus {
 }
 
 /* Navbar dropdowns */
-[data-theme="light"] .bg-white.dark\:bg-\[#0a0a0a\],
-[data-theme="light"] [class*="bg-white"][class*="dark:bg-"] {
+[data-theme="light"] .bg-white {
   background: linear-gradient(160deg,
     rgba(255,255,255,0.97) 0%,
     rgba(240,253,240,0.92) 60%,
