@@ -3,6 +3,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  turbopack: {},
   webpack(config, { dev }) {
     if (!dev) {
       // Find and remove the CSS minimizer that uses cssnano-simple
