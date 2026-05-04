@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown, Sun, Moon, Globe, Code, Smartphone, PenTool, MapPin, MousePointerClick, Share2, Search, Phone, Activity, Hotel, Layout, MessageSquare } from 'lucide-react';
+import { Menu, X, ChevronDown, Sun, Moon, Globe, Code, Smartphone, PenTool, MapPin, MousePointerClick, Share2, Search, Phone, Activity, Hotel, Layout, MessageSquare, Calendar } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 
 const navLinks = [
@@ -226,12 +226,12 @@ export default function Header() {
             </button>
 
             <Link
-              href="tel:7745868073"
+              href="/book-appointment"
               className="glow-button px-5 py-2.5 text-sm font-bold rounded-full flex items-center gap-2"
               style={{ color: '#fff' }}
             >
-              <Phone className="w-4 h-4" />
-              7745868073
+              <Calendar className="w-4 h-4" />
+              Book Appointment
             </Link>
           </div>
 
@@ -316,13 +316,13 @@ export default function Header() {
             
             <div className="pt-4 flex flex-col gap-2 px-4">
               <Link
-                href="tel:7745868073"
+                href="/book-appointment"
                 className="flex items-center justify-center gap-2 glow-button px-4 py-3 text-sm font-bold rounded-full"
                 style={{ color: '#fff' }}
                 onClick={() => setMobileOpen(false)}
               >
-                <Phone className="w-4 h-4" />
-                7745868073
+                <Calendar className="w-4 h-4" />
+                Book Appointment
               </Link>
             </div>
           </div>

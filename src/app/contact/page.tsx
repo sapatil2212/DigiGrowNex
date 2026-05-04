@@ -48,6 +48,15 @@ export default function ContactPage() {
 
           {/* Contact Form */}
           <div className="lg:col-span-2 bg-white dark:bg-[#0a0a0a] rounded-3xl p-8 border border-slate-200 dark:border-white/10 shadow-xl">
+            <div className="mb-6">
+              <h2 className="text-xl font-bold mb-2" style={{ color: 'var(--fg)' }}>Send a Message</h2>
+              <p className="text-sm" style={{ color: 'var(--muted-fg)' }}>
+                Want to schedule a call?{' '}
+                <a href="/book-appointment" className="text-accent font-semibold hover:underline">
+                  Book an appointment →
+                </a>
+              </p>
+            </div>
             <form className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
