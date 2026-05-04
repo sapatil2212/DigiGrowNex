@@ -58,6 +58,78 @@
 }
 
 /* ═══════════════════════════════════════════════════
+   UTILITY CLASSES
+   ═══════════════════════════════════════════════════ */
+
+.no-gradient,
+[data-theme="light"] .no-gradient,
+[data-theme="dark"] .no-gradient,
+.no-gradient.bg-white,
+[data-theme="light"] .no-gradient.bg-white,
+[data-theme="dark"] .no-gradient.bg-white {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  border-color: #e2e8f0 !important; /* slate-200 */
+  color: #1e293b !important; /* slate-800 */
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+}
+
+.form-input-no-glow,
+.form-input-no-glow:focus,
+[data-theme="light"] .form-input-no-glow:focus,
+[data-theme="dark"] .form-input-no-glow:focus {
+  border-color: #cbd5e1 !important; /* slate-300 */
+  box-shadow: none !important;
+  outline: none !important;
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+}
+
+input.form-input-no-glow,
+[data-theme="light"] input.form-input-no-glow,
+[data-theme="dark"] input.form-input-no-glow {
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+  color: #1e293b !important;
+  border-color: #e2e8f0 !important;
+}
+
+input.form-input-no-glow:hover {
+  border-color: #cbd5e1 !important;
+}
+
+/* Ensure placeholder is also neutral */
+.form-input-no-glow::placeholder {
+  color: #94a3b8 !important; /* slate-400 */
+}
+
+.neutral-button {
+  background: #1e293b !important; /* slate-800 */
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.neutral-button:hover {
+  background: #0f172a !important; /* slate-900 */
+  transform: none !important;
+}
+
+.neutral-button-outline {
+  background: #ffffff !important;
+  color: #475569 !important; /* slate-600 */
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: none !important;
+}
+
+.neutral-button-outline:hover {
+  background: #f8fafc !important; /* slate-50 */
+}
+
+/* ═══════════════════════════════════════════════════
    BASE STYLES
    ═══════════════════════════════════════════════════ */
 
@@ -366,7 +438,7 @@ button.rounded-full:not(.glow-button) {
 
 .section-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(52,204,50,0.3), transparent);
+  background: linear-gradient(to right, transparent, rgba(52, 204, 50, 0.3), transparent);
 }
 
 /* ═══════════════════════════════════════════════════
@@ -397,9 +469,16 @@ button.rounded-full:not(.glow-button) {
    ═══════════════════════════════════════════════════ */
 
 input:focus, textarea:focus, select:focus {
-  border-color: var(--accent) !important;
+  border-color: var(--accent);
   box-shadow: 0 0 0 3px rgba(52, 204, 50, 0.1);
   outline: none;
+}
+
+/* Specific override for neutral forms */
+.form-input-no-glow:focus,
+input.form-input-no-glow:focus {
+  border-color: #cbd5e1 !important;
+  box-shadow: none !important;
 }
 
 /* ═══════════════════════════════════════════════════
@@ -507,7 +586,7 @@ input:focus, textarea:focus, select:focus {
   background: linear-gradient(135deg,
     rgba(255,255,255,0.95) 0%,
     rgba(240,253,240,0.88) 100%
-  ) !important;
+  );
 }
 
 /* Navbar dropdowns */
@@ -516,9 +595,9 @@ input:focus, textarea:focus, select:focus {
     rgba(255,255,255,0.97) 0%,
     rgba(240,253,240,0.92) 60%,
     rgba(220,252,220,0.85) 100%
-  ) !important;
-  border-color: rgba(52, 204, 50, 0.15) !important;
-  box-shadow: 0 16px 48px rgba(52, 204, 50, 0.12), 0 4px 16px rgba(0,0,0,0.06) !important;
+  );
+  border-color: rgba(52, 204, 50, 0.15);
+  box-shadow: 0 16px 48px rgba(52, 204, 50, 0.12), 0 4px 16px rgba(0,0,0,0.06);
 }
 
 /* Pricing popular card */
@@ -636,6 +715,8 @@ input:focus, textarea:focus, select:focus {
   --tx: 0px;
 }
 
+/* ═══════════════════════════════════════════════════
+   CLIENT LOGO CARD
    ═══════════════════════════════════════════════════ */
 
 .client-logo-card {

@@ -1,272 +1,113 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import {
   User, Phone, Mail, MapPin, Calendar, Clock, ChevronDown,
-  CheckCircle2, X, Home, ArrowLeft, ChevronLeft, ChevronRight
+  CheckCircle2, X, Home, ChevronLeft, ChevronRight,
 } from 'lucide-react';
 import Link from 'next/link';
 
-/* ── Indian States ── */
-const INDIAN_STATES = [
-  'Andhra Pradesh','Arunachal Pradesh','Assam','Bihar','Chhattisgarh',
-  'Goa','Gujarat','Haryana','Himachal Pradesh','Jharkhand','Karnataka',
-  'Kerala','Madhya Pradesh','Maharashtra','Manipur','Meghalaya','Mizoram',
-  'Nagaland','Odisha','Punjab','Rajasthan','Sikkim','Tamil Nadu','Telangana',
-  'Tripura','Uttar Pradesh','Uttarakhand','West Bengal',
-  'Andaman & Nicobar Islands','Chandigarh','Dadra & Nagar Haveli and Daman & Diu',
-  'Delhi','Jammu & Kashmir','Ladakh','Lakshadweep','Puducherry',
+/* ─── Data ─────────────────────────────────────────── */
+const STATES = [
+  'Andhra Pradesh','Arunachal Pradesh','Assam','Bihar','Chhattisgarh','Goa',
+  'Gujarat','Haryana','Himachal Pradesh','Jharkhand','Karnataka','Kerala',
+  'Madhya Pradesh','Maharashtra','Manipur','Meghalaya','Mizoram','Nagaland',
+  'Odisha','Punjab','Rajasthan','Sikkim','Tamil Nadu','Telangana','Tripura',
+  'Uttar Pradesh','Uttarakhand','West Bengal','Andaman & Nicobar Islands',
+  'Chandigarh','Dadra & Nagar Haveli and Daman & Diu','Delhi',
+  'Jammu & Kashmir','Ladakh','Lakshadweep','Puducherry',
 ];
 
-/* ── Mini Calendar ── */
-function MiniCalendar({ value, onChange }: { value: Date | null; onChange: (d: Date) => void }) {
-  const today = new Date();
-  const [view, setView] = useState({ year: today.getFullYear(), month: today.getMonth() });
+const TIME_SLOTS = [
+  '09:00 AM','09:30 AM','10:00 AM','10:30 AM','11:00 AM','11:30 AM',
+  '12:00 PM','12:30 PM','01:00 PM','01:30 PM','02:00 PM','02:30 PM',
+  '03:00 PM','03:30 PM','04:00 PM','04:30 PM','05:00 PM','05:30 PM',
+  '06:00 PM',
+];
 
-  const firstDay = new Date(view.year, view.month, 1).getDay();
-  const daysInMonth = new Date(view.year, view.month + 1, 0).getDate();
-  const monthName = new Date(view.year, view.month).toLocaleString('default', { month: 'long' });
+/* ─── Helpers ───────────────────────────────────────── */
+const MONTHS = ['January','February','March','April','May','June',
+  'July','August','September','October','November','December'];
+const DAYS = ['Su','Mo','Tu','We','Th','Fr','Sa'];
 
-  const prev = () => setView(v => {
-    const d = new Date(v.year, v.month - 1);
-    return { year: d.getFullYear(), month: d.getMonth() };
-  });
-  const next = () => setView(v => {
-    const d = new Date(v.year, v.month + 1);
-    return { year: d.getFullYear(), month: d.getMonth() };
-  });
-
-  const isPast = (day: number) => {
-    const d = new Date(view.year, view.month, day);
-    d.setHours(0,0,0,0);
-    const t = new Date(); t.setHours(0,0,0,0);
-    return d < t;
-  };
-
-  const isSelected = (day: number) =>
-    value &&
-    value.getFullYear() === view.year &&
-    value.getMonth() === view.month &&
-    value.getDate() === day;
-
-  const isToday = (day: number) =>
-    today.getFullYear() === view.year &&
-    today.getMonth() === view.month &&
-    today.getDate() === day;
-
-  return (
-    <div className="rounded-xl overflow-hidden" style={{ border: '1px solid var(--border)', background: 'var(--surface-1)' }}>
-      {/* Header */}
-      <div className="flex items-center justify-between px-4 py-3" style={{ borderBottom: '1px solid var(--border)' }}>
-        <button onClick={prev} className="p-1 rounded-lg hover:bg-accent/10 transition-colors">
-          <ChevronLeft className="w-4 h-4 text-accent" />
-        </button>
-        <span className="font-bold text-sm" style={{ color: 'var(--fg)' }}>{monthName} {view.year}</span>
-        <button onClick={next} className="p-1 rounded-lg hover:bg-accent/10 transition-colors">
-          <ChevronRight className="w-4 h-4 text-accent" />
-        </button>
-      </div>
-      {/* Day labels */}
-      <div className="grid grid-cols-7 px-3 pt-2">
-        {['Su','Mo','Tu','We','Th','Fr','Sa'].map(d => (
-          <div key={d} className="text-center text-[10px] font-bold pb-1" style={{ color: 'var(--muted)' }}>{d}</div>
-        ))}
-      </div>
-      {/* Days */}
-      <div className="grid grid-cols-7 px-3 pb-3 gap-y-1">
-        {Array.from({ length: firstDay }).map((_, i) => <div key={`e${i}`} />)}
-        {Array.from({ length: daysInMonth }, (_, i) => i + 1).map(day => (
-          <button
-            key={day}
-            disabled={isPast(day)}
-            onClick={() => onChange(new Date(view.year, view.month, day))}
-            className="w-7 h-7 mx-auto rounded-full text-xs font-medium transition-all flex items-center justify-center"
-            style={{
-              background: isSelected(day) ? 'var(--accent)' : isToday(day) ? 'rgba(52,204,50,0.12)' : 'transparent',
-              color: isSelected(day) ? '#fff' : isPast(day) ? 'var(--muted)' : 'var(--fg)',
-              cursor: isPast(day) ? 'not-allowed' : 'pointer',
-              fontWeight: isToday(day) ? 700 : 400,
-            }}
-          >
-            {day}
-          </button>
-        ))}
-      </div>
-    </div>
-  );
+function formatDate(d: Date) {
+  return d.toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
 }
 
-/* ── Clock Picker ── */
-function ClockPicker({ value, onChange }: { value: string; onChange: (t: string) => void }) {
-  const [mode, setMode] = useState<'hour' | 'minute'>('hour');
-  const [ampm, setAmpm] = useState<'AM' | 'PM'>('AM');
-  const clockRef = useRef<HTMLDivElement>(null);
-
-  const parsed = value ? value.split(':') : ['12', '00'];
-  let hour = parseInt(parsed[0]);
-  const minute = parseInt(parsed[1] || '0');
-  const displayHour = hour > 12 ? hour - 12 : hour === 0 ? 12 : hour;
-
-  const getAngle = () => {
-    if (mode === 'hour') return ((displayHour % 12) / 12) * 360;
-    return (minute / 60) * 360;
-  };
-
-  const handleClockClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = clockRef.current!.getBoundingClientRect();
-    const cx = rect.left + rect.width / 2;
-    const cy = rect.top + rect.height / 2;
-    const dx = e.clientX - cx;
-    const dy = e.clientY - cy;
-    let angle = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
-    if (angle < 0) angle += 360;
-
-    if (mode === 'hour') {
-      let h = Math.round(angle / 30) % 12;
-      if (h === 0) h = 12;
-      const h24 = ampm === 'PM' ? (h === 12 ? 12 : h + 12) : (h === 12 ? 0 : h);
-      onChange(`${String(h24).padStart(2,'0')}:${String(minute).padStart(2,'0')}`);
-      setMode('minute');
-    } else {
-      const m = Math.round(angle / 6) % 60;
-      const h24 = ampm === 'PM' ? (displayHour === 12 ? 12 : displayHour + 12) : (displayHour === 12 ? 0 : displayHour);
-      onChange(`${String(h24).padStart(2,'0')}:${String(m).padStart(2,'0')}`);
-    }
-  };
-
-  const handleAmPm = (v: 'AM' | 'PM') => {
-    setAmpm(v);
-    let h24 = displayHour;
-    if (v === 'PM') h24 = displayHour === 12 ? 12 : displayHour + 12;
-    else h24 = displayHour === 12 ? 0 : displayHour;
-    onChange(`${String(h24).padStart(2,'0')}:${String(minute).padStart(2,'0')}`);
-  };
-
-  const angle = getAngle();
-  const rad = (angle - 90) * (Math.PI / 180);
-  const r = 72;
-  const handX = 90 + r * Math.cos(rad);
-  const handY = 90 + r * Math.sin(rad);
-
-  const hourMarks = Array.from({ length: 12 }, (_, i) => {
-    const a = ((i + 1) / 12) * 360;
-    const ra = (a - 90) * (Math.PI / 180);
-    return { label: i + 1, x: 90 + 72 * Math.cos(ra), y: 90 + 72 * Math.sin(ra) };
-  });
-
-  const minuteMarks = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55].map((m, i) => {
-    const a = (i / 12) * 360;
-    const ra = (a - 90) * (Math.PI / 180);
-    return { label: m, x: 90 + 72 * Math.cos(ra), y: 90 + 72 * Math.sin(ra) };
-  });
-
-  const marks = mode === 'hour' ? hourMarks : minuteMarks;
-
-  return (
-    <div className="flex flex-col items-center gap-3">
-      {/* Display */}
-      <div className="flex items-center gap-2">
-        <button onClick={() => setMode('hour')}
-          className="text-2xl font-bold px-3 py-1 rounded-lg transition-colors"
-          style={{ background: mode === 'hour' ? 'var(--accent)' : 'var(--surface-2)', color: mode === 'hour' ? '#fff' : 'var(--fg)' }}>
-          {String(displayHour).padStart(2,'0')}
-        </button>
-        <span className="text-2xl font-bold" style={{ color: 'var(--fg)' }}>:</span>
-        <button onClick={() => setMode('minute')}
-          className="text-2xl font-bold px-3 py-1 rounded-lg transition-colors"
-          style={{ background: mode === 'minute' ? 'var(--accent)' : 'var(--surface-2)', color: mode === 'minute' ? '#fff' : 'var(--fg)' }}>
-          {String(minute).padStart(2,'0')}
-        </button>
-        <div className="flex flex-col gap-1 ml-1">
-          {(['AM','PM'] as const).map(v => (
-            <button key={v} onClick={() => handleAmPm(v)}
-              className="text-xs font-bold px-2 py-0.5 rounded transition-colors"
-              style={{ background: ampm === v ? 'var(--accent)' : 'var(--surface-2)', color: ampm === v ? '#fff' : 'var(--fg)' }}>
-              {v}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Clock face */}
-      <div ref={clockRef} onClick={handleClockClick}
-        className="relative cursor-pointer select-none"
-        style={{ width: 180, height: 180 }}>
-        <svg width="180" height="180">
-          <circle cx="90" cy="90" r="85" fill="var(--surface-2)" stroke="var(--border)" strokeWidth="1" />
-          {/* Hand */}
-          <line x1="90" y1="90" x2={handX} y2={handY} stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" />
-          <circle cx="90" cy="90" r="4" fill="var(--accent)" />
-          <circle cx={handX} cy={handY} r="6" fill="var(--accent)" />
-          {/* Marks */}
-          {marks.map((m, i) => {
-            const isActive = mode === 'hour' ? m.label === displayHour : m.label === minute;
-            return (
-              <g key={i}>
-                <circle cx={m.x} cy={m.y} r="12" fill={isActive ? 'var(--accent)' : 'transparent'} />
-                <text x={m.x} y={m.y} textAnchor="middle" dominantBaseline="central"
-                  fontSize="10" fontWeight="600"
-                  fill={isActive ? '#fff' : 'var(--fg)'}>
-                  {m.label}
-                </text>
-              </g>
-            );
-          })}
-        </svg>
-      </div>
-      <p className="text-xs" style={{ color: 'var(--muted)' }}>
-        Click to set {mode === 'hour' ? 'hour' : 'minutes'}
-      </p>
-    </div>
-  );
-}
-
-/* ── State Dropdown ── */
-function StateDropdown({ value, onChange }: { value: string; onChange: (s: string) => void }) {
+/* ─── Calendar Dropdown ─────────────────────────────── */
+function CalendarDropdown({ value, onChange }: { value: Date | null; onChange: (d: Date) => void }) {
   const [open, setOpen] = useState(false);
-  const [search, setSearch] = useState('');
+  const [view, setView] = useState(() => { const t = new Date(); return { y: t.getFullYear(), m: t.getMonth() }; });
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
-    };
-    document.addEventListener('mousedown', handler);
-    return () => document.removeEventListener('mousedown', handler);
+    const h = (e: MouseEvent) => { if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false); };
+    document.addEventListener('mousedown', h);
+    return () => document.removeEventListener('mousedown', h);
   }, []);
 
-  const filtered = INDIAN_STATES.filter(s => s.toLowerCase().includes(search.toLowerCase()));
+  const today = new Date(); today.setHours(0,0,0,0);
+  const firstDay = new Date(view.y, view.m, 1).getDay();
+  const daysInMonth = new Date(view.y, view.m + 1, 0).getDate();
+
+  const prev = () => setView(v => { const d = new Date(v.y, v.m - 1); return { y: d.getFullYear(), m: d.getMonth() }; });
+  const next = () => setView(v => { const d = new Date(v.y, v.m + 1); return { y: d.getFullYear(), m: d.getMonth() }; });
+
+  const isPast = (day: number) => new Date(view.y, view.m, day) < today;
+  const isSelected = (day: number) => value?.getFullYear() === view.y && value?.getMonth() === view.m && value?.getDate() === day;
+  const isToday = (day: number) => today.getFullYear() === view.y && today.getMonth() === view.m && today.getDate() === day;
 
   return (
     <div ref={ref} className="relative">
       <button type="button" onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm transition-colors"
-        style={{ background: 'var(--surface-1)', border: '1px solid var(--border)', color: value ? 'var(--fg)' : 'var(--muted)' }}>
-        <span>{value || 'Select state'}</span>
-        <ChevronDown className={`w-4 h-4 transition-transform ${open ? 'rotate-180' : ''}`} style={{ color: 'var(--muted)' }} />
+        className="w-full no-gradient flex items-center justify-between px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg text-[10px] sm:text-xs border transition-colors hover:border-slate-300"
+        style={{ 
+          borderColor: open ? '#1e293b' : '#e2e8f0', 
+          color: value ? '#1e293b' : '#94a3b8',
+          backgroundColor: '#ffffff'
+        }}>
+        <span className="flex items-center gap-1.5 sm:gap-2 truncate">
+          <Calendar className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-slate-400 shrink-0" />
+          {value ? formatDate(value) : 'Select date'}
+        </span>
+        <ChevronDown className={`w-3 sm:w-3.5 h-3 sm:h-3.5 text-slate-400 transition-transform shrink-0 ${open ? 'rotate-180' : ''}`} />
       </button>
+
       <AnimatePresence>
         {open && (
-          <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
+          <motion.div initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.15 }}
-            className="absolute z-50 w-full mt-1 rounded-xl overflow-hidden shadow-xl"
-            style={{ background: 'var(--surface-0)', border: '1px solid var(--border)' }}>
-            <div className="p-2" style={{ borderBottom: '1px solid var(--border)' }}>
-              <input autoFocus value={search} onChange={e => setSearch(e.target.value)}
-                placeholder="Search state..."
-                className="w-full px-3 py-2 rounded-lg text-sm outline-none"
-                style={{ background: 'var(--surface-1)', border: '1px solid var(--border)', color: 'var(--fg)' }} />
+            className="absolute z-50 mt-1 w-full no-gradient rounded-2xl border border-slate-200 shadow-xl overflow-hidden"
+            style={{ backgroundColor: '#ffffff' }}>
+            {/* Month nav */}
+            <div className="flex items-center justify-between px-4 py-3 border-b border-slate-100" style={{ backgroundColor: '#ffffff' }}>
+              <button type="button" onClick={prev} className="p-1.5 rounded-lg hover:bg-slate-100 transition-colors">
+                <ChevronLeft className="w-4 h-4 text-slate-500" />
+              </button>
+              <span className="text-sm font-semibold text-slate-700">{MONTHS[view.m]} {view.y}</span>
+              <button type="button" onClick={next} className="p-1.5 rounded-lg hover:bg-slate-100 transition-colors">
+                <ChevronRight className="w-4 h-4 text-slate-500" />
+              </button>
             </div>
-            <div className="max-h-48 overflow-y-auto">
-              {filtered.length === 0 ? (
-                <div className="px-4 py-3 text-sm" style={{ color: 'var(--muted)' }}>No results</div>
-              ) : filtered.map(state => (
-                <button key={state} type="button"
-                  onClick={() => { onChange(state); setOpen(false); setSearch(''); }}
-                  className="w-full text-left px-4 py-2.5 text-sm transition-colors hover:bg-accent/10"
-                  style={{ color: state === value ? 'var(--accent)' : 'var(--fg)', fontWeight: state === value ? 700 : 400 }}>
-                  {state}
+            {/* Day headers */}
+            <div className="grid grid-cols-7 px-3 pt-2" style={{ backgroundColor: '#ffffff' }}>
+              {DAYS.map(d => <div key={d} className="text-center text-[10px] font-semibold text-slate-400 pb-1">{d}</div>)}
+            </div>
+            {/* Days */}
+            <div className="grid grid-cols-7 px-3 pb-3 gap-y-0.5" style={{ backgroundColor: '#ffffff' }}>
+              {Array.from({ length: firstDay }).map((_, i) => <div key={i} />)}
+              {Array.from({ length: daysInMonth }, (_, i) => i + 1).map(day => (
+                <button key={day} type="button" disabled={isPast(day)}
+                  onClick={() => { onChange(new Date(view.y, view.m, day)); setOpen(false); }}
+                  className="w-8 h-8 mx-auto rounded-full text-xs font-medium transition-all flex items-center justify-center"
+                  style={{
+                    background: isSelected(day) ? '#1e293b' : isToday(day) ? '#f8fafc' : 'transparent',
+                    color: isSelected(day) ? '#fff' : isPast(day) ? '#cbd5e1' : isToday(day) ? '#1e293b' : '#334155',
+                    cursor: isPast(day) ? 'not-allowed' : 'pointer',
+                    fontWeight: isToday(day) || isSelected(day) ? 700 : 400,
+                  }}>
+                  {day}
                 </button>
               ))}
             </div>
@@ -277,43 +118,176 @@ function StateDropdown({ value, onChange }: { value: string; onChange: (s: strin
   );
 }
 
-/* ── Input Field ── */
-function Field({ label, icon: Icon, error, children }: {
-  label: string; icon: React.ElementType; error?: string; children: React.ReactNode;
-}) {
+/* ─── Time Dropdown ─────────────────────────────────── */
+function TimeDropdown({ value, onChange }: { value: string; onChange: (t: string) => void }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const listRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const h = (e: MouseEvent) => { if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false); };
+    document.addEventListener('mousedown', h);
+    return () => document.removeEventListener('mousedown', h);
+  }, []);
+
+  useEffect(() => {
+    if (open && value && listRef.current) {
+      const idx = TIME_SLOTS.indexOf(value);
+      if (idx > -1) {
+        const el = listRef.current.children[idx] as HTMLElement;
+        el?.scrollIntoView({ block: 'nearest' });
+      }
+    }
+  }, [open, value]);
+
   return (
-    <div>
-      <label className="block text-sm font-semibold mb-1.5" style={{ color: 'var(--fg)' }}>
-        {label}
-      </label>
-      <div className="relative">
-        <Icon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none" style={{ color: 'var(--muted)' }} />
-        <div className="pl-10">{children}</div>
-      </div>
-      {error && <p className="text-xs text-red-500 mt-1">{error}</p>}
+    <div ref={ref} className="relative">
+      <button type="button" onClick={() => setOpen(!open)}
+        className="w-full no-gradient flex items-center justify-between px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg text-[10px] sm:text-xs border transition-colors hover:border-slate-300"
+        style={{ 
+          borderColor: open ? '#1e293b' : '#e2e8f0', 
+          color: value ? '#1e293b' : '#94a3b8',
+          backgroundColor: '#ffffff'
+        }}>
+        <span className="flex items-center gap-1.5 sm:gap-2 truncate">
+          <Clock className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-slate-400 shrink-0" />
+          {value || 'Select time'}
+        </span>
+        <ChevronDown className={`w-3 sm:w-3.5 h-3 sm:h-3.5 text-slate-400 transition-transform shrink-0 ${open ? 'rotate-180' : ''}`} />
+      </button>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.15 }}
+            className="absolute z-50 mt-1 w-full no-gradient rounded-2xl border border-slate-200 shadow-xl overflow-hidden"
+            style={{ backgroundColor: '#ffffff' }}>
+            <div ref={listRef} className="max-h-52 overflow-y-auto py-1" style={{ backgroundColor: '#ffffff' }}>
+              {TIME_SLOTS.map(slot => (
+                <button key={slot} type="button"
+                  onClick={() => { onChange(slot); setOpen(false); }}
+                  className="w-full text-left px-3 py-2 text-xs transition-colors flex items-center gap-2"
+                  style={{
+                    background: value === slot ? '#f8fafc' : 'transparent',
+                    color: value === slot ? '#1e293b' : '#334155',
+                    fontWeight: value === slot ? 700 : 400,
+                  }}>
+                  <Clock className="w-3 h-3 opacity-40" />
+                  {slot}
+                  {value === slot && <CheckCircle2 className="w-3 h-3 ml-auto text-slate-600" />}
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
 
-/* ── Main Form ── */
+/* ─── State Dropdown ────────────────────────────────── */
+function StateDropdown({ value, onChange }: { value: string; onChange: (s: string) => void }) {
+  const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState('');
+  const ref = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const h = (e: MouseEvent) => { if (ref.current && !ref.current.contains(e.target as Node)) { setOpen(false); setSearch(''); } };
+    document.addEventListener('mousedown', h);
+    return () => document.removeEventListener('mousedown', h);
+  }, []);
+
+  useEffect(() => { if (open) setTimeout(() => inputRef.current?.focus(), 50); }, [open]);
+
+  const filtered = STATES.filter(s => s.toLowerCase().includes(search.toLowerCase()));
+
+  return (
+    <div ref={ref} className="relative">
+      <button type="button" onClick={() => setOpen(!open)}
+        className="w-full no-gradient flex items-center justify-between px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg text-[10px] sm:text-xs border transition-colors hover:border-slate-300"
+        style={{ 
+          borderColor: open ? '#1e293b' : '#e2e8f0', 
+          color: value ? '#1e293b' : '#94a3b8',
+          backgroundColor: '#ffffff'
+        }}>
+        <span className="flex items-center gap-1.5 sm:gap-2 truncate">
+          <MapPin className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-slate-400 shrink-0" />
+          {value || 'Select state'}
+        </span>
+        <ChevronDown className={`w-3 sm:w-3.5 h-3 sm:h-3.5 text-slate-400 transition-transform shrink-0 ${open ? 'rotate-180' : ''}`} />
+      </button>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.15 }}
+            className="absolute z-50 mt-1 w-full no-gradient rounded-2xl border border-slate-200 shadow-xl overflow-hidden"
+            style={{ backgroundColor: '#ffffff' }}>
+            <div className="p-2 border-b border-slate-100" style={{ backgroundColor: '#ffffff' }}>
+              <input ref={inputRef} value={search} onChange={e => setSearch(e.target.value)}
+                placeholder="Search state..." 
+                className="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 outline-none focus:border-slate-400 text-slate-700 no-gradient form-input-no-glow"
+                style={{ backgroundColor: '#ffffff' }} />
+            </div>
+            <div className="max-h-48 overflow-y-auto py-1" style={{ backgroundColor: '#ffffff' }}>
+              {filtered.length === 0
+                ? <div className="px-4 py-3 text-sm text-slate-400">No results</div>
+                : filtered.map(s => (
+                  <button key={s} type="button"
+                    onClick={() => { onChange(s); setOpen(false); setSearch(''); }}
+                    className="w-full text-left px-3 py-2 text-xs transition-colors"
+                    style={{ background: s === value ? '#f8fafc' : 'transparent', color: s === value ? '#1e293b' : '#334155', fontWeight: s === value ? 700 : 400 }}>
+                    {s}
+                  </button>
+                ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+/* ─── Input ─────────────────────────────────────────── */
+function Input({ label, required, icon: Icon, error, ...props }: {
+  label: string; required?: boolean; icon: React.ElementType; error?: string;
+} & React.InputHTMLAttributes<HTMLInputElement>) {
+  return (
+    <div>
+      <label className="block text-[10px] sm:text-xs font-medium text-slate-600 mb-1 truncate">
+        {label}{required && <span className="text-red-500 ml-0.5">*</span>}
+      </label>
+      <div className="relative">
+        <Icon className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 w-3 sm:w-3.5 h-3 sm:h-3.5 text-slate-400 pointer-events-none" />
+        <input {...props}
+          className="w-full pl-7 sm:pl-9 pr-2 sm:pr-3 py-1.5 sm:py-2 rounded-lg text-[10px] sm:text-xs border border-slate-200 bg-white no-gradient form-input-no-glow outline-none transition-colors text-slate-800 placeholder:text-slate-400"
+          style={{ 
+            borderColor: error ? '#ef4444' : '#e2e8f0',
+            backgroundColor: '#ffffff'
+          }} />
+      </div>
+      {error && <p className="text-[9px] sm:text-[10px] text-red-500 mt-0.5">{error}</p>}
+    </div>
+  );
+}
+
+/* ─── Main Form ─────────────────────────────────────── */
 export default function AppointmentForm() {
-  const [form, setForm] = useState({
-    name: '', phone: '', email: '', city: '', state: '',
-  });
+  const [form, setForm] = useState({ name: '', phone: '', email: '', city: '', state: '' });
   const [date, setDate] = useState<Date | null>(null);
-  const [time, setTime] = useState('10:00');
+  const [time, setTime] = useState('');
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
-  const [showClock, setShowClock] = useState(false);
 
-  const set = (k: string, v: string) => setForm(f => ({ ...f, [k]: v }));
+  const set = (k: string, v: string) => { setForm(f => ({ ...f, [k]: v })); setErrors(e => ({ ...e, [k]: '' })); };
 
   const validate = () => {
     const e: Record<string, string> = {};
-    if (!form.name.trim()) e.name = 'Name is required';
-    if (!/^\d{10}$/.test(form.phone)) e.phone = 'Enter a valid 10-digit number';
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'Enter a valid email';
-    if (!form.city.trim()) e.city = 'City is required';
+    if (!form.name.trim()) e.name = 'Required';
+    if (!/^\d{10}$/.test(form.phone)) e.phone = 'Enter valid 10-digit number';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'Enter valid email';
+    if (!form.city.trim()) e.city = 'Required';
     if (!form.state) e.state = 'Please select a state';
     if (!date) e.date = 'Please select a date';
     if (!time) e.time = 'Please select a time';
@@ -321,164 +295,78 @@ export default function AppointmentForm() {
     return Object.keys(e).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (validate()) setSubmitted(true);
-  };
-
-  const formatDate = (d: Date) => d.toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
-  const formatTime = (t: string) => {
-    const [h, m] = t.split(':').map(Number);
-    const ampm = h >= 12 ? 'PM' : 'AM';
-    const h12 = h % 12 || 12;
-    return `${h12}:${String(m).padStart(2,'0')} ${ampm}`;
-  };
+  const handleSubmit = (e: React.FormEvent) => { e.preventDefault(); if (validate()) setSubmitted(true); };
+  const handleReset = () => { setForm({ name:'',phone:'',email:'',city:'',state:'' }); setDate(null); setTime(''); setErrors({}); };
 
   if (submitted) {
     return (
-      <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
-        className="text-center py-16 px-8">
-        <div className="w-20 h-20 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-6">
-          <CheckCircle2 className="w-10 h-10 text-accent" />
+      <motion.div initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-10">
+        <div className="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center mx-auto mb-5">
+          <CheckCircle2 className="w-8 h-8 text-slate-700" />
         </div>
-        <h2 className="text-2xl font-bold font-display mb-3" style={{ color: 'var(--fg)' }}>Appointment Booked!</h2>
-        <p className="text-sm mb-2" style={{ color: 'var(--muted-fg)' }}>
-          <strong style={{ color: 'var(--fg)' }}>{form.name}</strong>, your appointment is confirmed for
-        </p>
-        <p className="text-base font-semibold text-accent mb-1">{date && formatDate(date)}</p>
-        <p className="text-base font-semibold text-accent mb-8">{formatTime(time)}</p>
-        <p className="text-sm mb-8" style={{ color: 'var(--muted-fg)' }}>
-          We'll reach you at <strong style={{ color: 'var(--fg)' }}>{form.phone}</strong> or <strong style={{ color: 'var(--fg)' }}>{form.email}</strong>
-        </p>
-        <Link href="/" className="glow-button inline-flex items-center gap-2 px-8 py-3 rounded-xl font-bold text-sm" style={{ color: '#fff' }}>
+        <h2 className="text-xl font-bold text-slate-800 mb-2">Appointment Confirmed!</h2>
+        <p className="text-sm text-slate-500 mb-1">Hi <strong className="text-slate-700">{form.name}</strong>, you're booked for</p>
+        <p className="text-base font-semibold text-slate-800 mb-0.5">{date && formatDate(date)}</p>
+        <p className="text-base font-semibold text-slate-800 mb-6">{time}</p>
+        <p className="text-sm text-slate-500 mb-8">We'll reach you at <strong className="text-slate-700">{form.phone}</strong></p>
+        <Link href="/"
+          className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold neutral-button">
           <Home className="w-4 h-4" /> Back to Home
         </Link>
       </motion.div>
     );
   }
 
-  const inputClass = "w-full px-4 py-3 rounded-xl text-sm outline-none transition-colors";
-  const inputStyle = { background: 'var(--surface-1)', border: '1px solid var(--border)', color: 'var(--fg)' };
-
   return (
-    <form onSubmit={handleSubmit} noValidate>
-      <div className="grid md:grid-cols-2 gap-5">
+    <form onSubmit={handleSubmit} noValidate className="space-y-4 sm:space-y-5">
+      <div className="grid grid-cols-2 gap-3 sm:gap-5">
+        <Input label="Your Name" required icon={User} value={form.name}
+          onChange={e => set('name', e.target.value)} placeholder="Full name" error={errors.name} />
+        <Input label="Contact No" required icon={Phone} value={form.phone}
+          onChange={e => set('phone', e.target.value.replace(/\D/g,'').slice(0,10))}
+          placeholder="10-digit mobile" error={errors.phone} />
+        <Input label="Email ID" required icon={Mail} type="email" value={form.email}
+          onChange={e => set('email', e.target.value)} placeholder="you@example.com" error={errors.email} />
+        <Input label="City" required icon={MapPin} value={form.city}
+          onChange={e => set('city', e.target.value)} placeholder="Your city" error={errors.city} />
+      </div>
 
-        {/* Name */}
-        <div>
-          <label className="block text-sm font-semibold mb-1.5" style={{ color: 'var(--fg)' }}>
-            Your Name <span className="text-red-500">*</span>
-          </label>
-          <div className="relative">
-            <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: 'var(--muted)' }} />
-            <input type="text" value={form.name} onChange={e => set('name', e.target.value)}
-              placeholder="Full name" className={`${inputClass} pl-10`} style={inputStyle} />
-          </div>
-          {errors.name && <p className="text-xs text-red-500 mt-1">{errors.name}</p>}
-        </div>
+      {/* State */}
+      <div>
+        <label className="block text-[10px] sm:text-xs font-medium text-slate-600 mb-1">
+          State<span className="text-red-500 ml-0.5">*</span>
+        </label>
+        <StateDropdown value={form.state} onChange={v => { set('state', v); }} />
+        {errors.state && <p className="text-[10px] text-red-500 mt-0.5">{errors.state}</p>}
+      </div>
 
-        {/* Phone */}
-        <div>
-          <label className="block text-sm font-semibold mb-1.5" style={{ color: 'var(--fg)' }}>
-            Contact No <span className="text-red-500">*</span>
-          </label>
-          <div className="relative">
-            <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: 'var(--muted)' }} />
-            <input type="tel" value={form.phone} onChange={e => set('phone', e.target.value.replace(/\D/g,'').slice(0,10))}
-              placeholder="10-digit mobile number" className={`${inputClass} pl-10`} style={inputStyle} />
-          </div>
-          {errors.phone && <p className="text-xs text-red-500 mt-1">{errors.phone}</p>}
-        </div>
-
-        {/* Email */}
-        <div>
-          <label className="block text-sm font-semibold mb-1.5" style={{ color: 'var(--fg)' }}>
-            Email ID <span className="text-red-500">*</span>
-          </label>
-          <div className="relative">
-            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: 'var(--muted)' }} />
-            <input type="email" value={form.email} onChange={e => set('email', e.target.value)}
-              placeholder="you@example.com" className={`${inputClass} pl-10`} style={inputStyle} />
-          </div>
-          {errors.email && <p className="text-xs text-red-500 mt-1">{errors.email}</p>}
-        </div>
-
-        {/* City */}
-        <div>
-          <label className="block text-sm font-semibold mb-1.5" style={{ color: 'var(--fg)' }}>
-            City <span className="text-red-500">*</span>
-          </label>
-          <div className="relative">
-            <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: 'var(--muted)' }} />
-            <input type="text" value={form.city} onChange={e => set('city', e.target.value)}
-              placeholder="Your city" className={`${inputClass} pl-10`} style={inputStyle} />
-          </div>
-          {errors.city && <p className="text-xs text-red-500 mt-1">{errors.city}</p>}
-        </div>
-
-        {/* State */}
-        <div className="md:col-span-2">
-          <label className="block text-sm font-semibold mb-1.5" style={{ color: 'var(--fg)' }}>
-            State <span className="text-red-500">*</span>
-          </label>
-          <StateDropdown value={form.state} onChange={v => set('state', v)} />
-          {errors.state && <p className="text-xs text-red-500 mt-1">{errors.state}</p>}
-        </div>
-
+      <div className="grid grid-cols-2 gap-3 sm:gap-5">
         {/* Date */}
         <div>
-          <label className="block text-sm font-semibold mb-1.5 flex items-center gap-1.5" style={{ color: 'var(--fg)' }}>
-            <Calendar className="w-4 h-4 text-accent" /> Select Date <span className="text-red-500">*</span>
+          <label className="block text-[10px] sm:text-xs font-medium text-slate-600 mb-1">
+            Preferred Date<span className="text-red-500 ml-0.5">*</span>
           </label>
-          <MiniCalendar value={date} onChange={setDate} />
-          {date && (
-            <p className="text-xs mt-1.5 font-medium text-accent">{formatDate(date)}</p>
-          )}
-          {errors.date && <p className="text-xs text-red-500 mt-1">{errors.date}</p>}
+          <CalendarDropdown value={date} onChange={d => { setDate(d); setErrors(e => ({ ...e, date: '' })); }} />
+          {errors.date && <p className="text-[10px] text-red-500 mt-0.5">{errors.date}</p>}
         </div>
 
         {/* Time */}
         <div>
-          <label className="block text-sm font-semibold mb-1.5 flex items-center gap-1.5" style={{ color: 'var(--fg)' }}>
-            <Clock className="w-4 h-4 text-accent" /> Select Time <span className="text-red-500">*</span>
+          <label className="block text-[10px] sm:text-xs font-medium text-slate-600 mb-1">
+            Preferred Time<span className="text-red-500 ml-0.5">*</span>
           </label>
-          {/* Time display button */}
-          <button type="button" onClick={() => setShowClock(!showClock)}
-            className="w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm mb-3 transition-colors"
-            style={{ background: 'var(--surface-1)', border: `1px solid ${showClock ? 'var(--accent)' : 'var(--border)'}`, color: 'var(--fg)' }}>
-            <span className="font-semibold text-accent">{formatTime(time)}</span>
-            <Clock className="w-4 h-4" style={{ color: 'var(--muted)' }} />
-          </button>
-          <AnimatePresence>
-            {showClock && (
-              <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
-                className="rounded-xl p-4" style={{ background: 'var(--surface-1)', border: '1px solid var(--border)' }}>
-                <ClockPicker value={time} onChange={setTime} />
-              </motion.div>
-            )}
-          </AnimatePresence>
-          {errors.time && <p className="text-xs text-red-500 mt-1">{errors.time}</p>}
+          <TimeDropdown value={time} onChange={t => { setTime(t); setErrors(e => ({ ...e, time: '' })); }} />
+          {errors.time && <p className="text-[10px] text-red-500 mt-0.5">{errors.time}</p>}
         </div>
-
       </div>
 
       {/* Actions */}
-      <div className="flex flex-wrap items-center gap-3 mt-8 pt-6" style={{ borderTop: '1px solid var(--border)' }}>
+      <div className="flex items-center justify-end pt-2">
         <button type="submit"
-          className="glow-button flex items-center gap-2 px-8 py-3 rounded-xl font-bold text-sm"
-          style={{ color: '#fff' }}>
-          <CheckCircle2 className="w-4 h-4" /> Book Appointment
+          className="flex items-center gap-2 px-6 py-2.5 rounded-lg text-xs font-bold text-white transition-all hover:opacity-90 active:scale-95"
+          style={{ background: '#34CC32', color: '#ffffff' }}>
+          <CheckCircle2 className="w-4 h-4 text-white" stroke="#ffffff" /> Book Appointment
         </button>
-        <button type="button" onClick={() => { setForm({ name:'',phone:'',email:'',city:'',state:'' }); setDate(null); setTime('10:00'); setErrors({}); }}
-          className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-colors"
-          style={{ background: 'var(--surface-2)', border: '1px solid var(--border)', color: 'var(--fg)' }}>
-          <X className="w-4 h-4" /> Cancel
-        </button>
-        <Link href="/"
-          className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-colors"
-          style={{ background: 'transparent', border: '1px solid var(--border)', color: 'var(--muted-fg)' }}>
-          <Home className="w-4 h-4" /> Back to Home
-        </Link>
       </div>
     </form>
   );
