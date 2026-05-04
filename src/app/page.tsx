@@ -379,7 +379,7 @@ function FeaturesGrid() {
   ];
 
   return (
-    <section className="pt-24 pb-10 relative overflow-hidden">
+    <section className="pt-24 pb-10 relative">
       <div className="section-glow section-glow-top" />
       <div className="section-glow section-glow-left" />
       <div className="section-glow section-glow-right" />      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -965,7 +965,7 @@ function ServiceStackCard({
 
 function ServicesStackSection() {
   return (
-    <section id="services" className="py-24 relative overflow-hidden">
+    <section id="services" className="py-24 relative">
       <div className="section-glow section-glow-top" />
       <div className="section-glow section-glow-left" />
       <div className="section-glow section-glow-right" />
