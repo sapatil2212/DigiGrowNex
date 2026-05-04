@@ -15,29 +15,29 @@ const navLinks = [
 ];
 
 const productsMenu = [
-  { label: 'Health Care Solution', href: '/products/health-care', icon: Activity },
-  { label: 'Hotel Management', href: '/products/hotel-management', icon: Hotel },
-  { label: 'CMS System', href: '/products/cms-system', icon: Layout },
-  { label: 'WhatsApp Automation', href: '/products/whatsapp-automation', icon: MessageSquare },
+  { label: 'Health Care Solution', href: '/#products', icon: Activity },
+  { label: 'Hotel Management', href: '/#products', icon: Hotel },
+  { label: 'CMS System', href: '/#products', icon: Layout },
+  { label: 'WhatsApp Automation', href: '/#products', icon: MessageSquare },
 ];
 
 const servicesMenu = {
   col1: {
     title: 'Development & Design',
     links: [
-      { label: 'Websites', href: '/services/websites', icon: Globe },
-      { label: 'Custom Softwares', href: '/services/custom-software', icon: Code },
-      { label: 'App Development', href: '/services/app-development', icon: Smartphone },
-      { label: 'Branding', href: '/services/branding', icon: PenTool }
+      { label: 'Websites', href: '/#services', icon: Globe },
+      { label: 'Custom Softwares', href: '/#services', icon: Code },
+      { label: 'App Development', href: '/#services', icon: Smartphone },
+      { label: 'Branding', href: '/#services', icon: PenTool }
     ]
   },
   col2: {
     title: 'Marketing & SEO',
     links: [
-      { label: 'Local SEO', href: '/services/local-seo', icon: MapPin },
-      { label: 'Google Ads', href: '/services/google-ads', icon: MousePointerClick },
-      { label: 'Social Media Ads', href: '/services/social-media-ads', icon: Share2 },
-      { label: 'Search Engine Optimisation', href: '/services/seo', icon: Search }
+      { label: 'Local SEO', href: '/#services', icon: MapPin },
+      { label: 'Google Ads', href: '/#services', icon: MousePointerClick },
+      { label: 'Social Media Ads', href: '/#services', icon: Share2 },
+      { label: 'Search Engine Optimisation', href: '/#services', icon: Search }
     ]
   }
 };
@@ -239,7 +239,7 @@ export default function Header() {
           <div className="flex lg:hidden items-center gap-2">
             <button
               onClick={toggleTheme}
-              className="theme-toggle"
+              className="theme-toggle bg-white dark:bg-[#111] border border-slate-200 dark:border-white/10"
               aria-label="Toggle theme"
             >
               {theme === 'dark' ? (
@@ -249,7 +249,7 @@ export default function Header() {
               )}
             </button>
             <button
-              className="p-2 text-muted-foreground hover:text-white transition-colors"
+              className="p-2 bg-white dark:bg-[#111] border border-slate-200 dark:border-white/10 rounded-xl text-muted-foreground hover:text-slate-900 dark:hover:text-white transition-colors"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle menu"
             >
