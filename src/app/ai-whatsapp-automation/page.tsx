@@ -366,9 +366,14 @@ export default function AIWhatsAppAutomationLanding() {
           }
         }
         .heartbeat-btn {
+          background: var(--accent) !important;
+          background-image: none !important;
+          color: #ffffff !important;
           transition: all 0.3s ease !important;
         }
         .heartbeat-btn:hover {
+          background: var(--accent-light) !important;
+          background-image: none !important;
           transform: translateY(-2px) scale(1.02) !important;
           box-shadow: 0 10px 20px rgba(52, 204, 50, 0.3) !important;
         }
@@ -378,6 +383,11 @@ export default function AIWhatsAppAutomationLanding() {
         .heartbeat-red-btn:hover {
           transform: translateY(-2px) scale(1.02) !important;
           box-shadow: 0 10px 20px rgba(220, 38, 38, 0.3) !important;
+        }
+        .ai-whatsapp-landing .hover\\:bg-gradient-to-r:hover {
+          background: var(--accent) !important;
+          background-image: none !important;
+          border-color: transparent !important;
         }
 
         /* Infinite Marquee Scrolling */
