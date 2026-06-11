@@ -54,12 +54,96 @@ export default function AIWhatsAppAutomationLanding() {
   const [showPromoModal, setShowPromoModal] = useState(false);
   const [timeLeft, setTimeLeft] = useState({ minutes: 9, seconds: 59 });
   const { scrollY } = useScroll();
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const trackLead = () => {
     if (typeof window !== 'undefined' && (window as any).fbq) {
       (window as any).fbq('track', 'Lead');
     }
   };
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let animationId: number;
+    let particles: Array<{
+      x: number; y: number; vx: number; vy: number;
+      size: number; opacity: number; life: number; maxLife: number;
+    }> = [];
+
+    const resize = () => {
+      canvas.width = canvas.offsetWidth * window.devicePixelRatio;
+      canvas.height = canvas.offsetHeight * window.devicePixelRatio;
+      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    };
+
+    resize();
+    window.addEventListener('resize', resize);
+
+    const createParticle = () => {
+      const centerX = canvas.offsetWidth / 2;
+      return {
+        x: centerX + (Math.random() - 0.5) * 400,
+        y: Math.random() * canvas.offsetHeight * 0.4,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: -Math.random() * 0.5 - 0.1,
+        size: Math.random() * 2 + 0.5,
+        opacity: 0,
+        life: 0,
+        maxLife: Math.random() * 200 + 100,
+      };
+    };
+
+    for (let i = 0; i < 40; i++) {
+      const p = createParticle();
+      p.life = Math.random() * p.maxLife;
+      particles.push(p);
+    }
+
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.offsetWidth, canvas.offsetHeight);
+
+      if (particles.length < 50 && Math.random() < 0.1) {
+        particles.push(createParticle());
+      }
+
+      particles = particles.filter(p => p.life < p.maxLife);
+
+      particles.forEach(p => {
+        p.life++;
+        p.x += p.vx;
+        p.y += p.vy;
+
+        const progress = p.life / p.maxLife;
+        if (progress < 0.2) p.opacity = progress * 5;
+        else if (progress > 0.8) p.opacity = (1 - progress) * 5;
+        else p.opacity = 1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(52, 204, 50, ${p.opacity * 0.4})`;
+        ctx.fill();
+
+        // Soft glow around particle
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(52, 204, 50, ${p.opacity * 0.08})`;
+        ctx.fill();
+      });
+
+      animationId = requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    return () => {
+      cancelAnimationFrame(animationId);
+      window.removeEventListener('resize', resize);
+    };
+  }, []);
 
   // Scroll handler for Sticky CTA & Go to Top
   useEffect(() => {
@@ -418,7 +502,6 @@ export default function AIWhatsAppAutomationLanding() {
       `}} />
 
       {/* Background Floating Blurred Gradients */}
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-gradient-to-br from-emerald-500/10 to-transparent blur-[120px] rounded-full pointer-events-none z-0" />
       <div className="absolute top-1/3 right-1/4 w-[600px] h-[600px] bg-gradient-to-bl from-[#128C7E]/10 to-transparent blur-[150px] rounded-full pointer-events-none z-0" />
       <div className="absolute bottom-1/4 left-1/3 w-[500px] h-[500px] bg-gradient-to-tr from-[#25D366]/5 to-[#128C7E]/5 blur-[120px] rounded-full pointer-events-none z-0" />
 
@@ -438,80 +521,98 @@ export default function AIWhatsAppAutomationLanding() {
         </Link>
       </div>
 
+      {/* ───────────── HERO SECTION WRAPPER (FULL WIDTH BACKGROUND) ───────────── */}
+      <div className="hero-bg relative pt-16 pb-12 sm:pt-20 sm:pb-20 overflow-hidden w-full border-b border-white/5">
+        {/* Dot grid */}
+        <div className="hero-dots" />
+        
+        {/* Main glow bloom */}
+        <div className="hero-glow" />
+        <div className="hero-glow-secondary" />
+
+        {/* Canvas particles */}
+        <canvas
+          ref={canvasRef}
+          className="absolute inset-0 w-full h-full pointer-events-none"
+          style={{ zIndex: 1 }}
+        />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <section id="hero" className="scroll-mt-24 grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+            
+            {/* Hero Left Content */}
+            <div className="lg:col-span-7 space-y-6 md:space-y-8 text-left">
+              {/* Professional Single Premium Badge */}
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold backdrop-blur-md">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span>Complete White-Label SaaS Source Code</span>
+              </div>
+
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1] text-white">
+                Launch Your Own <span className="bg-gradient-to-r from-[#25D366] via-emerald-400 to-[#128C7E] bg-clip-text text-transparent">AI WhatsApp Automation</span> Business in 24 Hours
+              </h1>
+
+              <p className="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed">
+                Get the complete White Label AI WhatsApp Automation Source Code with OpenAI, Gemini, CRM, Lead Capture, Follow-Ups, and Commercial Resell Rights. Set your own pricing and keep 100% of the profits.
+              </p>
+
+              {/* CTAs */}
+              <div className="flex flex-row items-center gap-2.5 sm:gap-4 justify-start">
+                <Link 
+                  href={CHECKOUT_URL}
+                  onClick={trackLead}
+                  className="shimmer-btn heartbeat-btn group px-4 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-[#25D366] via-emerald-400 to-[#128C7E] hover:from-[#20bd5a] hover:via-emerald-500 hover:to-[#0f7c6e] text-white font-extrabold rounded-xl sm:rounded-2xl flex items-center justify-center gap-1.5 sm:gap-3 shadow-xl shadow-emerald-500/20 transition-all duration-300 hover:-translate-y-0.5 active:scale-95 text-center text-xs sm:text-base"
+                >
+                  Get Instant Access
+                  <ArrowRight className="w-3.5 h-3.5 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <a 
+                  href="#demo-video"
+                  className="shimmer-btn px-4 py-3 sm:px-8 sm:py-4 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 hover:text-emerald-400 text-white font-semibold rounded-xl sm:rounded-2xl flex items-center justify-center gap-1.5 sm:gap-2 transition-all duration-300 active:scale-95 text-center text-xs sm:text-base"
+                >
+                  <Play className="w-3 h-3 sm:w-4 sm:h-4 fill-current text-emerald-400 animate-pulse" />
+                  Watch Demo
+                </a>
+              </div>
+
+              {/* Structured Trust Bar */}
+              <div className="pt-6 border-t border-white/5 flex flex-wrap items-center gap-x-8 gap-y-3 text-xs md:text-sm text-slate-400">
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                  <span>One-Time Payment</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                  <span>Commercial Resell License</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                  <span>100% Profit Margins</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Hero Right Content - Raw Image */}
+            <div className="lg:col-span-5 flex items-center justify-center">
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.96 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, cubicBezier: [0.16, 1, 0.3, 1] }}
+                className="w-full"
+              >
+                <img 
+                  src="/navbox.png" 
+                  alt="AI WhatsApp SaaS Automation Dashboard" 
+                  className="w-full h-auto max-w-full block mx-auto object-contain"
+                />
+              </motion.div>
+            </div>
+          </section>
+        </div>
+      </div>
+
       {/* Main Container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
-        {/* ───────────── HERO SECTION ───────────── */}
-        <section id="hero" className="scroll-mt-24 pt-10 pb-12 sm:pt-16 sm:pb-20 grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
-          
-          {/* Hero Left Content */}
-          <div className="lg:col-span-7 space-y-6 md:space-y-8 text-left">
-            {/* Professional Single Premium Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold backdrop-blur-md">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>Complete White-Label SaaS Source Code</span>
-            </div>
-
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1] text-white">
-              Launch Your Own <span className="bg-gradient-to-r from-[#25D366] via-emerald-400 to-[#128C7E] bg-clip-text text-transparent">AI WhatsApp Automation</span> Business in 24 Hours
-            </h1>
-
-            <p className="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed">
-              Get the complete White Label AI WhatsApp Automation Source Code with OpenAI, Gemini, CRM, Lead Capture, Follow-Ups, and Commercial Resell Rights. Set your own pricing and keep 100% of the profits.
-            </p>
-
-            {/* CTAs */}
-            <div className="flex flex-row items-center gap-2.5 sm:gap-4 justify-start">
-              <Link 
-                href={CHECKOUT_URL}
-                onClick={trackLead}
-                className="shimmer-btn heartbeat-btn group px-4 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-[#25D366] via-emerald-400 to-[#128C7E] hover:from-[#20bd5a] hover:via-emerald-500 hover:to-[#0f7c6e] text-white font-extrabold rounded-xl sm:rounded-2xl flex items-center justify-center gap-1.5 sm:gap-3 shadow-xl shadow-emerald-500/20 transition-all duration-300 hover:-translate-y-0.5 active:scale-95 text-center text-xs sm:text-base"
-              >
-                Get Instant Access
-                <ArrowRight className="w-3.5 h-3.5 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <a 
-                href="#demo-video"
-                className="shimmer-btn px-4 py-3 sm:px-8 sm:py-4 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 hover:text-emerald-400 text-white font-semibold rounded-xl sm:rounded-2xl flex items-center justify-center gap-1.5 sm:gap-2 transition-all duration-300 active:scale-95 text-center text-xs sm:text-base"
-              >
-                <Play className="w-3 h-3 sm:w-4 sm:h-4 fill-current text-emerald-400 animate-pulse" />
-                Watch Demo
-              </a>
-            </div>
-
-            {/* Structured Trust Bar */}
-            <div className="pt-6 border-t border-white/5 flex flex-wrap items-center gap-x-8 gap-y-3 text-xs md:text-sm text-slate-400">
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                <span>One-Time Payment</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                <span>Commercial Resell License</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                <span>100% Profit Margins</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Hero Right Content - Raw Image */}
-          <div className="lg:col-span-5 flex items-center justify-center">
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, cubicBezier: [0.16, 1, 0.3, 1] }}
-              className="w-full"
-            >
-              <img 
-                src="/navbox.png" 
-                alt="AI WhatsApp SaaS Automation Dashboard" 
-                className="w-full h-auto max-w-full block mx-auto object-contain"
-              />
-            </motion.div>
-          </div>
-        </section>
 
         {/* ───────────── REVENUE OPPORTUNITY SECTION ───────────── */}
         <section className="py-16">
