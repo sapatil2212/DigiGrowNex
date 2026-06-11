@@ -361,10 +361,18 @@ export default function AIWhatsAppAutomationLanding() {
           }
         }
         .heartbeat-btn {
-          animation: heartbeat-glow 2.2s infinite ease-in-out !important;
+          transition: all 0.3s ease !important;
+        }
+        .heartbeat-btn:hover {
+          transform: translateY(-2px) scale(1.02) !important;
+          box-shadow: 0 10px 20px rgba(52, 204, 50, 0.3) !important;
         }
         .heartbeat-red-btn {
-          animation: heartbeat-red-glow 2.2s infinite ease-in-out !important;
+          transition: all 0.3s ease !important;
+        }
+        .heartbeat-red-btn:hover {
+          transform: translateY(-2px) scale(1.02) !important;
+          box-shadow: 0 10px 20px rgba(220, 38, 38, 0.3) !important;
         }
 
         /* Infinite Marquee Scrolling */
