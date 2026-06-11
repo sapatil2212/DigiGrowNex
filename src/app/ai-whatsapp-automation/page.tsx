@@ -144,6 +144,96 @@ export default function AIWhatsAppAutomationLanding() {
           --border-light: rgba(255, 255, 255, 0.15) !important;
           --muted: #94a3b8 !important;
           --muted-fg: #64748b !important;
+          --accent: #34CC32 !important;
+          --accent-light: #52d950 !important;
+          --accent-dark: #28a326 !important;
+        }
+
+        /* Use main website green for text, background, border and gradient classes */
+        .ai-whatsapp-landing .text-emerald-400,
+        .ai-whatsapp-landing .text-emerald-300,
+        .ai-whatsapp-landing .text-emerald-500 {
+          color: var(--accent) !important;
+        }
+        .ai-whatsapp-landing .bg-emerald-500,
+        .ai-whatsapp-landing .bg-emerald-400 {
+          background-color: var(--accent) !important;
+        }
+        .ai-whatsapp-landing .bg-emerald-500\\/5 {
+          background-color: rgba(52, 204, 50, 0.05) !important;
+        }
+        .ai-whatsapp-landing .bg-emerald-500\\/10 {
+          background-color: rgba(52, 204, 50, 0.1) !important;
+        }
+        .ai-whatsapp-landing .bg-emerald-500\\/20 {
+          background-color: rgba(52, 204, 50, 0.2) !important;
+        }
+        .ai-whatsapp-landing .bg-emerald-500\\/25 {
+          background-color: rgba(52, 204, 50, 0.25) !important;
+        }
+        .ai-whatsapp-landing .border-emerald-500\\/20 {
+          border-color: rgba(52, 204, 50, 0.2) !important;
+        }
+        .ai-whatsapp-landing .border-emerald-500\\/40 {
+          border-color: rgba(52, 204, 50, 0.4) !important;
+        }
+        .ai-whatsapp-landing .border-emerald-500\\/25 {
+          border-color: rgba(52, 204, 50, 0.25) !important;
+        }
+        .ai-whatsapp-landing .shadow-emerald-500\\/20 {
+          --tw-shadow-color: rgba(52, 204, 50, 0.2) !important;
+        }
+        .ai-whatsapp-landing .shadow-emerald-500\\/25 {
+          --tw-shadow-color: rgba(52, 204, 50, 0.25) !important;
+        }
+        .ai-whatsapp-landing .selection\\:bg-emerald-500::selection {
+          background-color: var(--accent) !important;
+        }
+
+        /* Override arbitrary hex brand gradients for gradients & glows to match main website green */
+        .ai-whatsapp-landing .bg-gradient-to-r.from-\\[\\#25D366\\].via-emerald-400.to-\\[\\#128C7E\\] {
+          background-image: linear-gradient(to right, var(--accent), var(--accent-light), var(--accent-dark)) !important;
+        }
+        .ai-whatsapp-landing .from-\\[\\#25D366\\].via-emerald-400.to-\\[\\#128C7E\\] {
+          background-image: linear-gradient(to right, var(--accent), var(--accent-light), var(--accent-dark)) !important;
+        }
+        .ai-whatsapp-landing .bg-gradient-to-r.from-\\[\\#25D366\\].to-\\[\\#128C7E\\] {
+          background-image: linear-gradient(to right, var(--accent), var(--accent-dark)) !important;
+        }
+        .ai-whatsapp-landing .hover\\:from-\\[\\#25D366\\\]:hover {
+          background-image: linear-gradient(to right, var(--accent), var(--accent-dark)) !important;
+        }
+        .ai-whatsapp-landing .hover\\:from-\\[\\#20bd5a\\]:hover {
+          background-image: linear-gradient(to right, var(--accent-light), var(--accent), var(--accent-dark)) !important;
+        }
+        .ai-whatsapp-landing .bg-gradient-to-r.from-emerald-500\\/10 {
+          background-image: linear-gradient(to right, rgba(52, 204, 50, 0.1), transparent) !important;
+        }
+        .ai-whatsapp-landing .bg-gradient-to-br.from-emerald-500\\/10 {
+          background-image: linear-gradient(to bottom right, rgba(52, 204, 50, 0.1), transparent) !important;
+        }
+        .ai-whatsapp-landing .bg-gradient-to-bl.from-\\[\\#128C7E\\]\\/10 {
+          background-image: linear-gradient(to bottom left, rgba(40, 163, 38, 0.1), transparent) !important;
+        }
+        .ai-whatsapp-landing .bg-gradient-to-tr.from-\\[\\#25D366\\]\\/5.to-\\[\\#128C7E\\]\\/5 {
+          background-image: linear-gradient(to top right, rgba(52, 204, 50, 0.05), rgba(40, 163, 38, 0.05)) !important;
+        }
+        .ai-whatsapp-landing .bg-emerald-500\\/10.blur-\\[120px\\] {
+          background-color: rgba(52, 204, 50, 0.1) !important;
+        }
+        .ai-whatsapp-landing .from-emerald-500\\/10 {
+          --tw-gradient-from: rgba(52, 204, 50, 0.1) !important;
+          --tw-gradient-to: transparent !important;
+          --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+        }
+        .ai-whatsapp-landing .from-\\[\\#25D366\\]\\/5 {
+          --tw-gradient-from: rgba(52, 204, 50, 0.05) !important;
+        }
+        .ai-whatsapp-landing .to-\\[\\#128C7E\\]\\/5 {
+          --tw-gradient-to: rgba(40, 163, 38, 0.05) !important;
+        }
+        .ai-whatsapp-landing .from-\\[\\#128C7E\\]\\/10 {
+          --tw-gradient-from: rgba(40, 163, 38, 0.1) !important;
         }
 
         /* Ensure text elements have correct contrast on dark background */
@@ -174,8 +264,8 @@ export default function AIWhatsAppAutomationLanding() {
         }
         .ai-whatsapp-landing .glass-card:hover {
           background: rgba(15, 23, 42, 0.65) !important;
-          border-color: rgba(16, 185, 129, 0.2) !important;
-          box-shadow: 0 0 30px rgba(16, 185, 129, 0.05) !important;
+          border-color: rgba(52, 204, 50, 0.2) !important;
+          box-shadow: 0 0 30px rgba(52, 204, 50, 0.05) !important;
         }
         .ai-whatsapp-landing .glass {
           background: rgba(15, 23, 42, 0.55) !important;
@@ -225,27 +315,27 @@ export default function AIWhatsAppAutomationLanding() {
           animation: shimmer 2.5s infinite !important;
         }
 
-        /* Heartbeat glowing animations */
+        /* Heartbeat glowing animations using main website green */
         @keyframes heartbeat-glow {
           0%, 100% {
             transform: scale(1);
-            box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 0 15px rgba(52, 204, 50, 0.4);
           }
           14% {
             transform: scale(1.03);
-            box-shadow: 0 0 25px rgba(37, 211, 102, 0.7);
+            box-shadow: 0 0 25px rgba(52, 204, 50, 0.7);
           }
           28% {
             transform: scale(1.01);
-            box-shadow: 0 0 18px rgba(37, 211, 102, 0.5);
+            box-shadow: 0 0 18px rgba(52, 204, 50, 0.5);
           }
           42% {
             transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(37, 211, 102, 0.8);
+            box-shadow: 0 0 30px rgba(52, 204, 50, 0.8);
           }
           70% {
             transform: scale(1);
-            box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 0 15px rgba(52, 204, 50, 0.4);
           }
         }
         @keyframes heartbeat-red-glow {
@@ -293,6 +383,7 @@ export default function AIWhatsAppAutomationLanding() {
         }
         .animate-marquee:hover {
           animation-play-state: paused !important;
+          background-image: none !important;
         }
         .mask-grad {
           mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent) !important;
