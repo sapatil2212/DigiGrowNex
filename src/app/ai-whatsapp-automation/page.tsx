@@ -288,9 +288,12 @@ export default function AIWhatsAppAutomationLanding() {
         }
 
         /* Shimmer button animation */
-        @keyframes shimmer {
+        @keyframes shimmer-sweep {
+          0% {
+            transform: translateX(-150%) skewX(-20deg);
+          }
           100% {
-            transform: translateX(100%);
+            transform: translateX(150%) skewX(-20deg);
           }
         }
         .shimmer-btn {
@@ -301,18 +304,20 @@ export default function AIWhatsAppAutomationLanding() {
           content: '' !important;
           position: absolute !important;
           top: 0 !important;
-          right: 0 !important;
-          bottom: 0 !important;
           left: 0 !important;
-          transform: translateX(-100%) !important;
-          background-image: linear-gradient(
+          width: 200% !important;
+          height: 100% !important;
+          background: linear-gradient(
             90deg,
             rgba(255, 255, 255, 0) 0%,
-            rgba(255, 255, 255, 0.15) 20%,
-            rgba(255, 255, 255, 0.4) 60%,
+            rgba(255, 255, 255, 0.1) 30%,
+            rgba(255, 255, 255, 0.3) 50%,
+            rgba(255, 255, 255, 0.1) 70%,
             rgba(255, 255, 255, 0) 100%
           ) !important;
-          animation: shimmer 2.5s infinite !important;
+          animation: shimmer-sweep 3s infinite linear !important;
+          pointer-events: none !important;
+          z-index: 1 !important;
         }
 
         /* Heartbeat glowing animations using main website green */
