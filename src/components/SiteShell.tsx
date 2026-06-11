@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 import Header from './Header';
 import Footer from './Footer';
 
-const HIDE_CHROME = ['/book-appointment'];
+const HIDE_CHROME = ['/book-appointment', '/ai-whatsapp-automation'];
 
 export default function SiteShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();

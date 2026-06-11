@@ -588,7 +588,7 @@ function ManageSection() {
   ];
 
   return (
-    <section id="products" className="py-24 relative overflow-hidden">
+    <section className="py-24 relative">
       <div className="section-glow section-glow-top" />
       <div className="section-glow section-glow-left" />
       <div className="section-glow section-glow-right" />
@@ -965,7 +965,7 @@ function ServiceStackCard({
 
 function ServicesStackSection() {
   return (
-    <section id="services" className="py-24 relative">
+    <section className="py-24 relative">
       <div className="section-glow section-glow-top" />
       <div className="section-glow section-glow-left" />
       <div className="section-glow section-glow-right" />
