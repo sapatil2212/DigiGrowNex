@@ -233,6 +233,47 @@ export default function AIWhatsAppAutomationLanding() {
           --accent-dark: #28a326 !important;
         }
 
+        .ai-whatsapp-landing .image-glow {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 500px;
+          height: 500px;
+          max-width: 150%;
+          max-height: 150%;
+          background: radial-gradient(
+            circle,
+            rgba(52, 204, 50, 0.25) 0%,
+            rgba(52, 204, 50, 0.08) 45%,
+            transparent 70%
+          ) !important;
+          filter: blur(80px) !important;
+          pointer-events: none !important;
+          z-index: 0 !important;
+          mix-blend-mode: screen !important;
+        }
+
+        @media (min-width: 1024px) {
+          .ai-whatsapp-landing .hero-bg .hero-glow {
+            left: 75% !important;
+          }
+          .ai-whatsapp-landing .hero-bg .hero-glow-secondary {
+            left: 75% !important;
+          }
+        }
+
+        @media (max-width: 1023px) {
+          .ai-whatsapp-landing .hero-bg .hero-glow {
+            top: 55% !important;
+            left: 50% !important;
+          }
+          .ai-whatsapp-landing .hero-bg .hero-glow-secondary {
+            top: 55% !important;
+            left: 50% !important;
+          }
+        }
+
         /* Use main website green for text, background, border and gradient classes */
         .ai-whatsapp-landing .text-emerald-400,
         .ai-whatsapp-landing .text-emerald-300,
@@ -593,12 +634,13 @@ export default function AIWhatsAppAutomationLanding() {
             </div>
 
             {/* Hero Right Content - Raw Image */}
-            <div className="lg:col-span-5 flex items-center justify-center">
+            <div className="lg:col-span-5 flex items-center justify-center relative">
+              <div className="image-glow" />
               <motion.div 
                 initial={{ opacity: 0, scale: 0.96 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, cubicBezier: [0.16, 1, 0.3, 1] }}
-                className="w-full"
+                className="w-full relative z-10"
               >
                 <img 
                   src="/navbox.png" 
