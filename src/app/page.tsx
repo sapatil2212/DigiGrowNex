@@ -1009,12 +1009,14 @@ function ServicesStackSection() {
 /* ───────────── Testimonials ───────────── */
 function TestimonialsSection() {
   const testimonials = [
-    { name: 'Michael Wilson', handle: '@michael_wilson', text: 'Effortlessly schedule posts across multiple platforms with digigrownex.' },
-    { name: 'Jessica Garcia', handle: '@jessica_garcia', text: 'The analytics insights provided by digigrownex have been invaluable.' },
-    { name: 'David Martinez', handle: '@david_martinez', text: 'digigrownex has saved us so much time with its automated features.' },
-    { name: 'Sophia Rodriguez', handle: '@sophia_rodriguez', text: 'Love the user-friendly interface, powerful capabilities of digigrownex.' },
-    { name: 'John Doe', handle: '@john_doe', text: 'Their corporate branding strategies skyrocketed our engagement metrics overnight.' },
-    { name: 'Emily Brown', handle: '@emily_brown', text: 'Highly recommend digigrownex\'s custom web development team. Flawless execution.' },
+    { name: 'Arya Foods', handle: '@aryafoods', text: 'DigiGrowNex helped us build our online delivery platform and scale our local SEO. Our organic sales have doubled!' },
+    { name: 'DS Moto', handle: '@dsmoto', text: 'Their WhatsApp Business API integration has automated our service bookings and customer followups. Extremely efficient!' },
+    { name: 'Hotel Omkar Garden', handle: '@hotelomkargarden', text: 'Outstanding local marketing campaigns! Our event booking inquiries for weddings and banquets skyrocketed.' },
+    { name: 'Laser Dental', handle: '@laserdental', text: 'The custom appointment booking website and IVR phone system DigiGrowNex set up has streamlined our patient flow.' },
+    { name: 'Jain Bakers', handle: '@jainbakers', text: 'Amazing branding work! The new logo, social media creatives, and packaging completely modernized our bakery brand.' },
+    { name: 'Lily Events', handle: '@lilyevents', text: 'Their search engine optimization (SEO) has put us on page 1 of Google for event planning in Maharashtra. Highly recommended!' },
+    { name: 'Pranika Arts', handle: '@pranikaarts', text: 'The e-commerce web application designed by DigiGrowNex is visually stunning and user-friendly. Our online art sales have reached new records.' },
+    { name: 'Trade Bharat', handle: '@tradebharat', text: 'Superb B2B lead generation campaigns! The quality of Google Ads and social media marketing exceeded all our targets.' },
   ];
 
   const track1 = [...testimonials, ...testimonials, ...testimonials, ...testimonials];
