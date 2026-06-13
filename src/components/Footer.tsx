@@ -1,30 +1,19 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Github, Twitter, Linkedin, Instagram } from 'lucide-react';
+import { Github, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from 'lucide-react';
 
 const footerLinks = {
-  Product: [
-    { label: 'Features', href: '/features' },
-    { label: 'Pricing', href: '/pricing' },
-    { label: 'Integrations', href: '/integrations' },
-    { label: 'How it works', href: '/how-it-works' },
+  Services: [
+    { label: 'WhatsApp Automation', href: '/ai-whatsapp-automation' },
+    { label: 'AI HMS System', href: '/ai-hms-system' },
+    { label: 'Web Development', href: '#' },
+    { label: 'Digital Marketing', href: '#' },
   ],
   Company: [
     { label: 'About', href: '#' },
     { label: 'Careers', href: '#' },
     { label: 'Blog', href: '/blog' },
     { label: 'Contact', href: '/help-center' },
-  ],
-  Resources: [
-    { label: 'Documentation', href: '#' },
-    { label: 'Case Studies', href: '/case-studies' },
-    { label: 'Help Center', href: '/help-center' },
-    { label: 'API', href: '#' },
-  ],
-  Legal: [
-    { label: 'Privacy', href: '/privacy' },
-    { label: 'Terms', href: '/terms' },
-    { label: 'Security', href: '#' },
   ],
 };
 
@@ -86,6 +75,29 @@ export default function Footer() {
               </ul>
             </div>
           ))}
+          <div>
+            <h4 className="text-sm font-semibold text-white mb-4">Contact</h4>
+            <ul className="space-y-3">
+              <li className="flex items-start gap-2 text-sm text-muted">
+                <Mail className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                <a href="mailto:digigrownex@gmail.com" className="hover:text-accent transition-colors break-all">
+                  digigrownex@gmail.com
+                </a>
+              </li>
+              <li className="flex items-start gap-2 text-sm text-muted">
+                <Phone className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                <a href="tel:+917745868073" className="hover:text-accent transition-colors">
+                  +91 77458 68073
+                </a>
+              </li>
+              <li className="flex items-start gap-2 text-sm text-muted">
+                <MapPin className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                <span className="leading-relaxed">
+                  B-92, Poonam apartment, Sahakar Nagar Pune 411009
+                </span>
+              </li>
+            </ul>
+          </div>
         </div>
         <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-4" style={{ borderTop: '1px solid var(--border)' }}>
           <p className="text-xs text-muted">© {new Date().getFullYear()} digigrownex. All rights reserved.</p>

@@ -57,15 +57,21 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed transition-all duration-500 z-50 border ${
         scrolled
-          ? 'glass shadow-lg'
-          : 'bg-transparent'
+          ? 'top-4 left-4 right-4 mx-auto max-w-7xl rounded-2xl glass shadow-xl'
+          : 'top-0 left-0 right-0 bg-transparent border-transparent rounded-none'
       }`}
-      style={{ borderBottom: scrolled ? '1px solid var(--glass-border)' : 'none' }}
+      style={{
+        borderColor: scrolled ? 'var(--glass-border)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(8px)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'blur(8px)' : 'none',
+      }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-18">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className={`flex items-center justify-between transition-all duration-500 ${
+          scrolled ? 'h-14' : 'h-16 lg:h-20'
+        }`}>
           {/* Logo */}
           <Link href="/" className="flex items-center group">
             <Image
@@ -261,7 +267,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="lg:hidden glass animate-fade-in" style={{ borderTop: '1px solid var(--glass-border)' }}>
+        <div className="lg:hidden animate-fade-in" style={{ borderTop: '1px solid var(--border)' }}>
           <div className="max-w-7xl mx-auto px-4 py-4 space-y-1">
               <Link href="/" className="block px-4 py-3 text-sm text-muted-foreground hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors font-medium" onClick={() => setMobileOpen(false)}>HOME</Link>
               <Link href="/about" className="block px-4 py-3 text-sm text-muted-foreground hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors font-medium" onClick={() => setMobileOpen(false)}>ABOUT</Link>
