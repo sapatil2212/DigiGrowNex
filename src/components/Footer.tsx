@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Github, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import { Github, Facebook, Linkedin, Instagram, Mail, Phone, MapPin } from 'lucide-react';
 
 const footerLinks = {
   Services: [
@@ -11,17 +11,17 @@ const footerLinks = {
   ],
   Company: [
     { label: 'About', href: '#' },
-    { label: 'Careers', href: '#' },
+    { label: 'Careers', href: '/careers' },
     { label: 'Blog', href: '/blog' },
     { label: 'Contact', href: '/help-center' },
   ],
 };
 
 const socialLinks = [
-  { icon: Twitter, href: '#', label: 'Twitter' },
-  { icon: Github, href: '#', label: 'GitHub' },
+  { icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61588671227643', label: 'Facebook' },
+  { icon: Github, href: 'https://github.com/sapatil2212?tab=repositories', label: 'GitHub' },
   { icon: Linkedin, href: '#', label: 'LinkedIn' },
-  { icon: Instagram, href: '#', label: 'Instagram' },
+  { icon: Instagram, href: 'https://www.instagram.com/digigrownex/', label: 'Instagram' },
 ];
 
 export default function Footer() {

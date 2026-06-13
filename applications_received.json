@@ -1,0 +1,22 @@
+[
+  {
+    "id": "1781342399123",
+    "name": "Test",
+    "email": "swapnilpatil221298@gmail.com",
+    "phone": "+918830553868",
+    "job": "Video Editor",
+    "portfolio": "https://drive.google.com/file/d/1sGx7zunFD0fQ4aSyNhGfG0YeadK3F0EL/view?usp=sharing",
+    "coverLetter": "",
+    "submittedAt": "2026-06-13T09:19:59.123Z"
+  },
+  {
+    "id": "1781342998089",
+    "name": "Jane Doe",
+    "email": "jane.doe@example.com",
+    "phone": "7745868073",
+    "job": "Sales Executive",
+    "portfolio": "https://github.com/janedoe",
+    "coverLetter": "Hi, I would love to join the team!",
+    "submittedAt": "2026-06-13T09:29:58.089Z"
+  }
+]
