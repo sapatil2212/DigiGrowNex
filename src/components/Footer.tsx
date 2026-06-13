@@ -22,8 +22,8 @@ const footerLinks = {
     { label: 'API', href: '#' },
   ],
   Legal: [
-    { label: 'Privacy', href: '#' },
-    { label: 'Terms', href: '#' },
+    { label: 'Privacy', href: '/privacy' },
+    { label: 'Terms', href: '/terms' },
     { label: 'Security', href: '#' },
   ],
 };
@@ -90,8 +90,8 @@ export default function Footer() {
         <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-4" style={{ borderTop: '1px solid var(--border)' }}>
           <p className="text-xs text-muted">© {new Date().getFullYear()} digigrownex. All rights reserved.</p>
           <div className="flex gap-6">
-            <Link href="#" className="text-xs text-muted hover:text-accent transition-colors">Privacy Policy</Link>
-            <Link href="#" className="text-xs text-muted hover:text-accent transition-colors">Terms of Service</Link>
+            <Link href="/privacy" className="text-xs text-muted hover:text-accent transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="text-xs text-muted hover:text-accent transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>

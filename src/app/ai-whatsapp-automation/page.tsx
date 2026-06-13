@@ -8,7 +8,7 @@ import {
   Code, GraduationCap, DollarSign, ArrowRight, ShieldCheck, CheckCircle2, 
   ChevronDown, Check, Star, RefreshCw, X, Play, Video, Smartphone, 
   AlertCircle, HelpCircle, CheckSquare, Layers, Globe, Calendar, Send, ArrowUp,
-  Search, Share2
+  Search, Share2, Activity
 } from 'lucide-react';
 
 // Pricing Checkout URL
@@ -1759,34 +1759,16 @@ export default function AIWhatsAppAutomationLanding() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-1 max-w-md mx-auto gap-6">
             {[
               {
-                title: 'AI Local Lead Extractor',
-                desc: 'Extract and scrape high-paying local business leads directly from Google Maps and business directories. Includes outreach tracking.',
-                tag: '75% OFF',
-                regularPrice: '₹19,999',
-                offerPrice: '₹4,999',
-                link: CHECKOUT_URL,
-                icon: <Search className="w-6 h-6 text-emerald-400" />
-              },
-              {
-                title: 'AI Cold Email Auto-Pilot',
-                desc: 'Configure advanced multi-channel cold email and DM workflows. Automatically crafts hyper-personalized context sequences that convert.',
-                tag: '80% OFF',
-                regularPrice: '₹49,999',
-                offerPrice: '₹9,999',
-                link: CHECKOUT_URL,
-                icon: <Send className="w-6 h-6 text-emerald-400" />
-              },
-              {
-                title: 'AI Social Media Copilot',
-                desc: 'Auto-generate graphics, schedule copy captions, and publish directly to Facebook, Instagram, LinkedIn, and Twitter in 1 click.',
-                tag: '60% OFF',
-                regularPrice: '₹19,999',
-                offerPrice: '₹7,999',
-                link: CHECKOUT_URL,
-                icon: <Share2 className="w-6 h-6 text-emerald-400" />
+                title: 'AI Powered Hospital Management System White-Label Source Code',
+                desc: 'A complete multi-tenant SaaS platform connecting doctors and patients. Features AI-powered prescriptions, smart scheduling, billing, and clinic analytics.',
+                tag: '98% OFF',
+                regularPrice: '₹14,999',
+                offerPrice: '₹199',
+                link: '/ai-hms-system',
+                icon: <Activity className="w-6 h-6 text-emerald-400" />
               }
             ].map((prod, i) => (
               <motion.div
