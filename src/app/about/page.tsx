@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, Check, Users, Target, Award, TrendingUp, Sparkles, Heart, Zap, Shield } from 'lucide-react';
+import { ArrowRight, Check, Target, Award, TrendingUp, Sparkles, Heart, Zap, Shield } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function AboutPage() {
@@ -35,12 +35,7 @@ export default function AboutPage() {
     { value: '10+', label: 'Years Experience' },
   ];
 
-  const team = [
-    { name: 'Swapnil Patil', role: 'Founder & CEO', description: 'Visionary leader with 10+ years in digital marketing' },
-    { name: 'Priya Sharma', role: 'Creative Director', description: 'Award-winning designer specializing in brand identity' },
-    { name: 'Rahul Mehta', role: 'Tech Lead', description: 'Full-stack expert building scalable web solutions' },
-    { name: 'Anjali Desai', role: 'Marketing Strategist', description: 'Data-driven marketer with proven ROI track record' },
-  ];
+
 
   const milestones = [
     { year: '2014', title: 'Company Founded', description: 'Started with a vision to transform digital marketing' },
@@ -221,40 +216,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="section-glow section-glow-left" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 font-display">
-              Meet Our Team
-            </h2>
-            <p className="text-muted max-w-2xl mx-auto">
-              The talented people behind your success
-            </p>
-          </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {team.map((member, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="glass-card rounded-2xl p-6 text-center group hover:border-accent/30 transition-all"
-              >
-                <div className="w-20 h-20 rounded-full bg-accent/10 flex items-center justify-center text-accent mx-auto mb-4 group-hover:scale-110 transition-transform">
-                  <Users className="w-10 h-10" />
-                </div>
-                <h3 className="text-lg font-bold text-white mb-1">{member.name}</h3>
-                <p className="text-sm text-accent mb-3">{member.role}</p>
-                <p className="text-xs text-muted leading-relaxed">{member.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="py-24 relative overflow-hidden">
