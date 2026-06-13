@@ -64,8 +64,8 @@ export default function Header() {
       }`}
       style={{
         borderColor: scrolled ? 'var(--glass-border)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(8px)' : 'none',
-        WebkitBackdropFilter: scrolled ? 'blur(8px)' : 'none',
+        backdropFilter: scrolled ? 'blur(6px)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'blur(6px)' : 'none',
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -120,7 +120,7 @@ export default function Header() {
 
               {servicesOpen && (
                 <div className="absolute top-full left-1/2 -translate-x-1/2 mt-0 pt-2 w-[800px] z-50 animate-fade-in group-hover:block">
-                  <div className="bg-white dark:bg-[#0a0a0a] border border-slate-200 dark:border-white/10 rounded-2xl p-6 shadow-2xl flex gap-8">
+                  <div className="bg-white/95 dark:bg-[#0a0a0a]/90 backdrop-blur-[4px] border border-slate-200 dark:border-white/10 rounded-2xl p-6 shadow-2xl flex gap-8">
                    <div className="flex-1 grid grid-cols-2 gap-8">
                      <div>
                        <h4 className="text-[11px] font-bold text-accent uppercase tracking-wider mb-5">{servicesMenu.col1.title}</h4>
@@ -178,7 +178,7 @@ export default function Header() {
 
               {productsOpen && (
                 <div className="absolute top-full left-0 mt-0 pt-2 w-[280px] z-50 animate-fade-in group-hover:block">
-                  <div className="bg-white dark:bg-[#0a0a0a] border border-slate-200 dark:border-white/10 rounded-2xl p-4 shadow-2xl">
+                  <div className="bg-white/95 dark:bg-[#0a0a0a]/90 backdrop-blur-[4px] border border-slate-200 dark:border-white/10 rounded-2xl p-4 shadow-2xl">
                     <ul className="space-y-2">
                       {productsMenu.map(({ label, href, icon: Icon }) => (
                         <li key={label}>
@@ -267,7 +267,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="lg:hidden animate-fade-in" style={{ borderTop: '1px solid var(--border)' }}>
+        <div className="lg:hidden animate-fade-in bg-white/95 dark:bg-[#0a0a0a]/90 backdrop-blur-[4px]" style={{ borderTop: '1px solid var(--border)' }}>
           <div className="max-w-7xl mx-auto px-4 py-4 space-y-1">
               <Link href="/" className="block px-4 py-3 text-sm text-muted-foreground hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors font-medium" onClick={() => setMobileOpen(false)}>HOME</Link>
               <Link href="/about" className="block px-4 py-3 text-sm text-muted-foreground hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors font-medium" onClick={() => setMobileOpen(false)}>ABOUT</Link>
