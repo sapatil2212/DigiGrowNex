@@ -1,10 +1,10 @@
 'use client';
 
-import { ArrowRight, Mail, Phone, MapPin, Clock, Send, Sparkles, Check } from 'lucide-react';
+import { ArrowRight, Mail, Phone, MapPin, Clock, Send, Sparkles, Check, MessageSquare } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 
-export default function ContactPage() {
+export default function ContactUsPage() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -45,37 +45,36 @@ export default function ContactPage() {
     {
       icon: <Mail className="w-4 h-4" />,
       title: 'Email Address',
-      details: ['digigrownex@gmail.com'],
-      link: 'mailto:digigrownex@gmail.com',
+      details: ['support@digigrownex.online'],
+      link: 'mailto:support@digigrownex.online',
     },
     {
       icon: <MapPin className="w-4 h-4" />,
       title: 'Office Address',
-      details: ['B-92, Poonam apartment,', 'Sahakar Nagar, Pune 411009'],
-      link: 'https://maps.google.com/?q=Poonam+apartment+Sahakar+Nagar+Pune+411009',
+      details: ['Sahakar Nagar, Pune,', 'Maharashtra, India'],
+      link: 'https://maps.google.com/?q=Sahakar+Nagar+Pune+India',
     },
     {
       icon: <Clock className="w-4 h-4" />,
-      title: 'Working Hours',
-      details: ['Mon - Sat: 9:00 AM - 7:00 PM', 'Sunday: Closed'],
+      title: 'Business Hours',
+      details: ['Mon - Sat: 10:00 AM - 7:00 PM IST', 'Sunday: Closed'],
       link: '#',
     },
   ];
 
   const services = [
-    'Custom Web Development',
-    'UI/UX Design',
-    'Digital Marketing & SEO',
-    'Google Cloud Services',
-    'WhatsApp Business API',
-    'Tata Tele Telecom Solutions',
-    'IVR & Cloud Telephony',
-    'Branding & Graphic Design',
+    'Website Development',
+    'AI Automation & Workflows',
+    'WhatsApp Business API Solutions',
+    'SEO Services',
+    'Digital Marketing & Ads',
+    'Graphic & Brand Design',
+    'SaaS Solutions Development',
     'Other Service Inquiry',
   ];
 
   return (
-    <main className="min-h-screen relative overflow-hidden">
+    <main className="min-h-screen relative overflow-hidden bg-[#0a0a0a] text-fg selection:bg-accent selection:text-white">
       {/* Background decoration */}
       <div className="hero-dots" />
       <div className="hero-glow" />
@@ -101,7 +100,7 @@ export default function ContactPage() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight leading-[1.1] font-display mb-6"
             >
-              Let's Build Something <span className="gradient-text">Amazing</span>
+              Connect with <span className="gradient-text">DigiGrowNex</span>
             </motion.h1>
 
             <motion.p
@@ -110,7 +109,7 @@ export default function ContactPage() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-base sm:text-lg text-muted max-w-2xl mx-auto leading-relaxed"
             >
-              Have a project in mind, need tech support, or want to explore digital growth strategies? Message our experts now.
+              Have a project in mind, need automation support, or want to explore digital growth strategies? Message our experts now.
             </motion.p>
           </div>
         </div>
@@ -203,7 +202,7 @@ export default function ContactPage() {
                               value={formData.company}
                               onChange={handleChange}
                               className="w-full px-4 py-3 rounded-lg border text-sm text-fg transition-all placeholder:text-muted/50 focus:ring-2 focus:ring-accent/20 bg-surface-1/50 border-border"
-                              placeholder="e.g. Tech Solutions Pvt Ltd"
+                              placeholder="e.g. DigiGrowNex Technologies"
                             />
                           </div>
                         </div>
@@ -252,24 +251,37 @@ export default function ContactPage() {
                           />
                         </div>
 
-                        <button
-                          type="submit"
-                          disabled={isSubmitting}
-                          className="glow-button w-full px-6 py-3.5 text-sm font-bold rounded-lg inline-flex items-center justify-center gap-2 transition-transform disabled:opacity-60 disabled:cursor-not-allowed hover:scale-[1.01] active:scale-95 shadow-lg shadow-accent/10"
-                          style={{ color: '#fff' }}
-                        >
-                          {isSubmitting ? (
-                            <>
-                              <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                              Processing Inquiry...
-                            </>
-                          ) : (
-                            <>
-                              Send Message
-                              <Send className="w-4 h-4" />
-                            </>
-                          )}
-                        </button>
+                        <div className="flex flex-col sm:flex-row gap-4">
+                          <button
+                            type="submit"
+                            disabled={isSubmitting}
+                            className="glow-button flex-1 px-6 py-3.5 text-sm font-bold rounded-lg inline-flex items-center justify-center gap-2 transition-transform disabled:opacity-60 disabled:cursor-not-allowed hover:scale-[1.01] active:scale-95 shadow-lg shadow-accent/10 text-white"
+                            style={{ color: '#fff' }}
+                          >
+                            {isSubmitting ? (
+                              <>
+                                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                                Processing Inquiry...
+                              </>
+                            ) : (
+                              <>
+                                Send Message
+                                <Send className="w-4 h-4" />
+                              </>
+                            )}
+                          </button>
+                          
+                          {/* WhatsApp CTA Button */}
+                          <a
+                            href="https://wa.me/917745868073?text=Hi%20DigiGrowNex%20Technologies,%20I'm%20interested%20in%20your%20services."
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-6 py-3.5 text-sm font-bold rounded-lg inline-flex items-center justify-center gap-2 transition-all hover:scale-[1.01] active:scale-95 border border-[#25D366] text-[#25D366] bg-[#25D366]/5 hover:bg-[#25D366]/10"
+                          >
+                            <MessageSquare className="w-4 h-4 fill-current" />
+                            Chat on WhatsApp
+                          </a>
+                        </div>
                       </form>
                     </motion.div>
                   ) : (
@@ -297,7 +309,7 @@ export default function ContactPage() {
                           setIsSubmitted(false);
                           setFormData({ name: '', email: '', phone: '', company: '', service: '', message: '' });
                         }}
-                        className="glow-button px-6 py-2.5 text-xs font-bold rounded-lg mt-4"
+                        className="glow-button px-6 py-2.5 text-xs font-bold rounded-lg mt-4 text-white"
                         style={{ color: '#fff' }}
                       >
                         Send Another Inquiry

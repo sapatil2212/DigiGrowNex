@@ -904,8 +904,8 @@ export default function AIWhatsAppAutomationLanding() {
               },
               {
                 icon: <Send className="w-4 h-4 sm:w-6 sm:h-6 text-emerald-400" />,
-                title: 'Broadcast Messaging',
-                desc: 'Sends bulk marketing campaigns and newsletters to client contacts with high deliverability rates.'
+                title: 'Customer Engagement Automation',
+                desc: 'Sends official templates, alerts, and appointment reminders to opted-in contacts securely.'
               },
               {
                 icon: <RefreshCw className="w-4 h-4 sm:w-6 sm:h-6 text-emerald-400" />,
@@ -1563,7 +1563,7 @@ export default function AIWhatsAppAutomationLanding() {
                 },
                 {
                   name: 'Mayur Amrutkar',
-                  role: 'Digiworld Infotech',
+                  role: 'DigiGrowNex Technologies',
                   text: 'Outstanding backend logic and Next.js frontend code quality. We have successfully deployed this SaaS setup for three different local businesses, generating recurring monthly retainers effortlessly.'
                 }
               ].concat([
@@ -1599,7 +1599,7 @@ export default function AIWhatsAppAutomationLanding() {
                 },
                 {
                   name: 'Mayur Amrutkar',
-                  role: 'Digiworld Infotech',
+                  role: 'DigiGrowNex Technologies',
                   text: 'Outstanding backend logic and Next.js frontend code quality. We have successfully deployed this SaaS setup for three different local businesses, generating recurring monthly retainers effortlessly.'
                 }
               ]).map((testi, i) => (
@@ -2141,7 +2141,7 @@ export default function AIWhatsAppAutomationLanding() {
           </motion.button>
         )}
       </AnimatePresence>
-
+ 
     </div>
   );
 }

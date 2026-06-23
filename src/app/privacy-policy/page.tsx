@@ -7,27 +7,26 @@ import { motion, AnimatePresence } from 'framer-motion';
 const sections = [
   { id: 'introduction', label: '1. Introduction', icon: <FileText className="w-4 h-4" /> },
   { id: 'collection', label: '2. Information We Collect', icon: <Eye className="w-4 h-4" /> },
-  { id: 'usage', label: '3. How We Use Information', icon: <Lock className="w-4 h-4" /> },
-  { id: 'channels', label: '4. WhatsApp & SMS Automation', icon: <Phone className="w-4 h-4" /> },
-  { id: 'sharing', label: '5. Data Sharing & Security', icon: <Shield className="w-4 h-4" /> },
-  { id: 'rights', label: '6. Your Rights & Choices', icon: <Scale className="w-4 h-4" /> },
-  { id: 'contact', label: '7. Contact Us', icon: <Mail className="w-4 h-4" /> },
+  { id: 'cookies', label: '3. Cookies & Analytics', icon: <Lock className="w-4 h-4" /> },
+  { id: 'usage', label: '4. How We Use Information', icon: <Lock className="w-4 h-4" /> },
+  { id: 'whatsapp', label: '5. WhatsApp Communications', icon: <Phone className="w-4 h-4" /> },
+  { id: 'security', label: '6. Data Security & Sharing', icon: <Shield className="w-4 h-4" /> },
+  { id: 'rights', label: '7. Your Rights & Choices', icon: <Scale className="w-4 h-4" /> },
+  { id: 'contact', label: '8. Contact Us', icon: <Mail className="w-4 h-4" /> },
 ];
 
-export default function PrivacyPolicy() {
+export default function PrivacyPolicyPage() {
   const [activeSection, setActiveSection] = useState('introduction');
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Toggle back to top button
       if (window.scrollY > 400) {
         setShowScrollTop(true);
       } else {
         setShowScrollTop(false);
       }
 
-      // Determine active section based on scroll position
       const scrollPosition = window.scrollY + 200;
       for (const section of sections) {
         const el = document.getElementById(section.id);
@@ -58,7 +57,7 @@ export default function PrivacyPolicy() {
   };
 
   return (
-    <main className="min-h-screen relative overflow-hidden">
+    <main className="min-h-screen relative overflow-hidden bg-[#0a0a0a] text-fg selection:bg-accent selection:text-white">
       {/* Background decoration */}
       <div className="hero-dots" />
       <div className="hero-glow" />
@@ -93,7 +92,7 @@ export default function PrivacyPolicy() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-sm sm:text-base text-muted"
             >
-              Last Updated: June 13, 2026 • Read how DigiGrowNex safeguards your personal data.
+              Last Updated: June 23, 2026 • Read how DigiGrowNex Technologies safeguards your personal data.
             </motion.p>
           </div>
         </div>
@@ -148,10 +147,10 @@ export default function PrivacyPolicy() {
                 </h2>
                 <div className="text-sm sm:text-base text-muted-foreground leading-relaxed space-y-4">
                   <p>
-                    Welcome to DigiGrowNex ("we," "our," or "us"). We are committed to protecting your privacy and ensuring the security of your personal data.
+                    Welcome to DigiGrowNex Technologies ("we," "our," or "us"). We are committed to protecting your privacy and ensuring the security of your personal data.
                   </p>
                   <p>
-                    This Privacy Policy explains how we collect, use, process, and protect your information when you visit our website, utilize our digital marketing and web consulting services, or interact with our automated systems (such as our AI WhatsApp Automation tool and Hospital Management Systems).
+                    This Privacy Policy explains how we collect, use, process, and protect your information when you visit our website, utilize our digital marketing and web consulting services, or interact with our automated systems (such as our AI WhatsApp Automation tool and CRM Systems).
                   </p>
                   <p>
                     By accessing or using our services, you consent to the collection and use of your information in accordance with this Privacy Policy. If you do not agree with these terms, please do not use our services.
@@ -167,19 +166,38 @@ export default function PrivacyPolicy() {
                 </h2>
                 <div className="text-sm sm:text-base text-muted-foreground leading-relaxed space-y-4">
                   <p>
-                    We collect several types of information to provide and improve our services to you:
+                    We collect several types of information to provide and improve our services:
                   </p>
                   <ul className="list-disc pl-6 space-y-2">
                     <li>
-                      <strong>Personal Identifiable Information (PII):</strong> When you register on our website, fill out appointment forms, or contact us, we may collect your name, email address, telephone number, business details, and job title.
+                      <strong>Personal Identifiable Information (PII):</strong> When you fill out contact forms, schedule appointments, or subscribe to updates, we may collect your name, email address, telephone number, business details, and job title.
                     </li>
                     <li>
                       <strong>Usage and Technical Data:</strong> We automatically collect log data and device parameters, including your IP address, browser type, operating system, page views, and time spent on our site.
                     </li>
                     <li>
-                      <strong>Communication Data:</strong> We may archive details of email exchanges, WhatsApp chat interactions, SMS logs, or IVR records if you contact us through these automated channels.
+                      <strong>Contact Forms:</strong> Details entered on our contact forms are secure and used solely to address your inquiries.
                     </li>
                   </ul>
+                </div>
+              </div>
+
+              {/* Cookies & Analytics */}
+              <div id="cookies" className="scroll-mt-28 space-y-4">
+                <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-3 font-display border-b border-border pb-3">
+                  <span className="p-1.5 rounded-lg bg-accent/10 text-accent"><Shield className="w-5 h-5" /></span>
+                  3. Cookies & Analytics
+                </h2>
+                <div className="text-sm sm:text-base text-muted-foreground leading-relaxed space-y-4">
+                  <p>
+                    We use cookies and similar tracking technologies to track activity on our service and hold certain information.
+                  </p>
+                  <p>
+                    <strong>Analytics:</strong> We use Google Analytics and Meta Pixels to analyze traffic patterns, understand demographics, and optimize our site's loading speeds and UI layout.
+                  </p>
+                  <p>
+                    You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our service.
+                  </p>
                 </div>
               </div>
 
@@ -187,59 +205,55 @@ export default function PrivacyPolicy() {
               <div id="usage" className="scroll-mt-28 space-y-4">
                 <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-3 font-display border-b border-border pb-3">
                   <span className="p-1.5 rounded-lg bg-accent/10 text-accent"><Lock className="w-5 h-5" /></span>
-                  3. How We Use Information
+                  4. How We Use Information
                 </h2>
                 <div className="text-sm sm:text-base text-muted-foreground leading-relaxed space-y-4">
                   <p>
-                    DigiGrowNex utilizes the collected data for the following core business purposes:
+                    DigiGrowNex Technologies utilizes the collected data for the following core business purposes:
                   </p>
                   <ul className="list-disc pl-6 space-y-2">
                     <li><strong>Service Delivery:</strong> To set up, operate, and maintain our digital consulting, cloud infrastructure, and marketing services.</li>
                     <li><strong>Appointment Scheduling:</strong> To coordinate bookings and reservations made via our web tools.</li>
-                    <li><strong>Analytics & Improvement:</strong> To analyze how users interact with our website to optimize design, navigation, and loading performance.</li>
+                    <li><strong>Analytics & Improvement:</strong> To analyze how users interact with our website to optimize design, navigation, and performance.</li>
                     <li><strong>Customer Engagement:</strong> To address service inquiries, distribute project updates, and provide operational assistance.</li>
-                    <li><strong>Compliance:</strong> To satisfy legal responsibilities, prevent fraud, and enforce our client agreements.</li>
                   </ul>
                 </div>
               </div>
 
-              {/* WhatsApp & SMS Automation */}
-              <div id="channels" className="scroll-mt-28 space-y-4">
+              {/* WhatsApp Communications */}
+              <div id="whatsapp" className="scroll-mt-28 space-y-4">
                 <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-3 font-display border-b border-border pb-3">
                   <span className="p-1.5 rounded-lg bg-accent/10 text-accent"><Phone className="w-5 h-5" /></span>
-                  4. WhatsApp & SMS Automation
+                  5. WhatsApp Communications
                 </h2>
                 <div className="text-sm sm:text-base text-muted-foreground leading-relaxed space-y-4">
                   <p>
-                    As part of our specialized WhatsApp Business API and Bulk SMS automation suites, we process customer contact details:
+                    We leverage compliant, official communication channels to interact with customers. <strong>Users may communicate with us through WhatsApp Business and other communication channels.</strong>
                   </p>
                   <p>
                     <strong>Consent:</strong> Phone numbers are collected only with active, explicit user consent (such as checking a confirmation box when scheduling an appointment or sending an inquiry).
                   </p>
                   <p>
-                    <strong>Data Integrity:</strong> Phone numbers and chat content handled via our AI Automation modules are strictly encrypted and used exclusively for sending requested notifications, reminders, or support messages. We do not engage in unsolicited spamming.
+                    <strong>Data Integrity:</strong> Phone numbers and chat content handled via our AI Automation modules are strictly encrypted and used exclusively for sending requested notifications, reminders, or support messages. We do not engage in unsolicited spamming. All WhatsApp solutions are implemented in accordance with Meta and WhatsApp Business policies.
                   </p>
                 </div>
               </div>
 
-              {/* Data Sharing & Security */}
-              <div id="sharing" className="scroll-mt-28 space-y-4">
+              {/* Data Security & Sharing */}
+              <div id="security" className="scroll-mt-28 space-y-4">
                 <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-3 font-display border-b border-border pb-3">
                   <span className="p-1.5 rounded-lg bg-accent/10 text-accent"><Shield className="w-5 h-5" /></span>
-                  5. Data Sharing & Security
+                  6. Data Security & Sharing
                 </h2>
                 <div className="text-sm sm:text-base text-muted-foreground leading-relaxed space-y-4">
                   <p>
                     We prioritize data security and implement appropriate technical measures to prevent unauthorized access, modification, or leakage.
                   </p>
                   <p>
-                    <strong>No Data Selling:</strong> We do not sell, trade, or rent your PII to third parties.
+                    <strong>No Data Selling:</strong> We do not sell, trade, or rent your personal information to third parties.
                   </p>
                   <p>
-                    <strong>Trusted Partners:</strong> We may share data with verified third-party partners (such as Google Cloud for hosting, or Tata Tele Business Services for communications) strictly to deliver our services. These partners are bound by strict non-disclosure obligations.
-                  </p>
-                  <p>
-                    <strong>Legal Disclosures:</strong> We may disclose information if required to do so by applicable laws in India or to protect our legitimate legal interests.
+                    <strong>Third-Party Integrations:</strong> We may share data with verified third-party partners (such as Google Cloud for hosting, or Meta for API synchronization) strictly to deliver our services. These partners are bound by strict non-disclosure obligations.
                   </p>
                 </div>
               </div>
@@ -248,7 +262,7 @@ export default function PrivacyPolicy() {
               <div id="rights" className="scroll-mt-28 space-y-4">
                 <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-3 font-display border-b border-border pb-3">
                   <span className="p-1.5 rounded-lg bg-accent/10 text-accent"><Scale className="w-5 h-5" /></span>
-                  6. Your Rights & Choices
+                  7. Your Rights & Choices
                 </h2>
                 <div className="text-sm sm:text-base text-muted-foreground leading-relaxed space-y-4">
                   <p>
@@ -267,7 +281,7 @@ export default function PrivacyPolicy() {
               <div id="contact" className="scroll-mt-28 space-y-4">
                 <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-3 font-display border-b border-border pb-3">
                   <span className="p-1.5 rounded-lg bg-accent/10 text-accent"><Mail className="w-5 h-5" /></span>
-                  7. Contact Us
+                  8. Contact Us
                 </h2>
                 <div className="text-sm sm:text-base text-muted-foreground leading-relaxed space-y-6">
                   <p>
@@ -279,7 +293,7 @@ export default function PrivacyPolicy() {
                       <Mail className="w-5 h-5 text-accent shrink-0 mt-1" />
                       <div>
                         <h4 className="text-sm font-bold text-white mb-0.5">Email Support</h4>
-                        <a href="mailto:support@digigrownex.com" className="text-xs sm:text-sm text-accent hover:underline break-all">support@digigrownex.com</a>
+                        <a href="mailto:support@digigrownex.online" className="text-xs sm:text-sm text-accent hover:underline break-all">support@digigrownex.online</a>
                       </div>
                     </div>
 
@@ -287,16 +301,16 @@ export default function PrivacyPolicy() {
                       <Phone className="w-5 h-5 text-accent shrink-0 mt-1" />
                       <div>
                         <h4 className="text-sm font-bold text-white mb-0.5">Phone Contact</h4>
-                        <a href="tel:+919876543210" className="text-xs sm:text-sm text-muted-foreground hover:text-white">+91 98765 43210</a>
+                        <a href="tel:+917745868073" className="text-xs sm:text-sm text-muted-foreground hover:text-white">+91 77458 68073</a>
                       </div>
                     </div>
 
                     <div className="flex gap-4 p-4 rounded-xl border border-border bg-surface-1 sm:col-span-2">
                       <MapPin className="w-5 h-5 text-accent shrink-0 mt-1" />
                       <div>
-                        <h4 className="text-sm font-bold text-white mb-0.5">Office Address</h4>
+                        <h4 className="text-sm font-bold text-white mb-0.5">Office Location</h4>
                         <p className="text-xs sm:text-sm text-muted-foreground">
-                          DigiGrowNex Headquarters, Shivajinagar, Pune, Maharashtra 411005, India
+                          DigiGrowNex Technologies, Sahakar Nagar, Pune, Maharashtra, India
                         </p>
                       </div>
                     </div>

@@ -15,14 +15,11 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: {
-    default: "digigrownex - Digital Marketing & Branding",
-    template: "%s | digigrownex",
-  },
+  title: "AI Automation & Website Development Company in Pune | DigiGrowNex",
   description:
-    "End-to-end digital marketing, web consulting, and digigrownex services designed to maximize your digital presence.",
+    "DigiGrowNex Technologies provides AI automation, website development, SaaS solutions, WhatsApp Business automation, CRM systems, SEO and digital marketing services.",
   keywords: [
-    "digital marketing", "SEO", "branding", "Google Cloud", "Tata Tele", "digigrownex",
+    "AI automation", "website development", "SaaS solutions", "WhatsApp Business automation", "CRM systems", "SEO", "digital marketing", "Pune", "DigiGrowNex"
   ],
   icons: {
     icon: "/images/logo/favicon.png",
@@ -30,10 +27,17 @@ export const metadata: Metadata = {
     apple: "/images/logo/favicon.png",
   },
   openGraph: {
-    title: "digigrownex - Elevate Your Digital Presence",
-    description: "Digital marketing and corporate branding for growing businesses.",
+    title: "AI Automation & Website Development Company in Pune | DigiGrowNex",
+    description: "DigiGrowNex Technologies provides AI automation, website development, SaaS solutions, WhatsApp Business automation, CRM systems, SEO and digital marketing services.",
     type: "website",
+    url: "https://www.digigrownex.online",
+    siteName: "DigiGrowNex Technologies",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Automation & Website Development Company in Pune | DigiGrowNex",
+    description: "DigiGrowNex Technologies provides AI automation, website development, SaaS solutions, WhatsApp Business automation, CRM systems, SEO and digital marketing services.",
+  }
 };
 
 export default function RootLayout({
@@ -47,6 +51,39 @@ export default function RootLayout({
         <ThemeProvider>
           <SiteShell>{children}</SiteShell>
         </ThemeProvider>
+        {/* Organization Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "DigiGrowNex Technologies",
+              "url": "https://www.digigrownex.online",
+              "logo": "https://www.digigrownex.online/images/logo/digigrownex-logo.png",
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+91-77458-68073",
+                "contactType": "customer service",
+                "areaServed": "IN",
+                "availableLanguage": ["en", "hi"]
+              },
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "B-92, Poonam apartment, Sahakar Nagar",
+                "addressLocality": "Pune",
+                "addressRegion": "Maharashtra",
+                "postalCode": "411009",
+                "addressCountry": "IN"
+              },
+              "sameAs": [
+                "https://www.facebook.com/profile.php?id=61588671227643",
+                "https://www.instagram.com/digigrownex/",
+                "https://www.linkedin.com/company/digigrownex-technologies"
+              ]
+            })
+          }}
+        />
         {/* Interactive gradient mouse tracker for light mode */}
         <script dangerouslySetInnerHTML={{ __html: `
           (function() {

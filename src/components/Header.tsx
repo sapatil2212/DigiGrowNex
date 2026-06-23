@@ -8,9 +8,9 @@ import { useTheme } from './ThemeProvider';
 
 const navLinks = [
   { label: 'HOME', href: '/' },
-  { label: 'ABOUT', href: '/about' },
+  { label: 'ABOUT', href: '/about-us' },
   { label: 'PORTFOLIO', href: '/portfolio' },
-  { label: 'CONTACT', href: '/contact' },
+  { label: 'CONTACT', href: '/contact-us' },
   { label: 'BLOGS', href: '/blog' },
 ];
 
@@ -23,21 +23,21 @@ const productsMenu = [
 
 const servicesMenu = {
   col1: {
-    title: 'Development & Design',
+    title: 'Development & Automation',
     links: [
-      { label: 'Websites', href: '/services/websites', icon: Globe },
-      { label: 'Custom Softwares', href: '/services/custom-software', icon: Code },
-      { label: 'App Development', href: '/services/app-development', icon: Smartphone },
-      { label: 'Branding', href: '/services/branding', icon: PenTool }
+      { label: 'Websites', href: '/website-development', icon: Globe },
+      { label: 'AI Automation', href: '/ai-automation', icon: Code },
+      { label: 'WhatsApp API Solutions', href: '/whatsapp-business-api', icon: MessageSquare },
+      { label: 'Custom Softwares', href: '/services/custom-software', icon: Layout }
     ]
   },
   col2: {
-    title: 'Marketing & SEO',
+    title: 'Marketing & Design',
     links: [
-      { label: 'Local SEO', href: '/services/local-seo', icon: MapPin },
-      { label: 'Google Ads', href: '/services/google-ads', icon: MousePointerClick },
-      { label: 'Social Media Ads', href: '/services/social-media-ads', icon: Share2 },
-      { label: 'Search Engine Optimisation', href: '/services/seo', icon: Search }
+      { label: 'SEO Services', href: '/seo-services', icon: Search },
+      { label: 'Digital Marketing', href: '/digital-marketing', icon: Share2 },
+      { label: 'Graphic Design', href: '/graphic-design', icon: PenTool },
+      { label: 'Local Maps SEO', href: '/services/local-seo', icon: MapPin }
     ]
   }
 };
@@ -101,7 +101,7 @@ export default function Header() {
               HOME
             </Link>
             <Link
-              href="/about"
+              href="/about-us"
               className="px-4 py-2 text-sm text-muted-foreground hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 uppercase tracking-wide font-medium"
             >
               ABOUT
@@ -203,7 +203,7 @@ export default function Header() {
               PORTFOLIO
             </Link>
             <Link
-              href="/contact"
+              href="/contact-us"
               className="px-4 py-2 text-sm text-muted-foreground hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 uppercase tracking-wide font-medium"
             >
               CONTACT
@@ -270,7 +270,7 @@ export default function Header() {
         <div className="lg:hidden animate-fade-in bg-white/95 dark:bg-[#0a0a0a]/90 backdrop-blur-[4px]" style={{ borderTop: '1px solid var(--border)' }}>
           <div className="max-w-7xl mx-auto px-4 py-4 space-y-1">
               <Link href="/" className="block px-4 py-3 text-sm text-muted-foreground hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors font-medium" onClick={() => setMobileOpen(false)}>HOME</Link>
-              <Link href="/about" className="block px-4 py-3 text-sm text-muted-foreground hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors font-medium" onClick={() => setMobileOpen(false)}>ABOUT</Link>
+              <Link href="/about-us" className="block px-4 py-3 text-sm text-muted-foreground hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors font-medium" onClick={() => setMobileOpen(false)}>ABOUT</Link>
               <button
                 className="flex items-center justify-between w-full px-4 py-3 text-sm text-muted-foreground hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors font-medium"
                 onClick={() => setServicesOpen(!servicesOpen)}
@@ -317,7 +317,7 @@ export default function Header() {
               )}
 
               <Link href="/portfolio" className="block px-4 py-3 text-sm text-muted-foreground hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors font-medium" onClick={() => setMobileOpen(false)}>PORTFOLIO</Link>
-              <Link href="/contact" className="block px-4 py-3 text-sm text-muted-foreground hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors font-medium" onClick={() => setMobileOpen(false)}>CONTACT</Link>
+              <Link href="/contact-us" className="block px-4 py-3 text-sm text-muted-foreground hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors font-medium" onClick={() => setMobileOpen(false)}>CONTACT</Link>
               <Link href="/blog" className="block px-4 py-3 text-sm text-muted-foreground hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors font-medium" onClick={() => setMobileOpen(false)}>BLOGS</Link>
             
             <div className="pt-4 flex flex-col gap-2 px-4">

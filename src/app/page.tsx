@@ -228,7 +228,7 @@ function HeroSection() {
 
         {/* Subtitle */}
         <p className="text-base sm:text-lg text-muted max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-          Welcome to DigiWorld Technologies. We provide comprehensive digital solutions, from Local SEO to Corporate Branding, perfectly designed to help your business thrive and scale efficiently.
+          Welcome to DigiGrowNex Technologies. We provide comprehensive digital solutions, from local SEO to AI-powered automation and web systems, perfectly designed to help your business thrive and scale efficiently.
         </p>
 
         {/* CTAs */}
@@ -582,7 +582,7 @@ function ManageSection() {
     { icon: <GlobeIcon className="w-5 h-5" />, title: 'Domain & Hosting', desc: 'Reliable, Secure, and Scalable Web Infrastructure', subdesc: 'Build your digital presence on a solid foundation. We offer top-tier domain registration and reliable hosting solutions tailored for businesses of all sizes.', bullets: ['Domain Name Registration', 'Shared, VPS & Dedicated Hosting', 'Cloud Hosting Solutions', 'SSL Certificates & Security', 'Email Hosting'] },
     { icon: <GlobeIcon className="w-5 h-5" />, title: 'Google Cloud Services', desc: 'Innovate at Scale with Google Cloud', subdesc: 'Accelerate your digital transformation with our end-to-end Google Cloud services. As your cloud partner, we help you migrate, manage, and optimize workloads on GCP.', bullets: ['Cloud Migration & Deployment', 'Compute Engine & Storage', 'Cloud Functions & App Engine', 'BigQuery & Cloud AI Integration', 'Ongoing Cloud Management'] },
     { icon: <MessageCircleHeart className="w-5 h-5" />, title: 'Tata Tele Business Services', desc: 'Powering Businesses with Tata Teleservices', subdesc: 'As an official partner of Tata Tele Business Services, we bring you trusted, enterprise-grade communication and connectivity solutions backed by India\'s most reliable telecom network.', bullets: ['Leased Line Internet Solutions', 'PRI Lines & SIP Trunking', 'Cloud Telephony', 'IoT Solutions', 'Voice & Data Plans'] },
-    { icon: <MessageCircleHeart className="w-5 h-5" />, title: 'WhatsApp & SMS Services', desc: 'Reach Your Customers Instantly', subdesc: 'Enhance your customer communication with our WhatsApp Business API and Bulk SMS solutions. We help you engage, inform, and convert through the most direct channels available today.', bullets: ['WhatsApp Business API Integration', 'Transactional & Promotional SMS', 'Bulk Messaging Campaigns', 'Automated Messaging Bots', 'Delivery Reports'] },
+    { icon: <MessageCircleHeart className="w-5 h-5" />, title: 'WhatsApp & SMS Services', desc: 'Compliant Customer Engagement', subdesc: 'Enhance customer communication with our WhatsApp Business API and SMS solutions. We help you engage, inform, and support through official channels implemented in accordance with Meta and WhatsApp Business policies.', bullets: ['WhatsApp Business API Solutions', 'Customer Engagement Automation', 'WhatsApp Customer Support', 'Appointment Reminders & Notifications', 'Lead Management Automation'] },
     { icon: <SmilePlus className="w-5 h-5" />, title: 'IVR Services', desc: 'Smart Call Management with IVR Solutions', subdesc: 'Deliver a seamless customer experience with our customizable Interactive Voice Response (IVR) systems. Route calls efficiently, provide self-service options, and ensure 24/7 customer support availability.', bullets: ['Multi-level IVR Systems', 'Call Routing & Forwarding', 'Voice Recording & Analytics', 'Cloud-based IVR Setup', 'Custom Greeting Messages'] },
     { icon: <RefreshCw className="w-5 h-5" />, title: 'Email Marketing Services', desc: 'Drive Conversions with Smart Email Campaigns', subdesc: 'Reach your audience where it matters most – their inbox. Our Email Marketing Services are designed to boost engagement, improve retention, and drive sales.', bullets: ['Email Campaign Design & Management', 'Automated Drip Campaigns', 'Subscriber List Segmentation', 'Performance Tracking & Analytics', 'GDPR & CAN-SPAM Compliance'] },
   ];
@@ -1102,7 +1102,7 @@ function CTASection() {
           <span className="gradient-text">digital growth?</span>
         </h2>
         <p className="text-lg text-muted max-w-2xl mx-auto mb-10">
-          Partner with Digiworld Technologies and dominate your market. Start unlocking incredible results and double your impact today.
+          Partner with DigiGrowNex Technologies and dominate your market. Start unlocking incredible results and double your impact today.
         </p>
         <div className="flex flex-row items-center justify-center gap-3 sm:gap-4 w-full px-2">
           <Link href="/contact" className="glow-button px-4 py-2.5 sm:px-8 sm:py-3.5 text-xs sm:text-sm font-semibold rounded-md inline-flex items-center justify-center gap-1.5 sm:gap-2 flex-1 sm:flex-none max-w-[160px] sm:max-w-none text-center" style={{ color: '#fff' }}>

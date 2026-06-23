@@ -224,11 +224,11 @@ const productDatabase: Record<string, ProductItem> = {
   'whatsapp-automation': {
     id: 'whatsapp-automation',
     title: 'OmniReach WhatsApp CRM System',
-    subtitle: 'White-label WhatsApp Cloud API managers, broadcast bulk builders, and chatbots.',
-    description: 'Get the code to deploy your own WhatsApp CRM platform. Features dynamic flow builders, unified multi-agent chat inboxes, automated notification routers, contacts scrapers, and broadcast nodes using the official Meta API.',
+    subtitle: 'White-label WhatsApp Cloud API managers, customer engagement systems, and chatbots.',
+    description: 'Get the code to deploy your own WhatsApp CRM platform. Features dynamic flow builders, unified multi-agent chat inboxes, automated notification routers, and messaging node management using the official Meta API.',
     icon: MessageSquare,
     stats: [
-      { value: '10M+', label: 'Broadcasts Dispatched' },
+      { value: '10M+', label: 'Customer Interactions Processed' },
       { value: '4.2x', label: 'Average CTR Campaign Boost' },
       { value: '85%', label: 'Support Operations Saved' }
     ],
@@ -237,18 +237,18 @@ const productDatabase: Record<string, ProductItem> = {
     features: [
       { title: 'Unified Multi-Agent Inbox', description: 'Let multiple support team members respond to customer messages from a single WhatsApp Business number.' },
       { title: 'Smart Chat Flow Builder', description: 'Design visual decision trees (e.g. Press 1 for Sales, Press 2 for Support) to route chats.' },
-      { title: 'Bulk Broadcast Scheduler', description: 'Broadcast message templates to thousands of targeted numbers with anti-blocking intervals.' },
+      { title: 'Customer Engagement Campaigns', description: 'Schedule Meta-approved alert templates to targeted client numbers with secure spacing.' },
       { title: 'Real-Time Webhooks Engine', description: 'Log messages and sync data with external CRMs instantly.' }
     ],
     process: [
-      { step: '01', title: 'Link Cloud API Keys', description: 'Map Meta developer access codes to spin up the broadcast panels.' },
+      { step: '01', title: 'Link Cloud API Keys', description: 'Map Meta developer access codes to spin up the customer engagement panels.' },
       { step: '02', title: 'Setup Flow Builder', description: 'Define the visual conversation maps and configure automatic replies.' },
       { step: '03', title: 'Integrate Webhook Logs', description: 'Sync database records to log conversation logs and metrics.' },
-      { step: '04', title: 'Deploy & Resell', description: 'Package as a customer acquisition SaaS for e-commerce and local stores.' }
+      { step: '04', title: 'Deploy & Resell', description: 'Package as a customer support and automation SaaS for brands and local stores.' }
     ],
     faqs: [
       { q: 'Does this WhatsApp CRM use the official Meta Cloud API?', a: 'Yes. The software connects directly to the official Meta Cloud API, which is stable, secure, and approved by Meta.' },
-      { q: 'Is there a risk of phone numbers getting blocked?', a: 'Because it uses the official API, number blocking is extremely rare, provided you use pre-approved templates and follow Meta guidelines.' },
+      { q: 'Is there a risk of phone numbers getting blocked?', a: 'Because it uses the official API and respects customer opt-in rules, number suspension is avoided by following Meta guidelines.' },
       { q: 'Can we build custom chatbot logic using ChatGPT?', a: 'Yes! The codebase is structured with webhooks, allowing you to easily hook it up to OpenAI or Claude APIs.' }
     ],
     calculator: {
